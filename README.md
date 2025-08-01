@@ -2,12 +2,12 @@
 This is my Django Capstone project for the course at Code Institute.
 I am making a website for hot sauce enthusiasts to browse a collection of sauces and to find new things to try.
 
-# ERD
+## ERD
 Django default User model
 
-# User Stories
+## User Stories
 
-## User
+### User
 1. As a User, I can register, log in, and log out so that I can buy items and save my information.
 2. As a User, I can easily navigate the website so that I can find and purchase items.
 3. As a User, I can view, search, filter, and sort a list of products so that I can find the item I want to buy.
@@ -20,7 +20,7 @@ Django default User model
 10. As a User, I can see and write reviews so that I can give feedback and help others decide to buy.
 11. As a User, I can use a chatbot to get help on issues.
 
-## Site Admin
+### Site Admin
 12. As a Site Admin, I can add new products to the list so that customers can buy new products.
 13. As a Site Admin, I can edit or remove existing products so that the product catalog stays accurate and up to date.
 14. As a Site Admin, I can manage product categories and brands so that products are organized for users.
