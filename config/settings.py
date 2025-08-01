@@ -20,7 +20,6 @@ if os.path.isfile('env.py'):
     DEBUG = True
 else:
     DEBUG = False
-    
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -98,7 +97,7 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
 ]
 
 # Password validation
