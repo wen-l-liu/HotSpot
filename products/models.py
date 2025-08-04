@@ -6,8 +6,10 @@ from cloudinary.models import CloudinaryField
 class Brand(models.Model):
     """ Brand model """
     name = models.CharField(max_length=254)
+    slug = models.SlugField(max_length=254, unique=True)
     description = models.TextField()
     image = CloudinaryField('image', default='placeholder')
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -16,6 +18,7 @@ class Brand(models.Model):
 class Product(models.Model):
     """ Product model """
     name = models.CharField(max_length=254)
+    slug = models.SlugField(max_length=254, unique=True)
     brand = models.ForeignKey(
         'Brand', null=True, blank=True, on_delete=models.SET_NULL)
     description = models.TextField()
@@ -24,6 +27,7 @@ class Product(models.Model):
     rating = models.DecimalField(
         max_digits=2, decimal_places=1, null=True, blank=True)
     ingredients = models.TextField(null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name

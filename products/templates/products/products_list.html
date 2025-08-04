@@ -1,20 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Views Part 1</title>
-</head>
+{% block content %}
 
-<body>
-    <h1>Products list</h1>
-    {% for product in object_list %}
-    <h2>{{product.name}}</h2>
-    <p>{{product.price}}</p>
-    <p>Brand: {{product.brand}}</p>
-    {% endfor %}
-</body>
+<!-- index.html content starts here -->
+<div class="container-xl">
+    <div class="row">
 
-</html>
+        <!-- Blog Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for product in product_list %}
+                <div class="col-md-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="image-container">
+                                {% if "placeholder" in product.image.url %}
+                                <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
+                                    alt="placeholder image">
+                                {% else %}
+                                <img class="card-img-top" src=" {{ product.image.url }}"
+                                    alt="{{ product.title }}">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Add to Cart</p>
+                                </div>
+                            </div>
+                            <a href="{% url 'product_detail' product.slug %}" class="product-link">
+                                <h3 class="card-text">{{ product.name }}</h3>
+                                <p class="card-text">£ {{ product.price }}</p>
+                            </a>
+                            {% if product.rating %}
+                            <p class="card-text text-muted h6">Rated {{ product.rating}}
+                            </p>
+                            {% else %}
+                            <p class="card-text text-muted h6">No rating yet</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> &laquo; PREVIOUS</a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+<!-- index.html content ends here -->
+{% endblock %}
+
+{% block copyright %}
+<p class="m-0 text-center text-white">Copyright 2025 Products</p>
+{% endblock %}
