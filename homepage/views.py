@@ -1,8 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, reverse
+from django.views import generic
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from products.models import Product
 
 # Create your views here.
 
 
-def home_page_view(request):
-    return render(request, "homepage/index.html")
+class HomepageView(generic.ListView):
+    queryset = Product.objects.all()
+    template_name = "homepage/index.html"

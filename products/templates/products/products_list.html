@@ -13,8 +13,8 @@
                 {% for product in product_list %}
                 <div class="col-md-3">
                     <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="image-container">
+                    <div class="card-body text-center">
+                        <div class="image-container d-flex justify-content-center">
                                 {% if "placeholder" in product.image.url %}
                                 <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
                                     alt="placeholder image">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <a href="{% url 'product_detail' product.slug %}" class="product-link">
-                                <h3 class="card-text">{{ product.name }}</h3>
+                                <h3 class="card-text h5">{{ product.name }}</h3>
                                 <p class="card-text">£ {{ product.price }}</p>
                             </a>
                             {% if product.rating %}

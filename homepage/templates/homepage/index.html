@@ -5,58 +5,50 @@
 
 <!-- index.html content starts here -->
 <div class="container-xl">
-    <div class="row">
+    <h1 class="text-center">Welcome to HotSpot</h1>
+    <p class="text-center">Your one-stop solution for all things spicy!</p>
+    <div class="hero-image text-center mb-4">
+        <img src="{% static 'images/sauce-hero.jpg' %}" alt="Hero Sauce" class="img-fluid shadow">
+    </div>
 
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for post in post_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'images/default.jpg' %}"
-                                    alt="placeholder image">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ post.author }}</p>
-                                </div>
+
+    <!-- Featured Products Column -->
+    <div class="col-12 mt-3 left">
+        <h2 class="text-center mb-4">Latest Products</h2>
+        <div class="row">
+            {% for product in product_list|slice:":4" %}
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <div class="image-container d-flex justify-content-center">
+                            {% if "placeholder" in product.image.url %}
+                            <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
+                                alt="placeholder image">
+                            {% else %}
+                            <img class="card-img-top" src=" {{ product.image.url }}" alt="{{ product.title }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <p class="author">Add to Cart</p>
                             </div>
-                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
-                                <p class="card-text">{{ post.excerpt }}</p>
-                            </a>
-
-                            <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}}
-                            </p>
                         </div>
+                        <a href="{% url 'product_detail' product.slug %}" class="product-link">
+                            <h3 class="card-text h5">{{ product.name }}</h3>
+                            <p class="card-text">£ {{ product.price }}</p>
+                        </a>
+                        {% if product.rating %}
+                        <p class="card-text text-muted h6 mx-auto">Rated {{ product.rating}}
+                        </p>
+                        {% else %}
+                        <p class="card-text text-muted h6">No rating yet</p>
+                        {% endif %}
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:4 %}
             </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
+            {% endfor %}
         </div>
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> &laquo; PREVIOUS</a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
+
+
 </div>
 
 <!-- index.html content ends here -->
