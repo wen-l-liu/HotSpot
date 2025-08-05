@@ -7,10 +7,26 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
+
+    display: block;
+}
+
+.navbar{
+    background-color: #eee7d5;
+    position: relative;
+}
+.navbar-text,
+.navbar-brand,
+.navbar-link {
+    color: #c42e1f;
 }
 
 .red-o {
     color: #E84610;
+}
+
+.spicy {
+    color: #c42e1f;
 }
 
 .thin {
@@ -18,7 +34,7 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #efe9d6;
 }
 
 .dark-bg {
@@ -26,7 +42,7 @@ body {
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: white;
 }
 
 .card {
