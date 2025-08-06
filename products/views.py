@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Product
+# from .forms import CommentForm
 # Create your views here.
 
 
@@ -31,6 +32,7 @@ def product_detail(request, slug):
 
     queryset = Product.objects.all()
     product = get_object_or_404(queryset, slug=slug)
+    # comments form
     # comments = product.comments.all().order_by("-created_on")
     # comment_count = product.comments.filter(approved=True).count()
     # if request.method == "POST":
@@ -48,7 +50,7 @@ def product_detail(request, slug):
 
     return render(
         request,
-        "blog/product_detail.html",
+        "products/product_detail.html",
         {
             "product": product,
             # "comments": comments,

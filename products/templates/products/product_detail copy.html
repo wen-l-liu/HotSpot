@@ -7,15 +7,15 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <!-- product title goes in these h1 tags -->
-                <h1 class="product-title">{{ product.title }}</h1>
+                <h1 class="product-title">{{ product.name }}</h1>
                 <!-- product author goes before the | the product's created date goes after -->
-                <p class="product-subtitle">{{ product.author }} | {{ product.created_on }}</p>
+                <p class="product-subtitle">{{ product.brand }} | {{ product.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "placeholder" in product.featured_image.url %}
+                {% if "placeholder" in product.image.url %}
                 <img src="{% static 'images/default.jpg' %}" class="scale" alt="placeholder image">
                 {% else %}
-                <img src="{{ product.featured_image.url }}" class="scale" alt="{{ product.title }}">
+                <img src="{{ product.image.url }}" class="scale" alt="{{ product.name }}">
                 {% endif %}
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <!-- The product content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
                 <article class="card-text">
-                    {{ product.content | safe }}
+                    {{ product.description | safe }}
                 </article>
 
             </div>
