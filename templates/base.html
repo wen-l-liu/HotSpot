@@ -49,6 +49,28 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand ms-4 me-auto spicy fs-3 fw-bold" href="#">HotSpot</a>
+            <div class="d-flex order-lg-1 ms-auto pe-2">
+                <ul class="navbar-nav flex-row">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item mx-2 mx-lg-0">
+                        <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
+                            href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item mx-2 mx-lg-0">
+                        <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
+                            href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item mx-2 mx-lg-0">
+                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
+                            href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <a id="cart-popover" href="#" class="navbar-text btn mx-auto" data-placement="bottom" title="Cart">
+                    <i class="fa fa-shopping-cart fa-lg" style="color: black"></i>
+                </a>
+            </div>
             <div class="collapse navbar-collapse ms-4" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -63,21 +85,6 @@
                         <a class="nav-link {% if request.path == about_url %}active" aria-current="page{% endif %}"
                             href="{% url 'about' %}">About</a>
                     </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
-                            href="{% url 'account_logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
-                            href="{% url 'account_signup' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
-                            href="{% url 'account_login' %}">Login</a>
-                    </li>
-                    {% endif %}
                 </ul>
             </div>
             <span class="navbar-text text-muted ms-auto d-flex justify-content-end" style="width: 100%;">
@@ -87,19 +94,6 @@
                 <p class="text-end m-3">You are not logged in</p>
                 {% endif %}
             </span>
-            <div class="order-lg-4 order-1 ms-auto me-2">
-                <div id="navbar-cart" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav ms-auto">
-                        <li>
-                            <a id="cart-popover" class="btn" data-placement="bottom" title="Cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                £ 123.45
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
     </nav>
     <!-- End of Navigation -->
