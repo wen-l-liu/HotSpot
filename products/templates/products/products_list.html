@@ -13,14 +13,13 @@
                 {% for product in product_list %}
                 <div class="col-md-3 col-sm-6">
                     <div class="card mb-3">
-                    <div class="card-body text-center">
-                        <div class="image-container d-flex justify-content-center">
+                        <div class="card-body text-center">
+                            <div class="image-container d-flex justify-content-center">
                                 {% if "placeholder" in product.image.url %}
                                 <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
                                     alt="placeholder image">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ product.image.url }}"
-                                    alt="{{ product.title }}">
+                                <img class="card-img-top" src=" {{ product.image.url }}" alt="{{ product.title }}">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Add to Cart</p>
