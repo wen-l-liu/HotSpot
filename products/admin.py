@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Brand, Product
+from .models import Brand, Product, Review
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
@@ -23,3 +23,6 @@ class BrandAdmin(SummernoteModelAdmin):
     text_fields = ('description',)
     list_filter = ('created_on',)
     prepopulated_fields = {'slug': ('name',)}
+
+
+admin.site.register(Review)

@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Product
-# from .forms import CommentForm
+from .models import Product, Review
+from .forms import ReviewForm
 # Create your views here.
 
 
@@ -21,10 +21,10 @@ def product_detail(request, slug):
 
     ``product``
         An instance of :model:`products.Product`.
-    ``comments``
-        A list of approved comments related to the product.
-    ``comment_form``
-        An instance of :form:`products.CommentForm`.
+    ``reviews``
+        A list of approved reviews related to the product.
+    ``review_form``
+        An instance of :form:`products.reviewForm`.
     **Template:**
 
     :template:`products/product_detail.html`
@@ -32,29 +32,81 @@ def product_detail(request, slug):
 
     queryset = Product.objects.all()
     product = get_object_or_404(queryset, slug=slug)
-    # comments form
-    # comments = product.comments.all().order_by("-created_on")
-    # comment_count = product.comments.filter(approved=True).count()
-    # if request.method == "POST":
-    #     comment_form = CommentForm(data=request.POST)
-    #     if comment_form.is_valid():
-    #         comment = comment_form.save(commit=False)
-    #         comment.author = request.user
-    #         comment.post = post
-    #         comment.save()
-    #         messages.add_message(
-    #             request, messages.SUCCESS,
-    #             'Comment submitted and awaiting approval'
-    #         )
-    # comment_form = CommentForm()
+    reviews = product.reviews.all().order_by("-created_on")
+    review_count = product.reviews.filter(approved=True).count()
+    if request.method == "POST":
+        review_form = ReviewForm(data=request.POST)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.author = request.user
+            review.product = product
+            review.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'review submitted and awaiting approval'
+            )
+    review_form = ReviewForm()
 
     return render(
         request,
         "products/product_detail.html",
         {
             "product": product,
-            # "comments": comments,
-            # "comment_count": comment_count,
-            # "comment_form": comment_form,
+            "reviews": reviews,
+            "review_count": review_count,
+            "review_form": review_form,
         },
     )
+
+
+def review_edit(request, slug, review_id):
+    """
+    Display an individual :model:`blog.review` for editing.
+    **Context:**
+    ``product``
+        An instance of :model:`blog.product`.
+        ``review``
+        An instance of :model:`blog.review`.
+    ``review_form``
+        An instance of :form:`blog.reviewForm` pre-populated with the review.
+    """
+    if request.method == "POST":
+
+        queryset = Product.objects.all()
+        product = get_object_or_404(queryset, slug=slug)
+        review = get_object_or_404(Review, pk=review_id)
+        review_form = ReviewForm(data=request.product, instance=review)
+
+        if review_form.is_valid() and review.author == request.user:
+            review = review_form.save(commit=False)
+            review.product = product
+            review.approved = False
+            review.save()
+            messages.add_message(request, messages.SUCCESS, 'review Updated!')
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                'Error updating review!')
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def review_delete(request, slug, review_id):
+    """
+    view to delete review
+    """
+    queryset = Product.objects.all()
+    product = get_object_or_404(queryset, slug=slug)
+    review = get_object_or_404(Review, pk=review_id)
+
+    if review.author == request.user:
+        review.delete()
+        messages.add_message(request, messages.SUCCESS, 'review deleted!')
+    else:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            ('You can only delete your own reviews!')
+        )
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
