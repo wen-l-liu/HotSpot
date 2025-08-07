@@ -10,7 +10,7 @@ class ProductAdmin(SummernoteModelAdmin):
     """ Product admin """
     list_display = ('name', 'brand', 'price', 'rating')
     search_fields = ('name', 'brand__name')
-    summernote_fields = ('description', 'ingredients')
+    text_fields = ('description', 'ingredients')
     list_filter = ('created_on',)
     prepopulated_fields = {'slug': ('name',)}
 
@@ -20,6 +20,6 @@ class BrandAdmin(SummernoteModelAdmin):
     """ Brand admin """
     list_display = ('name',)
     search_fields = ('name',)
-    summernote_fields = ('description',)
+    text_fields = ('description',)
     list_filter = ('created_on',)
     prepopulated_fields = {'slug': ('name',)}
