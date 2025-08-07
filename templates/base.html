@@ -37,12 +37,7 @@
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
-    <!-- Brand Logo -->
-    <div class="d-flex justify-content-center w-100 pt-2" style="background-color:#eee7d5">
-        <a class="brand" href="#">
-            <img src="/static/images/HotSpot_Navbar.jpg" width="150" />
-        </a>
-    </div>
+
     <!-- Navigation -->
 
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white"></nav> -->
@@ -53,7 +48,8 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+            <a class="navbar-brand ms-4 me-auto spicy fs-3 fw-bold" href="#">HotSpot</a>
+            <div class="collapse navbar-collapse ms-4" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
@@ -83,27 +79,27 @@
                     </li>
                     {% endif %}
                 </ul>
-
-                <span class="navbar-text text-muted ms-auto d-flex justify-content-end" style="width: 100%;">
-                    {% if user.is_authenticated %}
-                    <p class="text-end m-3">You are logged in as {{ user }}</p>
-                    {% else %}
-                    <p class="text-end m-3">You are not logged in</p>
-                    {% endif %}
-                </span>
-                <div class="order-lg-4 order-1 ms-auto me-2">
-                    <div id="navbar-cart" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav ms-auto">
-                            <li>
-                                <a id="cart-popover" class="btn" data-placement="bottom" title="Cart">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    £ 123.45
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+            </div>
+            <span class="navbar-text text-muted ms-auto d-flex justify-content-end" style="width: 100%;">
+                {% if user.is_authenticated %}
+                <p class="text-end m-3">You are logged in as {{ user }}</p>
+                {% else %}
+                <p class="text-end m-3">You are not logged in</p>
+                {% endif %}
+            </span>
+            <div class="order-lg-4 order-1 ms-auto me-2">
+                <div id="navbar-cart" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav ms-auto">
+                        <li>
+                            <a id="cart-popover" class="btn" data-placement="bottom" title="Cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                £ 123.45
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+
         </div>
     </nav>
     <!-- End of Navigation -->

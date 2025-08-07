@@ -5,10 +5,10 @@
 
 <!--Products container-->
 
-<div class="container-lg my-5 justify-content-center">
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="position-relative image-container my-5">
+<div class="container-lg my-1 d-flex justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+            <div class="position-relative image-container my-1">
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
                     {% if "placeholder" in product.image.url %}
@@ -46,10 +46,10 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="product-details-container mb-5 mt-md-5">
+        <div class="col-12 col-md-6 ms-md-4">
+            <div class="product-details-container mb-5 mt-md-4">
                 <p class="mb-0">{{ product.name }}</p>
-                <p class="lead mb-0 text-start text-primary">£{{ product.price }}</p>
+                <p class="lead mb-0 text-left text-left c--light-blue">£{{ product.price }}</p>
                 {% if product.rating %}
                 <small class="text-muted"><i class="fas fa-star me-1"></i>{{ product.rating }} / 5</small>
                 {% else %}
@@ -57,8 +57,8 @@
                 {% endif %}
                 {% if request.user.is_superuser %}
                 <small class="ms-3">
-                    <a href="{% url 'edit_product' product.id %}" class="update-link link-dark">Edit</a> |
-                    <a href="{% url 'delete_product' product.id %}" class="remove-item link-blue float-right"
+                    <a href="#" class="update-link link-dark">Edit</a> |
+                    <a href="#" class="remove-item link-blue float-right"
                         id="remove_{{ item.item_id }}">Delete</a>
                 </small>
                 {% endif %}
