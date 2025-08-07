@@ -1,42 +1,73 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% block content %}
 
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- product title goes in these h1 tags -->
-                <h1 class="product-title">{{ product.name }}</h1>
-                <!-- product author goes before the | the product's created date goes after -->
-                <p class="product-subtitle">{{ product.brand }} | {{ product.created_on }}</p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "placeholder" in product.image.url %}
-                <img src="{% static 'images/hot_sauce_bottle.jpg' %}" class="scale" alt="placeholder image">
+<!--Products container-->
+
+<div class="container-lg my-5 justify-content-center">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="position-relative image-container my-5">
+                {% if product.image %}
+                <a href="{{ product.image.url }}" target="_blank">
+                    {% if "placeholder" in product.image.url %}
+                    <img class="product-image img-fluid border" src="{% static 'images/hot_sauce_bottle.jpg' %}"
+                        alt="placeholder image">
+                    {% else %}
+                    <img class="product-image img-fluid border" src=" {{ product.image.url }}"
+                        alt="{{ product.title }}">
+                    {% endif %}
+                </a>
+
+                <!-- Add/remove from favorites link -->
+                <a class="favorite-link link-blue" href="#">
+                    {% if favorite %}
+                    <i class="fas fa-heart" aria-label="Remove from favorites"></i>
+                    {% else %}
+                    <i class="far fa-heart" aria-label="Add to favorites"></i>
+                    {% endif %}
+                </a>
                 {% else %}
-                <img src="{{ product.image.url }}" class="scale" alt="{{ product.name }}">
+                <a href="">
+                    <img class="card-img-top img-fluid" src="#" alt="{{ product.name }}">
+                </a>
+
+                <!-- Add/remove from favorites link -->
+                {% if request.user.is_authenticated %}
+                <a class="favorite-link link-blue" href="#">
+                    {% if favorite %}
+                    <i class="fas fa-heart"></i>
+                    {% else %}
+                    <i class="far fa-heart"></i>
+                    {% endif %}
+                </a>
+                {% endif %}
                 {% endif %}
             </div>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The product content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <article class="card-text">
-                    {{ product.description | safe }}
-                </article>
-
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="product-details-container mb-5 mt-md-5">
+                <p class="mb-0">{{ product.name }}</p>
+                <p class="lead mb-0 text-start text-primary">£{{ product.price }}</p>
+                {% if product.rating %}
+                <small class="text-muted"><i class="fas fa-star me-1"></i>{{ product.rating }} / 5</small>
+                {% else %}
+                <small class="text-muted">No rating</small>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <small class="ms-3">
+                    <a href="{% url 'edit_product' product.id %}" class="update-link link-dark">Edit</a> |
+                    <a href="{% url 'delete_product' product.id %}" class="remove-item link-blue float-right"
+                        id="remove_{{ item.item_id }}">Delete</a>
+                </small>
+                {% endif %}
+                <p class="mt-3">{{ product.description }}</p>
             </div>
         </div>
     </div>
 
-
+</div>
 {% endblock content %}
 
 {% block extras %}
