@@ -7,10 +7,26 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
+
+    display: block;
+}
+
+.navbar{
+    background-color: #eee7d5;
+    position: relative;
+}
+.navbar-text,
+.navbar-brand,
+.navbar-link {
+    color: #c42e1f;
 }
 
 .red-o {
     color: #E84610;
+}
+
+.spicy {
+    color: #c42e1f;
 }
 
 .thin {
@@ -18,7 +34,7 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #efe9d6;
 }
 
 .dark-bg {
@@ -26,7 +42,7 @@ body {
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: white;
 }
 
 .card {
@@ -42,7 +58,7 @@ body {
     position: absolute;
     bottom: 5%;
     min-width: 30%;
-    right: -2px;
+    left: -2px;
     background-color: #188181;
 }
 
@@ -95,6 +111,8 @@ body {
     width: 75%;
 
 }
+
+/* ### Post Link ### */
 .post-link {
     text-decoration: none;
     color: #445261;
@@ -111,6 +129,26 @@ body {
 }
 
 .post-subtitle {
+    margin-left: 5%;
+    color: lightgray;
+}
+
+/* ### Product Link ### */
+.product-link {
+    text-decoration: none;
+    color: black;
+}
+
+.product-link:hover {
+    color: #E84610;
+}
+
+.product-title {
+    margin-top: 10%;
+    margin-left: 5%;
+}
+
+.product-subtitle {
     margin-left: 5%;
     color: lightgray;
 }
