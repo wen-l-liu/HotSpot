@@ -58,4 +58,4 @@ class Review(models.Model):
         # This means that the most recent comments are shown first.
 
     def __str__(self):
-        return f"Review by {self.name} for {self.product.name}"
+        return f"Review by {self.author} for {self.product.name}"
