@@ -61,39 +61,50 @@ def product_detail(request, slug):
 
 def review_edit(request, slug, review_id):
     """
-    Display an individual :model:`blog.review` for editing.
-    **Context:**
-    ``product``
-        An instance of :model:`blog.product`.
-        ``review``
-        An instance of :model:`blog.review`.
-    ``review_form``
-        An instance of :form:`blog.reviewForm` pre-populated with the review.
+    Display an individual review for editing.
     """
+    queryset = Product.objects.all()
+    product = get_object_or_404(queryset, slug=slug)
+    review = get_object_or_404(Review, pk=review_id)
+    
+    # Check if user owns the review
+    if review.author != request.user:
+        messages.add_message(
+            request, messages.ERROR,
+            'You can only edit your own reviews!')
+        return HttpResponseRedirect(reverse('product_detail', args=[slug]))
+    
     if request.method == "POST":
+        review_form = ReviewForm(data=request.POST, instance=review)  # Fixed: request.POST not request.product
 
-        queryset = Product.objects.all()
-        product = get_object_or_404(queryset, slug=slug)
-        review = get_object_or_404(Review, pk=review_id)
-        review_form = ReviewForm(data=request.product, instance=review)
-
-        if review_form.is_valid() and review.author == request.user:
+        if review_form.is_valid():
             review = review_form.save(commit=False)
             review.product = product
-            review.approved = False
+            review.approved = False  # Reset approval status
             review.save()
-            messages.add_message(request, messages.SUCCESS, 'review Updated!')
+            messages.add_message(request, messages.SUCCESS, 'Review updated!')
         else:
             messages.add_message(
                 request, messages.ERROR,
                 'Error updating review!')
-
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+    else:
+        review_form = ReviewForm(instance=review)
+    
+    return render(
+        request,
+        "products/product_detail.html",  # Or create a separate edit template
+        {
+            "product": product,
+            "review_form": review_form,
+            "review": review,
+            "editing": True,
+        }
+    )
 
 
 def review_delete(request, slug, review_id):
     """
-    view to delete review
+    View to delete review
     """
     queryset = Product.objects.all()
     product = get_object_or_404(queryset, slug=slug)
@@ -101,12 +112,12 @@ def review_delete(request, slug, review_id):
 
     if review.author == request.user:
         review.delete()
-        messages.add_message(request, messages.SUCCESS, 'review deleted!')
+        messages.add_message(request, messages.SUCCESS, 'Review deleted!')
     else:
         messages.add_message(
             request,
             messages.ERROR,
-            ('You can only delete your own reviews!')
+            'You can only delete your own reviews!'
         )
 
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+    return HttpResponseRedirect(reverse('product_detail', args=[slug]))  # Fixed: product_detail not post_detail

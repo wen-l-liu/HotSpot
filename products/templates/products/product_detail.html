@@ -82,7 +82,7 @@
     <!-- Displaying reviews -->
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>reviews:</h3>
+            <h3>Reviewss</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the empty control tags
                 to iterate through each review in reviews -->
@@ -97,7 +97,8 @@
                         </span> wrote:
                     </p>
                     <div id="review{{ review.id }}">
-                        {{ review.comment | linebreaks }}
+                        <strong>Rating:</strong> {{ review.rating }} / 5<br>
+                        <strong>Comment:</strong> {{ review.comment | linebreaks }}
                     </div>
                     {% if not review.approved and review.author == user %}
                     <p class="approval">
