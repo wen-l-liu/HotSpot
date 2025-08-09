@@ -58,8 +58,8 @@ body {
     position: absolute;
     bottom: 5%;
     min-width: 30%;
-    left: -2px;
-    background-color: #188181;
+    right: 2px;
+    background-color: #c42e1f;
 }
 
 .scale {

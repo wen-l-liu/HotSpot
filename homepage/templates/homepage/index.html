@@ -4,7 +4,7 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<div class="container-xl">
+<div class="container-xl mt-4">
     <h1 class="text-center">Welcome to HotSpot</h1>
     <p class="text-center">Your one-stop solution for all things spicy!</p>
     <div class="hero-image text-center mb-4">
@@ -14,7 +14,7 @@
 
     <!-- Featured Products Column -->
     <div class="col-12 mt-3 left">
-        <h2 class="text-center mb-4">Latest Products</h2>
+        <h2 class="text-center">Latest Products</h2>
         <div class="row">
             {% for product in product_list|slice:":4" %}
             <div class="col-md-3 col-sm-6">
