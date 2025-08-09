@@ -35,6 +35,6 @@ class BrandAdmin(SummernoteModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
     """ Review admin """
-    list_display = ('product', 'user', 'rating', 'created_on')
+    list_display = ('product', 'author', 'rating', 'created_on')
     list_filter = ('product','created_on',)
     search_fields = ('product__name', 'user__username', 'comment')

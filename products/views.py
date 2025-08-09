@@ -75,7 +75,7 @@ def review_edit(request, slug, review_id):
         return HttpResponseRedirect(reverse('product_detail', args=[slug]))
     
     if request.method == "POST":
-        review_form = ReviewForm(data=request.POST, instance=review)  # Fixed: request.POST not request.product
+        review_form = ReviewForm(data=request.POST, instance=review) 
 
         if review_form.is_valid():
             review = review_form.save(commit=False)
@@ -83,6 +83,7 @@ def review_edit(request, slug, review_id):
             review.approved = False  # Reset approval status
             review.save()
             messages.add_message(request, messages.SUCCESS, 'Review updated!')
+            return HttpResponseRedirect(reverse('product_detail', args=[slug]))
         else:
             messages.add_message(
                 request, messages.ERROR,
