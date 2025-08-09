@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator # Add this import
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+from django.db.models import Avg
 from cloudinary.models import CloudinaryField
 # Create your models here.
 
@@ -29,6 +32,12 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True)
     ingredients = models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
+
+    def update_rating(self):
+        """Calculate and update the average rating from reviews"""
+        avg_rating = self.reviews.filter(approved=True).aggregate(Avg('rating'))['rating__avg']
+        self.rating = round(avg_rating, 1) if avg_rating else None
+        self.save()
 
     def __str__(self):
         return self.name
@@ -86,3 +95,16 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review by {self.author} for {self.product.name}"
+
+
+@receiver(post_save, sender=Review)
+def update_product_rating_on_save(sender, instance, **kwargs):
+    """Update product rating when a review is saved"""
+    if instance.approved:
+        instance.product.update_rating()
+
+
+@receiver(post_delete, sender=Review)
+def update_product_rating_on_delete(sender, instance, **kwargs):
+    """Update product rating when a review is deleted"""
+    instance.product.update_rating()
