@@ -48,7 +48,7 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand ms-4 me-auto spicy fs-3 fw-bold" href="#">HotSpot</a>
+            <a class="navbar-brand ms-4 me-auto spicy fs-3 fw-bold" href="{% url 'home' %}">HotSpot</a>
             <div class="d-flex order-lg-1 ms-auto pe-2">
                 <ul class="navbar-nav flex-row">
                     {% if user.is_authenticated %}
