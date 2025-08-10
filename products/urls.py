@@ -1,5 +1,5 @@
-from . import views
 from django.urls import path
+from . import views
 
 urlpatterns = [
     path('', views.ProductListView.as_view(), name='products'),
@@ -10,4 +10,5 @@ urlpatterns = [
     path(
         '<slug:slug>/delete_review/<int:review_id>',
         views.review_delete, name='review_delete'),
+    path('products/<slug:slug>/edit/', views.product_edit, name='product_edit'),
 ]

@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Product, Review
-from .forms import ReviewForm
+from .forms import ReviewForm, ProductForm
+
 # Create your views here.
 
 
@@ -111,3 +112,36 @@ def review_delete(request, slug, review_id):
         )
 
     return HttpResponseRedirect(reverse('product_detail', args=[slug]))  # Fixed: product_detail not post_detail
+
+
+@login_required
+def product_edit(request, slug):
+    """
+    View to edit a product (admin/superuser only)
+    """
+    product = get_object_or_404(Product, slug=slug)
+    
+    # Check if user is superuser
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to edit products.')
+        return redirect('product_detail', slug=slug)
+    
+    if request.method == 'POST':
+        product_form = ProductForm(data=request.POST, files=request.FILES, instance=product)
+        if product_form.is_valid():
+            product = product_form.save()
+            messages.success(request, f'Product "{product.name}" updated successfully!')
+            return redirect('product_detail', slug=product.slug)
+        else:
+            messages.error(request, 'Error updating product. Please check the form.')
+    else:
+        product_form = ProductForm(instance=product)
+    
+    return render(
+        request,
+        'products/product_edit.html',
+        {
+            'product': product,
+            'product_form': product_form,
+        }
+    )
