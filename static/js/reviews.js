@@ -1,5 +1,6 @@
 const editButtons = document.getElementsByClassName("btn-edit");
-const reviewText = document.getElementById("id_body");
+const reviewText = document.getElementById("id_comment");
+const reviewRating = document.getElementById("id_rating");
 const reviewForm = document.getElementById("reviewForm");
 const submitButton = document.getElementById("submitButton");
 
@@ -20,8 +21,12 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
         let reviewId = e.target.getAttribute("data-review_id");
-        let reviewContent = document.getElementById(`review${reviewId}`).innerText;
+        let reviewContent = document.getElementById(`review${reviewId}_comment`).innerText;
+        let reviewRatingValue = document.getElementById(`review${reviewId}_rating`).innerText;
+        console.log(reviewRatingValue);
         reviewText.value = reviewContent;
+        // Set the dropdown to the correct value
+        reviewRating.value = reviewRatingValue;
         submitButton.innerText = "Update";
         reviewForm.setAttribute("action", `edit_review/${reviewId}`);
     });

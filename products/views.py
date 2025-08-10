@@ -61,46 +61,34 @@ def product_detail(request, slug):
 
 def review_edit(request, slug, review_id):
     """
-    Display an individual review for editing.
+    Display an individual :model:`blog.review` for editing.
+    **Context:**
+    ``post``
+        An instance of :model:`blog.Post`.
+        ``review``
+        An instance of :model:`blog.review`.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm` pre-populated with the review.
     """
-    queryset = Product.objects.all()
-    product = get_object_or_404(queryset, slug=slug)
-    review = get_object_or_404(Review, pk=review_id)
-    
-    # Check if user owns the review
-    if review.author != request.user:
-        messages.add_message(
-            request, messages.ERROR,
-            'You can only edit your own reviews!')
-        return HttpResponseRedirect(reverse('product_detail', args=[slug]))
-    
     if request.method == "POST":
-        review_form = ReviewForm(data=request.POST, instance=review) 
 
-        if review_form.is_valid():
+        queryset = Product.objects.all()
+        product = get_object_or_404(queryset, slug=slug)
+        review = get_object_or_404(Review, pk=review_id)
+        review_form = ReviewForm(data=request.POST, instance=review)
+
+        if review_form.is_valid() and review.author == request.user:
             review = review_form.save(commit=False)
             review.product = product
-            review.approved = False  # Reset approval status
+            review.approved = False
             review.save()
-            messages.add_message(request, messages.SUCCESS, 'Review updated!')
-            return HttpResponseRedirect(reverse('product_detail', args=[slug]))
+            messages.add_message(request, messages.SUCCESS, 'review Updated!')
         else:
             messages.add_message(
                 request, messages.ERROR,
                 'Error updating review!')
-    else:
-        review_form = ReviewForm(instance=review)
-    
-    return render(
-        request,
-        "products/product_detail.html",  # Or create a separate edit template
-        {
-            "product": product,
-            "review_form": review_form,
-            "review": review,
-            "editing": True,
-        }
-    )
+
+    return HttpResponseRedirect(reverse('product_detail', args=[slug]))
 
 
 def review_delete(request, slug, review_id):

@@ -97,8 +97,10 @@
                         </span> wrote:
                     </p>
                     <div id="review{{ review.id }}">
-                        <strong>Rating:</strong> {{ review.rating }} / 5<br>
-                        <strong>Comment:</strong> {{ review.comment | linebreaks }}
+                        <strong>Rating:</strong>
+                        <span id="review{{ review.id }}_rating">{{ review.rating }}</span> / 5<br>
+                        <strong>Comment:</strong> 
+                        <span id="review{{ review.id }}_comment">{{ review.comment | linebreaks }}</span>
                     </div>
                     {% if not review.approved and review.author == user %}
                     <p class="approval">

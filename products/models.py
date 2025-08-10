@@ -81,7 +81,7 @@ class Review(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name="reviews"
+        related_name="reviewer"
     )
     rating = models.PositiveSmallIntegerField(
         validators=[MaxValueValidator(5)])
