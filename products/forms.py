@@ -19,7 +19,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ('name', 'brand', 'description', 'price', 'image', 'ingredients')
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 4}),
+            'description': forms.Textarea(attrs={'rows': 6}),
             'ingredients': forms.Textarea(attrs={'rows': 3}),
             'price': forms.NumberInput(attrs={'step': '0.01', 'min': '0'}),
         }

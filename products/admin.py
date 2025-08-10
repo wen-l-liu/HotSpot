@@ -35,6 +35,12 @@ class BrandAdmin(SummernoteModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
     """ Review admin """
-    list_display = ('product', 'author', 'rating', 'created_on')
-    list_filter = ('product','created_on',)
-    search_fields = ('product__name', 'user__username', 'comment')
+    list_display = ('product', 'author', 'rating', 'created_on', 'approved')
+    list_filter = ('product', 'created_on', 'approved')
+    search_fields = ('product__name', 'author__username', 'comment')
+    actions = ['approve_reviews']
+
+    @admin.action(description="Approve selected reviews")
+    def approve_reviews(self, request, queryset):
+        updated = queryset.update(approved=True)
+        self.message_user(request, f"{updated} review(s) approved.")
