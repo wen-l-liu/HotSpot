@@ -93,7 +93,7 @@
                     <p class="font-weight-bold">
                         {{ review.author }}
                         <span class="font-weight-normal">
-                            {{ review.created_on }}
+                            {{ review.created_on|timesince }} ago
                         </span> wrote:
                     </p>
                     <div id="review{{ review.id }}">

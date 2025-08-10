@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-3">
+                <hr>
+                <h2 class="logo-text py-4">Product Management</h2>
+                <hr>
+                <h5 class="text-muted">Edit a Product</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <form method="POST" action="{% url 'edit_product' product.id %}" class="text-muted form mb-5" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for in form %}
+                        
+                    {% endfor %}
+                    <div class="text-end">
+                        <a class="btn btn-main hvr-back-pulse" href="{% url 'products' %}">Cancel</a>
+                        <button class="btn btn-alternate" type="submit">Update Product</button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+    </div>
+{% endblock %}
