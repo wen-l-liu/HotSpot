@@ -31,7 +31,7 @@
                                     <p class="card-text">{{ post_list.0.excerpt }}</p>
                                 </a>
                                 <hr />
-                                <p class="card-text text-muted h6">{{ post_list.0.created_on|timesince }}</p>
+                                <p class="card-text text-muted h6">{{ post_list.0.created_on|date:"F j, Y" }}</p>
                             </div>
                         </div>
                     </div>
