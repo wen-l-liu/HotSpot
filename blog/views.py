@@ -1,16 +1,17 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = "blog/post_index.html"
-    paginate_by = 6
+    paginate_by = 7
 
 
 def post_detail(request, slug):
@@ -110,3 +111,36 @@ def comment_delete(request, slug, comment_id):
         )
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+# @login_required
+# def post_edit(request, slug):
+#     """
+#     View to edit a post (admin/superuser only)
+#     """
+#     post = get_object_or_404(Post, slug=slug)
+    
+#     # Check if user is superuser
+#     if not request.user.is_superuser:
+#         messages.error(request, 'You do not have permission to edit posts.')
+#         return redirect('post_detail', slug=slug)
+    
+#     if request.method == 'POST':
+#         post_form = PostForm(data=request.POST, files=request.FILES, instance=post)
+#         if post_form.is_valid():
+#             post = post_form.save()
+#             messages.success(request, f'Post "{post.title}" updated successfully!')
+#             return redirect('post_detail', slug=post.slug)
+#         else:
+#             messages.error(request, 'Error updating post. Please check the form.')
+#     else:
+#         post_form = PostForm(instance=post)
+    
+#     return render(
+#         request,
+#         'blog/post_edit.html',
+#         {
+#             'post': post,
+#             'post_form': post_form,
+#         }
+#     )
