@@ -8,7 +8,7 @@
 <div class="container min-vh-75 d-flex align-items-center justify-content-center py-5">
     <div class="row w-100 justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <div class="card shadow border-1">
+            <div class="card shadow border-1 rounded-0">
                 <div class="card-body p-4">
                     <h3 class="card-title mb-3 text-center">{% trans "Sign Out" %}</h3>
                     <p class="text-center text-muted">{% trans 'Are you sure you want to sign out?' %}</p>
@@ -18,8 +18,8 @@
                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                         {% endif %}
                         <div class="d-grid gap-2 mt-4">
-                            <button class="btn btn-danger btn-lg" type="submit">{% trans 'Sign Out' %}</button>
-                            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg">{% trans 'Cancel' %}</a>
+                            <button class="btn btn-danger btn-lg rounded-0" type="submit">{% trans 'Sign Out' %}</button>
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg rounded-0">{% trans 'Cancel' %}</a>
                         </div>
                     </form>
                 </div>

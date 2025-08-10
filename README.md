@@ -31,3 +31,6 @@ Django default User model
 19. As a Site Admin, I can access site analytics and reports so that I can monitor sales and user activity.
 
 
+Login Credential for testing:
+Username: andrew
+Password: testerAA
