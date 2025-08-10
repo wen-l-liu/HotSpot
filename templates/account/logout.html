@@ -5,24 +5,25 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign Out" %}</h3>
-
-            <p>{% trans 'Are you sure you want to sign out?' %}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-
-            <form method="post" action="{% url 'account_logout' %}">
-                {% csrf_token %}
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button class="btn btn-signup right" type="submit">{% trans 'Sign Out' %}</button>
-            </form>
+<div class="container min-vh-75 d-flex align-items-center justify-content-center py-5">
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow border-1">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-3 text-center">{% trans "Sign Out" %}</h3>
+                    <p class="text-center text-muted">{% trans 'Are you sure you want to sign out?' %}</p>
+                    <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <div class="d-grid gap-2 mt-4">
+                            <button class="btn btn-danger btn-lg" type="submit">{% trans 'Sign Out' %}</button>
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg">{% trans 'Cancel' %}</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
