@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.db.models import Q
+from django.db.models import Q, Count, Case, When, CharField, Value
 from .models import Product, Review, Brand, Flavour
 from .forms import ReviewForm, ProductForm
 
@@ -208,44 +208,7 @@ class ProductList(generic.ListView):
         # For checkbox state
         context['selected_brands'] = request.GET.getlist('brand')
         context['selected_heats'] = request.GET.getlist('heat')
-
         context['brands'] = Brand.objects.all()
-
-        # For each heat level, build a list of dicts with value, label, and count
-        context['heat_levels'] = [
-            {
-                'value': 'low',
-                'label': '🌶️ Low Heat (0-3)',
-                'count': Product.objects.filter(flavours__heat__gte=0, flavours__heat__lte=3).count()
-            },
-            {
-                'value': 'medium',
-                'label': '🌶️🌶️ Medium Heat (4-6)',
-                'count': Product.objects.filter(flavours__heat__gte=4, flavours__heat__lte=6).count()
-            },
-            {
-                'value': 'hot',
-                'label': '🌶️🌶️🌶️ Hot (7-10)',
-                'count': Product.objects.filter(flavours__heat__gte=7, flavours__heat__lte=10).count()
-            },
-        ]
-
-        # For each flavour, build counts for each intensity level
-        intensity_levels = ['none', 'low', 'medium', 'high']
-        flavour_options = [
-            {'name': 'fruit', 'emoji': '🍓', 'display': 'Fruit'},
-            {'name': 'garlic', 'emoji': '🧄', 'display': 'Garlic'},
-            {'name': 'sweet', 'emoji': '🍯', 'display': 'Sweet'},
-            {'name': 'smoke', 'emoji': '💨', 'display': 'Smoke'},
-            {'name': 'salt', 'emoji': '🧂', 'display': 'Salt'},
-            {'name': 'vinegar', 'emoji': '🥫', 'display': 'Vinegar'},
-        ]
-        for flavour in flavour_options:
-            flavour['counts'] = {}
-            for level in intensity_levels:
-                flavour['counts'][level] = Product.objects.filter(**{f'flavours__{flavour["name"]}': level}).count()
-        context['flavour_options'] = flavour_options
-        context['intensity_levels'] = intensity_levels
 
         # Build filtered queryset except for brand (for brand badge counts)
         filtered_queryset = Product.objects.all()
@@ -282,17 +245,85 @@ class ProductList(generic.ListView):
                     flavour_q |= Q(**{f"flavours__{flavour}": level})
                 filtered_queryset = filtered_queryset.filter(flavour_q)
 
-        # Build a dict of brand id to filtered count (excluding brand filter itself)
-        brand_counts = {}
-        for brand in Brand.objects.all():
-            brand_counts[brand.id] = filtered_queryset.filter(brand=brand).count()
-        context['brand_counts'] = brand_counts
+        # --- Optimised Brand Counts ---
+        brand_counts_qs = (
+            filtered_queryset.values('brand')
+            .annotate(count=Count('id'))
+        )
+        brand_count_map = {item['brand']: item['count'] for item in brand_counts_qs}
+        context['brand_counts'] = brand_count_map
+
+        # --- Optimised Flavour Counts ---
+        intensity_levels = ['none', 'low', 'medium', 'high']
+        flavour_options = [
+            {'name': 'fruit', 'emoji': '🍓', 'display': 'Fruit'},
+            {'name': 'garlic', 'emoji': '🧄', 'display': 'Garlic'},
+            {'name': 'sweet', 'emoji': '🍯', 'display': 'Sweet'},
+            {'name': 'smoke', 'emoji': '💨', 'display': 'Smoke'},
+            {'name': 'salt', 'emoji': '🧂', 'display': 'Salt'},
+            {'name': 'vinegar', 'emoji': '🥫', 'display': 'Vinegar'},
+        ]
+
+        # Build a dict of {flavour: {level: count}}
+        flavour_counts = {}
+        for flavour in flavour_types:
+            level_counts = (
+                filtered_queryset.values(f'flavours__{flavour}')
+                .annotate(count=Count('id'))
+            )
+            level_map = {item[f'flavours__{flavour}']: item['count'] for item in level_counts}
+            flavour_counts[flavour] = level_map
+
+        for flavour in flavour_options:
+            flavour['counts'] = {}
+            for level in intensity_levels:
+                flavour['counts'][level] = flavour_counts.get(flavour['name'], {}).get(level, 0)
+        context['flavour_options'] = flavour_options
+        context['intensity_levels'] = intensity_levels
 
         # For each flavour, add selected values to context
-        flavour_types = ['fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar']
         selected_flavours = {}
         for flavour in flavour_types:
             selected_flavours[flavour] = request.GET.getlist(flavour)
         context['selected_flavours'] = selected_flavours
+
+        # Optimised heat level counts
+        heat_ranges = {
+            'low': (0, 3),
+            'medium': (4, 6),
+            'hot': (7, 10),
+        }
+        heat_labels = {
+            'low': '🌶️ Low Heat (0-3)',
+            'medium': '🌶️🌶️ Medium Heat (4-6)',
+            'hot': '🌶️🌶️🌶️ Hot (7-10)',
+        }
+
+        # Build Q objects for all heat levels and annotate in one query
+        annotated_queryset = filtered_queryset.annotate(
+            heat_level=Case(
+                When(flavours__heat__gte=0, flavours__heat__lte=3, then=Value('low')),
+                When(flavours__heat__gte=4, flavours__heat__lte=6, then=Value('medium')),
+                When(flavours__heat__gte=7, flavours__heat__lte=10, then=Value('hot')),
+                default=None,
+                output_field=CharField(),
+            )
+        )
+
+        heat_counts = (
+            annotated_queryset.values('heat_level')
+            .annotate(count=Count('id'))
+        )
+
+        heat_count_map = {item['heat_level']: item['count'] for item in heat_counts}
+
+        context['heat_levels'] = [
+            {
+                'value': key,
+                'label': heat_labels[key],
+                'count': heat_count_map.get(key, 0)
+            }
+            for key in ['low', 'medium', 'hot']
+        ]
 
         return context
