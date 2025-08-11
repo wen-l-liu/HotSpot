@@ -41,9 +41,6 @@ body {
     background-color: #445261;
 }
 
-.main-bg {
-    background-color: white;
-}
 
 .card {
     border: none;
@@ -60,11 +57,6 @@ body {
     min-width: 30%;
     right: 2px;
     background-color: #c42e1f;
-}
-
-.scale {
-    width: 100%;
-    height: auto;
 }
 
 .author {
@@ -95,16 +87,6 @@ body {
     color: #E84610;
 }
 
-.post-title {
-    margin-top: 10%;
-    margin-left: 5%;
-}
-
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
-
 /* ### Product Link ### */
 .product-link {
     text-decoration: none;
@@ -115,15 +97,6 @@ body {
     color: #E84610;
 }
 
-.product-title {
-    margin-top: 10%;
-    margin-left: 5%;
-}
-
-.product-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
 
 .btn-signup,
 .btn-edit {
