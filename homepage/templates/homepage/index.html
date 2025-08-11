@@ -27,9 +27,9 @@
                             {% else %}
                             <img class="card-img-top" src=" {{ product.image.url }}" alt="{{ product.title }}">
                             {% endif %}
-                            <div class="image-flash">
+                            <!-- <div class="image-flash">
                                 <p class="add-cart">Add to Cart</p>
-                            </div>
+                            </div> -->
                         </div>
                         <a href="{% url 'product_detail' product.slug %}" class="product-link">
                             <h3 class="card-text h5">{{ product.name }}</h3>

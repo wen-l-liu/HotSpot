@@ -1,13 +1,28 @@
 from django.contrib import admin
+from django import forms
 from django_summernote.admin import SummernoteModelAdmin
 from .models import Brand, Product, Review, Flavour
-# Register your models here.
+
+
+class FlavourAdminForm(forms.ModelForm):
+    class Meta:
+        model = Flavour
+        fields = '__all__'
+        widgets = {
+            'fruit': forms.RadioSelect,
+            'garlic': forms.RadioSelect,
+            'sweet': forms.RadioSelect,
+            'smoke': forms.RadioSelect,
+            'salt': forms.RadioSelect,
+            'vinegar': forms.RadioSelect,
+        }
 
 
 class FlavourInline(admin.StackedInline):
     model = Flavour
     max_num = 1
     can_delete = False
+    form = FlavourAdminForm
 
 
 @admin.register(Product)
@@ -18,7 +33,7 @@ class ProductAdmin(SummernoteModelAdmin):
     text_fields = ('description', 'ingredients')
     list_filter = ('created_on',)
     prepopulated_fields = {'slug': ('name',)}
-    inlines = [FlavourInline]  # Add this line
+    inlines = [FlavourInline]  # Now this works
 
 
 @admin.register(Brand)

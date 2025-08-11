@@ -8,5 +8,5 @@ from products.models import Product
 
 
 class HomepageView(generic.ListView):
-    queryset = Product.objects.all()[0:4]
+    queryset = Product.objects.order_by('-created_on')[:4]
     template_name = "homepage/index.html"
