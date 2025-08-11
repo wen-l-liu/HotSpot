@@ -169,12 +169,8 @@ class ProductList(generic.ListView):
 
         # Brand filtering (multi-select)
         brand_filters = request.GET.getlist('brand')
-        if brand_filters and any(brand_filters):
-            brand_q = Q()
-            for brand_id in brand_filters:
-                if brand_id:
-                    brand_q |= Q(brand_id=brand_id)
-            queryset = queryset.filter(brand_q)
+        if brand_filters:
+            queryset = queryset.filter(brand_id__in=brand_filters)
 
         # Heat level filtering (multi-select)
         heat_filters = request.GET.getlist('heat')

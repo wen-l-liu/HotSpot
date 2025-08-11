@@ -27,7 +27,7 @@ class Product(models.Model):
     brand = models.ForeignKey(
         'Brand', null=True, blank=True, on_delete=models.SET_NULL)
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     image = CloudinaryField('image', default='placeholder')
     rating = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True)
     ingredients = models.TextField(null=True, blank=True)

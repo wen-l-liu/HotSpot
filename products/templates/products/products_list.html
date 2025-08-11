@@ -212,10 +212,10 @@
                 </div>
                 {% empty %}
                 <div class="col-12">
-                    <div class="alert alert-info" role="alert">
+                    <div class="alert alert-secondary rounded-0" role="alert">
                         <h5>No products found</h5>
                         <p>Try adjusting your search or filter criteria.</p>
-                        <a href="{% url 'products' %}" class="btn btn-primary">View All Products</a>
+                        <a href="{% url 'products' %}" class="btn btn-edit">View All Products</a>
                     </div>
                 </div>
                 {% endfor %}
