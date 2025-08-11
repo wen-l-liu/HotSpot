@@ -199,7 +199,7 @@ class ProductList(generic.ListView):
                     flavour_q |= Q(**{f"flavours__{flavour}": level})
                 queryset = queryset.filter(flavour_q)
 
-        return queryset.order_by('name')  # or 'created_on', 'id', etc.
+        return queryset.order_by('name')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -256,12 +256,12 @@ class ProductList(generic.ListView):
         # --- Optimised Flavour Counts ---
         intensity_levels = ['none', 'low', 'medium', 'high']
         flavour_options = [
-            {'name': 'fruit', 'emoji': '🍓', 'display': 'Fruit'},
-            {'name': 'garlic', 'emoji': '🧄', 'display': 'Garlic'},
-            {'name': 'sweet', 'emoji': '🍯', 'display': 'Sweet'},
-            {'name': 'smoke', 'emoji': '💨', 'display': 'Smoke'},
-            {'name': 'salt', 'emoji': '🧂', 'display': 'Salt'},
-            {'name': 'vinegar', 'emoji': '🥫', 'display': 'Vinegar'},
+            {'name': 'fruit', 'display': 'Fruit'},
+            {'name': 'garlic', 'display': 'Garlic'},
+            {'name': 'sweet', 'display': 'Sweet'},
+            {'name': 'smoke', 'display': 'Smoke'},
+            {'name': 'salt', 'display': 'Salt'},
+            {'name': 'vinegar', 'display': 'Vinegar'},
         ]
 
         # Build a dict of {flavour: {level: count}}
@@ -287,19 +287,14 @@ class ProductList(generic.ListView):
             selected_flavours[flavour] = request.GET.getlist(flavour)
         context['selected_flavours'] = selected_flavours
 
-        # Optimised heat level counts
-        heat_ranges = {
-            'low': (0, 3),
-            'medium': (4, 6),
-            'hot': (7, 10),
-        }
+        # Optimised heat level counts (no emojis)
         heat_labels = {
-            'low': '🌶️ Low Heat (0-3)',
-            'medium': '🌶️🌶️ Medium Heat (4-6)',
-            'hot': '🌶️🌶️🌶️ Hot (7-10)',
+            'low': 'Low Heat (0-3)',
+            'medium': 'Medium Heat (4-6)',
+            'hot': 'Hot (7-10)',
         }
 
-        # Build Q objects for all heat levels and annotate in one query
+        from django.db.models import Value
         annotated_queryset = filtered_queryset.annotate(
             heat_level=Case(
                 When(flavours__heat__gte=0, flavours__heat__lte=3, then=Value('low')),

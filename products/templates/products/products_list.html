@@ -44,16 +44,18 @@
                                         aria-labelledby="brandHeading" data-bs-parent="#brandAccordion">
                                         <div class="accordion-body p-2">
                                             {% for brand in brands %}
-                                            <div class="form-check">
-                                                <input class="form-check-input filter-checkbox" type="checkbox" name="brand"
-                                                    value="{{ brand.id }}" id="brand{{ brand.id }}"
-                                                    {% if brand.id|stringformat:"s" in selected_brands %}checked{% endif %}>
-                                                <label class="form-check-label" for="brand{{ brand.id }}">
-                                                    {{ brand.name }}
-                                                    <span class="badge bg-secondary">
-                                                        {{ brand_counts|dict_get:brand.id }}
-                                                    </span>
-                                                </label>
+                                            <div class="form-check d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <input class="form-check-input filter-checkbox" type="checkbox" name="brand"
+                                                        value="{{ brand.id }}" id="brand{{ brand.id }}"
+                                                        {% if brand.id|stringformat:"s" in selected_brands %}checked{% endif %}>
+                                                    <label class="form-check-label" for="brand{{ brand.id }}">
+                                                        {{ brand.name }}
+                                                    </label>
+                                                </div>
+                                                <span class="badge bg-secondary ms-2">
+                                                    {{ brand_counts|dict_get:brand.id }}
+                                                </span>
                                             </div>
                                             {% endfor %}
                                         </div>
@@ -79,15 +81,17 @@
                                         aria-labelledby="heatHeading" data-bs-parent="#heatAccordion">
                                         <div class="accordion-body p-2">
                                             {% for heat in heat_levels %}
-                                            <div class="form-check">
-                                                <input class="form-check-input filter-checkbox" type="checkbox" name="heat"
-                                                    value="{{ heat.value }}" id="heat{{ heat.value|title }}" {% if heat.value in selected_heats %}checked{% endif %}>
-                                                <label class="form-check-label" for="heat{{ heat.value|title }}">
-                                                    {{ heat.label }}
-                                                    <span class="badge bg-secondary">
-                                                        {{ heat.count }}
-                                                    </span>
-                                                </label>
+                                            <div class="form-check d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <input class="form-check-input filter-checkbox" type="checkbox" name="heat"
+                                                        value="{{ heat.value }}" id="heat{{ heat.value|title }}" {% if heat.value in selected_heats %}checked{% endif %}>
+                                                    <label class="form-check-label" for="heat{{ heat.value|title }}">
+                                                        {{ heat.label }}
+                                                    </label>
+                                                </div>
+                                                <span class="badge bg-secondary ms-2">
+                                                    {{ heat.count }}
+                                                </span>
                                             </div>
                                             {% endfor %}
                                         </div>
@@ -111,7 +115,7 @@
                                                 data-bs-target="#{{ flavour.name }}Collapse"
                                                 aria-expanded="{% if selected_flavour %}true{% else %}false{% endif %}"
                                                 aria-controls="{{ flavour.name }}Collapse">
-                                                {{ flavour.emoji }} {{ flavour.display }}
+                                                {{ flavour.display }}
                                             </button>
                                         </h2>
                                         <div id="{{ flavour.name }}Collapse"
@@ -119,17 +123,19 @@
                                             aria-labelledby="{{ flavour.name }}Heading">
                                             <div class="accordion-body p-2">
                                                 {% for level in intensity_levels %}
-                                                <div class="form-check">
-                                                    <input class="form-check-input filter-checkbox" type="checkbox"
-                                                        name="{{ flavour.name }}" value="{{ level }}"
-                                                        id="{{ flavour.name }}{{ level|title }}" {% if level in selected_flavour %}checked{% endif %}>
-                                                    <label class="form-check-label"
-                                                        for="{{ flavour.name }}{{ level|title }}">
-                                                        {{ level|title }}
-                                                        <span class="badge bg-secondary">
-                                                            {{ flavour.counts|dict_get:level }}
-                                                        </span>
-                                                    </label>
+                                                <div class="form-check d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <input class="form-check-input filter-checkbox" type="checkbox"
+                                                            name="{{ flavour.name }}" value="{{ level }}"
+                                                            id="{{ flavour.name }}{{ level|title }}" {% if level in selected_flavour %}checked{% endif %}>
+                                                        <label class="form-check-label"
+                                                            for="{{ flavour.name }}{{ level|title }}">
+                                                            {{ level|title }}
+                                                        </label>
+                                                    </div>
+                                                    <span class="badge bg-secondary ms-2">
+                                                        {{ flavour.counts|dict_get:level }}
+                                                    </span>
                                                 </div>
                                                 {% endfor %}
                                             </div>
