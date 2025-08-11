@@ -5,34 +5,34 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<div class="container-xl">
+<div class="container-xl mt-4">
     <div class="row">
 
         <!-- Sidebar -->
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card">
-                <div class="card-header">
+        <div class="col-lg-3 col-md-4 my-4">
+            <div class="card rounded-0">
+                <div class="card-header rounded-0">
                     <h5 class="mb-0">Filter Products</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body rounded-0">
 
                     <!-- Search Box -->
                     <form method="GET" class="mb-4" id="filterForm">
                         <label for="search" class="form-label">Search Products</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="search" name="search"
-                                placeholder="Search name, description, ingredients..." value="{{ request.GET.search }}">
-                            <button class="btn btn-outline-primary" type="submit">
+                        <div class="input-group rounded-0 mb-4">
+                            <input type="text" class="form-control rounded-0" id="search" name="search"
+                                placeholder="Search name, desc, ingredients..." value="{{ request.GET.search }}">
+                            <button class="btn btn-outline-danger rounded-0" type="submit">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
 
                         <!-- Filter by Brand (Dropdown/Accordion) -->
-                        <div class="mb-4">
-                            <div class="accordion" id="brandAccordion">
-                                <div class="accordion-item">
+                        <div class="mb-2">
+                            <div class="accordion rounded-0" id="brandAccordion">
+                                <div class="accordion-item rounded-0">
                                     <h2 class="accordion-header" id="brandHeading">
-                                        <button class="accordion-button {% if not selected_brands %}collapsed{% endif %}"
+                                        <button class="accordion-button rounded-0 {% if not selected_brands %}collapsed{% endif %}"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#brandCollapse"
                                             aria-expanded="{% if selected_brands %}true{% else %}false{% endif %}"
                                             aria-controls="brandCollapse">
@@ -42,7 +42,7 @@
                                     <div id="brandCollapse"
                                         class="accordion-collapse collapse {% if selected_brands %}show{% endif %}"
                                         aria-labelledby="brandHeading" data-bs-parent="#brandAccordion">
-                                        <div class="accordion-body p-2">
+                                        <div class="accordion-body p-2 rounded-0">
                                             {% for brand in brands %}
                                             <div class="form-check d-flex align-items-center justify-content-between">
                                                 <div>
@@ -65,11 +65,11 @@
                         </div>
 
                         <!-- Filter by Heat Level (Dropdown/Accordion) -->
-                        <div class="mb-4">
-                            <div class="accordion" id="heatAccordion">
-                                <div class="accordion-item">
+                        <div class="mb-2">
+                            <div class="accordion rounded-0" id="heatAccordion">
+                                <div class="accordion-item rounded-0">
                                     <h2 class="accordion-header" id="heatHeading">
-                                        <button class="accordion-button {% if not selected_heats %}collapsed{% endif %}"
+                                        <button class="accordion-button rounded-0 {% if not selected_heats %}collapsed{% endif %}"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#heatCollapse"
                                             aria-expanded="{% if selected_heats %}true{% else %}false{% endif %}"
                                             aria-controls="heatCollapse">
@@ -79,7 +79,7 @@
                                     <div id="heatCollapse"
                                         class="accordion-collapse collapse {% if selected_heats %}show{% endif %}"
                                         aria-labelledby="heatHeading" data-bs-parent="#heatAccordion">
-                                        <div class="accordion-body p-2">
+                                        <div class="accordion-body p-2 rounded-0">
                                             {% for heat in heat_levels %}
                                             <div class="form-check d-flex align-items-center justify-content-between">
                                                 <div>
@@ -101,16 +101,16 @@
                         </div>
 
                         <!-- Filter by Flavour Profiles -->
-                        <div class="mb-4">
+                        <div class="mb-2 mt-4">
                             <h6 class="fw-bold">Filter by Flavour Profiles</h6>
                             <div id="flavourAccordion">
                                 {% for flavour in flavour_options %}
                                 {% with selected_flavour=selected_flavours|dict_get:flavour.name %}
-                                <div class="accordion mb-2" id="accordion-{{ flavour.name }}">
-                                    <div class="accordion-item">
+                                <div class="accordion mb-2 rounded-0" id="accordion-{{ flavour.name }}">
+                                    <div class="accordion-item rounded-0">
                                         <h2 class="accordion-header" id="{{ flavour.name }}Heading">
                                             <button
-                                                class="accordion-button {% if not selected_flavour %}collapsed{% endif %} py-2"
+                                                class="accordion-button rounded-0 {% if not selected_flavour %}collapsed{% endif %} py-2"
                                                 type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#{{ flavour.name }}Collapse"
                                                 aria-expanded="{% if selected_flavour %}true{% else %}false{% endif %}"
@@ -121,7 +121,7 @@
                                         <div id="{{ flavour.name }}Collapse"
                                             class="accordion-collapse collapse {% if selected_flavour %}show{% endif %}"
                                             aria-labelledby="{{ flavour.name }}Heading">
-                                            <div class="accordion-body p-2">
+                                            <div class="accordion-body p-2 rounded-0">
                                                 {% for level in intensity_levels %}
                                                 <div class="form-check d-flex align-items-center justify-content-between">
                                                     <div>
@@ -150,13 +150,13 @@
                         <!-- Clear Filters -->
                         {% if request.GET.search or request.GET.brand or request.GET.heat or request.GET.fruit or request.GET.garlic or request.GET.sweet or request.GET.smoke or request.GET.salt or request.GET.vinegar %}
                         <div class="d-grid mb-3">
-                            <a href="{% url 'products' %}" class="btn btn-outline-secondary">Clear All Filters</a>
+                            <a href="{% url 'products' %}" class="btn btn-outline-secondary rounded-0">Clear All Filters</a>
                         </div>
                         {% endif %}
 
                         <!-- Apply Filters Button -->
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                            <button type="submit" class="btn btn-danger rounded-0">Apply Filters</button>
                         </div>
 
                     </form>

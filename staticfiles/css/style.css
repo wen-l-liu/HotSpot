@@ -21,6 +21,27 @@ body {
     color: #c42e1f;
 }
 
+.accordion-button:not(.collapsed) {
+    background-color: #eee7d5; /* Replace with your desired color */
+    color: black;              /* Optional: change text color */
+}
+
+.accordion-button:focus,
+.accordion-button:active,
+.accordion-button:not(.collapsed) {
+    box-shadow: none !important;
+}
+
+.form-control:focus,
+.form-control:active {
+    box-shadow: 0 0 0 0.25rem #eee7d5;
+    border-color: #eee7d5;
+}
+
+.paper {
+    background-color: #eee7d5;
+}
+
 .red-o {
     color: #E84610;
 }
@@ -97,6 +118,10 @@ body {
     color: #E84610;
 }
 
+/* .form-check-label {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+} */
 
 .btn-signup,
 .btn-edit {
