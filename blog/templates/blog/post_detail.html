@@ -8,24 +8,25 @@
     <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
             <h1 class="display-4 fw-bold mb-3">{{ post.title }}</h1>
+            {% if request.user.is_superuser %}
+            <small>
+                <a href="{% url 'post_edit' post.slug %}" class="update-link link-dark">Edit</a>
+                <!-- | <a href="#" class="remove-item btn-like float-right" id="remove_{{ product.id }}">Delete</a> -->
+            </small>
+            {% endif %}
             <p class="text-muted mb-4">
                 {{ post.author }} | {{ post.created_on|date:"F j, Y" }}
             </p>
         </div>
-        {% if request.user.is_superuser %}
-                <small class="ms-3 text-end text-right col-lg-8">
-                    <a href="{% url 'post_edit' post.slug %}" class="update-link link-dark">Edit</a>
-                    <!-- | <a href="#" class="remove-item btn-like float-right" id="remove_{{ product.id }}">Delete</a> -->
-                </small>
-                {% endif %}
+
     </div>
     <!-- Post Image Centered -->
     <div class="row justify-content-center mb-4">
         <div class="col-lg-8 text-center">
             {% if "placeholder" in post.featured_image.url %}
-                <img src="{% static 'images/default.jpg' %}" class="img-fluid mb-3" alt="placeholder image">
+            <img src="{% static 'images/default.jpg' %}" class="img-fluid mb-3" alt="placeholder image">
             {% else %}
-                <img src="{{ post.featured_image.url }}" class="img-fluid mb-3" alt="{{ post.title }}">
+            <img src="{{ post.featured_image.url }}" class="img-fluid mb-3" alt="{{ post.title }}">
             {% endif %}
         </div>
     </div>

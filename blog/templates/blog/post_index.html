@@ -10,63 +10,68 @@
         <div class="col-12 mt-3 left">
 
             {% if post_list %}
-                <!-- First post displayed on its own -->
-                <div class="row mb-4">
-                    <div class="col-md-8 offset-md-2">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="image-container mb-3">
+            <!-- First post displayed on its own -->
+            <div class="row mb-4">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container mb-3">
+                                <a href="{% url 'post_detail' post_list.0.slug %}" class="post-link">
                                     {% if "placeholder" in post_list.0.featured_image.url %}
                                     <img class="card-img-top rounded-0" src="{% static 'images/default.jpg' %}"
                                         alt="placeholder image">
                                     {% else %}
-                                    <img class="card-img-top rounded-0" src="{{ post_list.0.featured_image.url }}" alt="{{ post_list.0.title }}">
+                                    <img class="card-img-top rounded-0" src="{{ post_list.0.featured_image.url }}"
+                                        alt="{{ post_list.0.title }}">
                                     {% endif %}
                                     <div class="image-flash">
                                         <p class="author">Author: {{ post_list.0.author }}</p>
                                     </div>
-                                </div>
-                                <a href="{% url 'post_detail' post_list.0.slug %}" class="post-link">
-                                    <h2 class="card-title">{{ post_list.0.title }}</h2>
-                                    <p class="card-text">{{ post_list.0.excerpt }}</p>
                                 </a>
-                                <hr />
-                                <p class="card-text text-muted h6">{{ post_list.0.updated_on|date:"F j, Y" }}</p>
                             </div>
+                            <a href="{% url 'post_detail' post_list.0.slug %}" class="post-link">
+                                <h2 class="card-title">{{ post_list.0.title }}</h2>
+                                <p class="card-text">{{ post_list.0.excerpt }}</p>
+                            </a>
+                            <hr />
+                            <p class="card-text text-muted h6">{{ post_list.0.updated_on|date:"F j, Y" }}</p>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endif %}
 
             <!-- Remaining posts in rows of 2 -->
             <div class="row">
                 {% for post in post_list|slice:"1:" %}
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <div class="image-container mb-3">
-                                    {% if "placeholder" in post.featured_image.url %}
-                                    <img class="card-img-top rounded-0" src="{% static 'images/default.jpg' %}"
-                                        alt="placeholder image">
-                                    {% else %}
-                                    <img class="card-img-top rounded-0" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <p class="author">Author: {{ post.author }}</p>
-                                    </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="image-container mb-3">
+                                {% if "placeholder" in post.featured_image.url %}
+                                <img class="card-img-top rounded-0" src="{% static 'images/default.jpg' %}"
+                                    alt="placeholder image">
+                                {% else %}
+                                <img class="card-img-top rounded-0" src="{{ post.featured_image.url }}"
+                                    alt="{{ post.title }}">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ post.author }}</p>
                                 </div>
-                                <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                                    <h2 class="card-title">{{ post.title }}</h2>
-                                    <p class="card-text">{{ post.excerpt }}</p>
-                                </a>
-                                <hr />
-                                <p class="card-text text-muted h6">{{ post.updated_on|date:"F j, Y" }}</p>
                             </div>
+                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                                <h2 class="card-title">{{ post.title }}</h2>
+                                <p class="card-text">{{ post.excerpt }}</p>
+                            </a>
+                            <hr />
+                            <p class="card-text text-muted h6">{{ post.updated_on|date:"F j, Y" }}</p>
                         </div>
                     </div>
-                    {% if forloop.counter|divisibleby:2 and not forloop.last %}
-                        </div><div class="row">
-                    {% endif %}
+                </div>
+                {% if forloop.counter|divisibleby:2 and not forloop.last %}
+            </div>
+            <div class="row">
+                {% endif %}
                 {% endfor %}
             </div>
         </div>

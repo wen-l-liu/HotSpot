@@ -18,6 +18,20 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
 
 
-# Register your models here.
+@admin.register(Comment)
+class CommentAdmin(SummernoteModelAdmin):
+    """ Admin interface for managing blog comments. """
+    list_display = ('comment_label', 'author', 'post', 'created_on', 'approved')
+    list_filter = ('approved', 'created_on', 'post')
+    search_fields = ('author', 'body', 'body', 'post__title')
+    actions = ['approve_comments']
+    summernote_fields = ('body',)
 
-admin.site.register(Comment)
+    @admin.display(description='Comment')
+    def comment_label(self, obj):
+        return obj.body
+
+    @admin.action(description="Approve selected comments")
+    def approve_comments(self, request, queryset):
+        updated = queryset.update(approved=True)
+        self.message_user(request, f"{updated} comment(s) approved.")

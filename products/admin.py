@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Brand, Product, Review, Flavour  # Make sure Flavour is imported
 from django_summernote.admin import SummernoteModelAdmin
-
+from .models import Brand, Product, Review, Flavour
 # Register your models here.
 
 
