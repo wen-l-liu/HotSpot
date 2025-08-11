@@ -199,7 +199,7 @@ class ProductList(generic.ListView):
                     flavour_q |= Q(**{f"flavours__{flavour}": level})
                 queryset = queryset.filter(flavour_q)
 
-        return queryset
+        return queryset.order_by('name')  # or 'created_on', 'id', etc.
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
