@@ -13,6 +13,8 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 - **Design Rationale:**
   - The layout emphasises simplicity and clarity, with Bootstrap 5 ensuring a responsive experience across devices. The color palette and typography were chosen for readability and accessibility, following WCAG guidelines.
   - Accessibility features include keyboard navigation, ARIA labels, and screen reader support.
+  Fonts
+  
 - **Reasoning For Any Final Changes:**
   - User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
@@ -20,12 +22,10 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 
 - **Product Catalogue:** Browse, filter, and search a wide range of hot sauces by category or brand.
 - **Product Detail Pages:** View detailed information, images, and reviews for each sauce.
-- **User Authentication:** Register, log in, and manage your profile securely.
-- **Basket & Checkout:** Add products to your basket, adjust quantities, and manage orders.
+- **User Authentication:** Register, log in securely.
 - **Product Reviews:** Leave and read reviews to help the community make informed choices.
 - **Admin Management:** Admins can add, edit, or remove products, manage categories, and moderate reviews.
 - **Notifications:** Users receive feedback on actions (e.g., successful login, review submission).
-- **Chatbot Support:** Get quick help with a built-in chatbot (future enhancement).
 - **Inclusivity Notes:** Accessibility features include ARIA labels, alt text for images, and keyboard navigation.
 
 ## Deployment
