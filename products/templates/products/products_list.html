@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load dict_extras %}
 
 {% block content %}
 
@@ -7,58 +8,239 @@
 <div class="container-xl">
     <div class="row">
 
-        <!-- Products Column -->
-        <div class="col-12 mt-3 left">
+        <!-- Sidebar -->
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Filter Products</h5>
+                </div>
+                <div class="card-body">
+
+                    <!-- Search Box -->
+                    <form method="GET" class="mb-4" id="filterForm">
+                        <label for="search" class="form-label">Search Products</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="search" name="search"
+                                placeholder="Search name, description, ingredients..." value="{{ request.GET.search }}">
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+
+                        <!-- Filter by Brand (Dropdown/Accordion) -->
+                        <div class="mb-4">
+                            <div class="accordion" id="brandAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="brandHeading">
+                                        <button class="accordion-button {% if not selected_brands %}collapsed{% endif %}"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#brandCollapse"
+                                            aria-expanded="{% if selected_brands %}true{% else %}false{% endif %}"
+                                            aria-controls="brandCollapse">
+                                            <span class="fw-bold">Filter by Brand</span>
+                                        </button>
+                                    </h2>
+                                    <div id="brandCollapse"
+                                        class="accordion-collapse collapse {% if selected_brands %}show{% endif %}"
+                                        aria-labelledby="brandHeading" data-bs-parent="#brandAccordion">
+                                        <div class="accordion-body p-2">
+                                            {% for brand in brands %}
+                                            <div class="form-check">
+                                                <input class="form-check-input filter-checkbox" type="checkbox" name="brand"
+                                                    value="{{ brand.id }}" id="brand{{ brand.id }}"
+                                                    {% if brand.id|stringformat:"s" in selected_brands %}checked{% endif %}>
+                                                <label class="form-check-label" for="brand{{ brand.id }}">
+                                                    {{ brand.name }}
+                                                    <span class="badge bg-secondary">
+                                                        {{ brand_counts|dict_get:brand.id }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filter by Heat Level (Dropdown/Accordion) -->
+                        <div class="mb-4">
+                            <div class="accordion" id="heatAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heatHeading">
+                                        <button class="accordion-button {% if not selected_heats %}collapsed{% endif %}"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#heatCollapse"
+                                            aria-expanded="{% if selected_heats %}true{% else %}false{% endif %}"
+                                            aria-controls="heatCollapse">
+                                            <span class="fw-bold">Filter by Heat Level</span>
+                                        </button>
+                                    </h2>
+                                    <div id="heatCollapse"
+                                        class="accordion-collapse collapse {% if selected_heats %}show{% endif %}"
+                                        aria-labelledby="heatHeading" data-bs-parent="#heatAccordion">
+                                        <div class="accordion-body p-2">
+                                            {% for heat in heat_levels %}
+                                            <div class="form-check">
+                                                <input class="form-check-input filter-checkbox" type="checkbox" name="heat"
+                                                    value="{{ heat.value }}" id="heat{{ heat.value|title }}" {% if heat.value in selected_heats %}checked{% endif %}>
+                                                <label class="form-check-label" for="heat{{ heat.value|title }}">
+                                                    {{ heat.label }}
+                                                    <span class="badge bg-secondary">
+                                                        {{ heat.count }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filter by Flavour Profiles -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold">Filter by Flavour Profiles</h6>
+                            <div id="flavourAccordion">
+                                {% for flavour in flavour_options %}
+                                {% with selected_flavour=selected_flavours|dict_get:flavour.name %}
+                                <div class="accordion mb-2" id="accordion-{{ flavour.name }}">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="{{ flavour.name }}Heading">
+                                            <button
+                                                class="accordion-button {% if not selected_flavour %}collapsed{% endif %} py-2"
+                                                type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#{{ flavour.name }}Collapse"
+                                                aria-expanded="{% if selected_flavour %}true{% else %}false{% endif %}"
+                                                aria-controls="{{ flavour.name }}Collapse">
+                                                {{ flavour.emoji }} {{ flavour.display }}
+                                            </button>
+                                        </h2>
+                                        <div id="{{ flavour.name }}Collapse"
+                                            class="accordion-collapse collapse {% if selected_flavour %}show{% endif %}"
+                                            aria-labelledby="{{ flavour.name }}Heading">
+                                            <div class="accordion-body p-2">
+                                                {% for level in intensity_levels %}
+                                                <div class="form-check">
+                                                    <input class="form-check-input filter-checkbox" type="checkbox"
+                                                        name="{{ flavour.name }}" value="{{ level }}"
+                                                        id="{{ flavour.name }}{{ level|title }}" {% if level in selected_flavour %}checked{% endif %}>
+                                                    <label class="form-check-label"
+                                                        for="{{ flavour.name }}{{ level|title }}">
+                                                        {{ level|title }}
+                                                        <span class="badge bg-secondary">
+                                                            {{ flavour.counts|dict_get:level }}
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endwith %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- Clear Filters -->
+                        {% if request.GET.search or request.GET.brand or request.GET.heat or request.GET.fruit or request.GET.garlic or request.GET.sweet or request.GET.smoke or request.GET.salt or request.GET.vinegar %}
+                        <div class="d-grid mb-3">
+                            <a href="{% url 'products' %}" class="btn btn-outline-secondary">Clear All Filters</a>
+                        </div>
+                        {% endif %}
+
+                        <!-- Apply Filters Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Column (unchanged) -->
+        <div class="col-lg-9 col-md-8 mt-3">
+
+            <!-- Results Info -->
+            <div class="mb-3">
+                <h4>Hot Sauces
+                    {% if request.GET.search or request.GET.brand or request.GET.heat or request.GET.fruit or request.GET.garlic or request.GET.sweet or request.GET.smoke or request.GET.salt or request.GET.vinegar %}
+                    <small class="text-muted">({{ product_list|length }} result{{ product_list|length|pluralize }})</small>
+                    {% endif %}
+                </h4>
+                {% if request.GET.search %}
+                <p class="text-muted">Showing results for "<strong>{{ request.GET.search }}</strong>"</p>
+                {% endif %}
+            </div>
+
             <div class="row">
                 {% for product in product_list %}
-                <div class="col-md-3 col-sm-6">
-                    <div class="card mb-3">
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                    <div class="card h-100">
                         <div class="card-body text-center">
                             <div class="image-container d-flex justify-content-center">
-                                {% if "placeholder" in product.image.url %}
-                                <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
-                                    alt="placeholder image">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ product.image.url }}" alt="{{ product.title }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="add-cart">Add to Cart</p>
-                                </div>
+                                <a href="{% url 'product_detail' product.slug %}" class="product-link">
+                                    {% if "placeholder" in product.image.url %}
+                                    <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
+                                        alt="placeholder image">
+                                    {% else %}
+                                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <p class="add-cart">Add to Cart</p>
+                                    </div>
+                                </a>
                             </div>
                             <a href="{% url 'product_detail' product.slug %}" class="product-link">
                                 <h3 class="card-text h5">{{ product.name }}</h3>
-                                <p class="card-text">£ {{ product.price }}</p>
+                                <p class="card-text">£{{ product.price }}</p>
                             </a>
                             {% if product.rating %}
-                            <p class="card-text text-muted h6">Rated {{ product.rating}}
-                            </p>
+                            <p class="card-text text-muted h6">Rated {{ product.rating }}</p>
                             {% else %}
                             <p class="card-text text-muted h6">No rating yet</p>
                             {% endif %}
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:4 %}
-            </div>
-            <div class="row">
-                {% endif %}
+                {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info" role="alert">
+                        <h5>No products found</h5>
+                        <p>Try adjusting your search or filter criteria.</p>
+                        <a href="{% url 'products' %}" class="btn btn-primary">View All Products</a>
+                    </div>
+                </div>
                 {% endfor %}
-
             </div>
+
+            <!-- Pagination -->
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                            href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.brand %}&brand={{ request.GET.brand }}{% endif %}{% if request.GET.heat %}&heat={{ request.GET.heat }}{% endif %}{% if request.GET.fruit %}&fruit={{ request.GET.fruit }}{% endif %}{% if request.GET.garlic %}&garlic={{ request.GET.garlic }}{% endif %}{% if request.GET.sweet %}&sweet={{ request.GET.sweet }}{% endif %}{% if request.GET.smoke %}&smoke={{ request.GET.smoke }}{% endif %}{% if request.GET.salt %}&salt={{ request.GET.salt }}{% endif %}{% if request.GET.vinegar %}&vinegar={{ request.GET.vinegar }}{% endif %}">
+                            &laquo; Previous
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link"
+                            href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.brand %}&brand={{ request.GET.brand }}{% endif %}{% if request.GET.heat %}&heat={{ request.GET.heat }}{% endif %}{% if request.GET.fruit %}&fruit={{ request.GET.fruit }}{% endif %}{% if request.GET.garlic %}&garlic={{ request.GET.garlic }}{% endif %}{% if request.GET.sweet %}&sweet={{ request.GET.sweet }}{% endif %}{% if request.GET.smoke %}&smoke={{ request.GET.smoke }}{% endif %}{% if request.GET.salt %}&salt={{ request.GET.salt }}{% endif %}{% if request.GET.vinegar %}&vinegar={{ request.GET.vinegar }}{% endif %}">
+                            Next &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+
         </div>
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> &laquo; PREVIOUS</a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
 </div>
 
 <!-- index.html content ends here -->
@@ -66,4 +248,61 @@
 
 {% block copyright %}
 <p class="m-0 text-center">Copyright 2025 Products</p>
+{% endblock %}
+
+{% block extras %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Handle "All" checkbox logic
+        function handleAllCheckbox(allCheckbox, filterCheckboxes) {
+            allCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    filterCheckboxes.forEach(cb => cb.checked = false);
+                }
+            });
+
+            filterCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        allCheckbox.checked = false;
+                    }
+                    // If no filter checkboxes are checked, check "All"
+                    const anyChecked = filterCheckboxes.some(cb => cb.checked);
+                    if (!anyChecked) {
+                        allCheckbox.checked = true;
+                    }
+                });
+            });
+        }
+
+        // Brand checkboxes
+        const allBrandsCheckbox = document.getElementById('allBrands');
+        const brandCheckboxes = document.querySelectorAll('input[name="brand"]');
+        handleAllCheckbox(allBrandsCheckbox, brandCheckboxes);
+
+        // Heat checkboxes
+        const allHeatCheckbox = document.getElementById('allHeat');
+        const heatCheckboxes = document.querySelectorAll('input[name="heat"]');
+        handleAllCheckbox(allHeatCheckbox, heatCheckboxes);
+
+        // Flavour checkboxes
+        const flavourTypes = ['fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar'];
+        flavourTypes.forEach(flavour => {
+            const allFlavourCheckbox = document.getElementById(`all${flavour.charAt(0).toUpperCase() + flavour.slice(1)}`);
+            const flavourCheckboxes = document.querySelectorAll(`input[name="${flavour}"]`);
+            if (allFlavourCheckbox && flavourCheckboxes.length > 0) {
+                handleAllCheckbox(allFlavourCheckbox, flavourCheckboxes);
+            }
+        });
+
+        // Auto-submit form when checkboxes change (optional)
+        const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                // Uncomment the line below if you want auto-submit on checkbox change
+                // document.getElementById('filterForm').submit();
+            });
+        });
+    });
+</script>
 {% endblock %}

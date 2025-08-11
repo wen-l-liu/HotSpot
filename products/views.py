@@ -3,16 +3,17 @@ from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from .models import Product, Review
+from django.db.models import Q
+from .models import Product, Review, Brand, Flavour
 from .forms import ReviewForm, ProductForm
 
 # Create your views here.
 
 
-class ProductListView(generic.ListView):
-    queryset = Product.objects.all()
-    paginate_by = 12
-    template_name = 'products/products_list.html'
+# class ProductListView(generic.ListView):
+#     queryset = Product.objects.all()
+#     paginate_by = 12
+#     template_name = 'products/products_list.html'
 
 
 def product_detail(request, slug):
@@ -145,3 +146,153 @@ def product_edit(request, slug):
             'product_form': product_form,
         }
     )
+
+
+class ProductList(generic.ListView):
+    model = Product
+    template_name = 'products/products_list.html'
+    context_object_name = 'product_list'
+    paginate_by = 12
+
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        request = self.request
+
+        # Search functionality
+        search_query = request.GET.get('search')
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query) |
+                Q(description__icontains=search_query) |
+                Q(ingredients__icontains=search_query)
+            )
+
+        # Brand filtering (multi-select)
+        brand_filters = request.GET.getlist('brand')
+        if brand_filters and any(brand_filters):
+            brand_q = Q()
+            for brand_id in brand_filters:
+                if brand_id:
+                    brand_q |= Q(brand_id=brand_id)
+            queryset = queryset.filter(brand_q)
+
+        # Heat level filtering (multi-select)
+        heat_filters = request.GET.getlist('heat')
+        if heat_filters and any(heat_filters):
+            heat_q = Q()
+            for heat in heat_filters:
+                if heat == 'low':
+                    heat_q |= Q(flavours__heat__gte=0, flavours__heat__lte=3)
+                elif heat == 'medium':
+                    heat_q |= Q(flavours__heat__gte=4, flavours__heat__lte=6)
+                elif heat == 'hot':
+                    heat_q |= Q(flavours__heat__gte=7, flavours__heat__lte=10)
+            queryset = queryset.filter(heat_q)
+
+        # Flavour profile filtering (multi-select for each flavour)
+        flavour_types = ['fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar']
+        for flavour in flavour_types:
+            flavour_filters = request.GET.getlist(flavour)
+            if flavour_filters and any(flavour_filters):
+                flavour_q = Q()
+                for level in flavour_filters:
+                    flavour_q |= Q(**{f"flavours__{flavour}": level})
+                queryset = queryset.filter(flavour_q)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        request = self.request
+
+        # For checkbox state
+        context['selected_brands'] = request.GET.getlist('brand')
+        context['selected_heats'] = request.GET.getlist('heat')
+
+        context['brands'] = Brand.objects.all()
+
+        # For each heat level, build a list of dicts with value, label, and count
+        context['heat_levels'] = [
+            {
+                'value': 'low',
+                'label': '🌶️ Low Heat (0-3)',
+                'count': Product.objects.filter(flavours__heat__gte=0, flavours__heat__lte=3).count()
+            },
+            {
+                'value': 'medium',
+                'label': '🌶️🌶️ Medium Heat (4-6)',
+                'count': Product.objects.filter(flavours__heat__gte=4, flavours__heat__lte=6).count()
+            },
+            {
+                'value': 'hot',
+                'label': '🌶️🌶️🌶️ Hot (7-10)',
+                'count': Product.objects.filter(flavours__heat__gte=7, flavours__heat__lte=10).count()
+            },
+        ]
+
+        # For each flavour, build counts for each intensity level
+        intensity_levels = ['none', 'low', 'medium', 'high']
+        flavour_options = [
+            {'name': 'fruit', 'emoji': '🍓', 'display': 'Fruit'},
+            {'name': 'garlic', 'emoji': '🧄', 'display': 'Garlic'},
+            {'name': 'sweet', 'emoji': '🍯', 'display': 'Sweet'},
+            {'name': 'smoke', 'emoji': '💨', 'display': 'Smoke'},
+            {'name': 'salt', 'emoji': '🧂', 'display': 'Salt'},
+            {'name': 'vinegar', 'emoji': '🥫', 'display': 'Vinegar'},
+        ]
+        for flavour in flavour_options:
+            flavour['counts'] = {}
+            for level in intensity_levels:
+                flavour['counts'][level] = Product.objects.filter(**{f'flavours__{flavour["name"]}': level}).count()
+        context['flavour_options'] = flavour_options
+        context['intensity_levels'] = intensity_levels
+
+        # Build filtered queryset except for brand (for brand badge counts)
+        filtered_queryset = Product.objects.all()
+
+        # Apply search
+        search_query = request.GET.get('search')
+        if search_query:
+            filtered_queryset = filtered_queryset.filter(
+                Q(name__icontains=search_query) |
+                Q(description__icontains=search_query) |
+                Q(ingredients__icontains=search_query)
+            )
+
+        # Apply heat filter
+        heat_filters = request.GET.getlist('heat')
+        if heat_filters and any(heat_filters):
+            heat_q = Q()
+            for heat in heat_filters:
+                if heat == 'low':
+                    heat_q |= Q(flavours__heat__gte=0, flavours__heat__lte=3)
+                elif heat == 'medium':
+                    heat_q |= Q(flavours__heat__gte=4, flavours__heat__lte=6)
+                elif heat == 'hot':
+                    heat_q |= Q(flavours__heat__gte=7, flavours__heat__lte=10)
+            filtered_queryset = filtered_queryset.filter(heat_q)
+
+        # Apply flavour filters
+        flavour_types = ['fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar']
+        for flavour in flavour_types:
+            flavour_filters = request.GET.getlist(flavour)
+            if flavour_filters and any(flavour_filters):
+                flavour_q = Q()
+                for level in flavour_filters:
+                    flavour_q |= Q(**{f"flavours__{flavour}": level})
+                filtered_queryset = filtered_queryset.filter(flavour_q)
+
+        # Build a dict of brand id to filtered count (excluding brand filter itself)
+        brand_counts = {}
+        for brand in Brand.objects.all():
+            brand_counts[brand.id] = filtered_queryset.filter(brand=brand).count()
+        context['brand_counts'] = brand_counts
+
+        # For each flavour, add selected values to context
+        flavour_types = ['fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar']
+        selected_flavours = {}
+        for flavour in flavour_types:
+            selected_flavours[flavour] = request.GET.getlist(flavour)
+        context['selected_flavours'] = selected_flavours
+
+        return context

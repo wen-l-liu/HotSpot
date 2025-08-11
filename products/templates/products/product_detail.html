@@ -10,16 +10,16 @@
         <div class="col-12 col-md-6 col-lg-4 mt-md-4 d-flex justify-content-center">
             <div class="position-relative image-container my-1">
                 {% if product.image %}
-                <a href="{{ product.image.url }}" target="_blank">
                     {% if "placeholder" in product.image.url %}
                     <img class="product-image img-fluid border-0" src="{% static 'images/hot_sauce_bottle.jpg' %}"
                         alt="placeholder image">
                     {% else %}
+                    <a href="{{ product.image.url }}" target="_blank">
                     <img class="product-image img-fluid border-0" src=" {{ product.image.url }}"
                         alt="{{ product.title }}">
+                    </a>
                     {% endif %}
-                </a>
-
+                
                 <!-- Add/remove from favorites link -->
                 <a class="favorite-link btn-like" href="#">
                     {% if favorite %}
