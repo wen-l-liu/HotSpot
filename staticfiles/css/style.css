@@ -1,9 +1,10 @@
 body {
     background-color: white;
+    font-family: 'Lexend', sans-serif;
 }
 
 .brand {
-    font-family: Lato, sans-serif;
+    font-family: Menbere, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
@@ -19,6 +20,7 @@ body {
 .navbar-brand,
 .navbar-link {
     color: #c42e1f;
+    font-family: Pridi, sans-serif;
 }
 
 .accordion-button:not(.collapsed) {
@@ -128,7 +130,6 @@ body {
 } */
 
 .btn {
-
     border-radius: 0;
 }
 
