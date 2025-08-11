@@ -185,21 +185,16 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                     <div class="card h-100">
                         <div class="card-body text-center">
-                            <div class="image-container d-flex justify-content-center">
-                                <a href="{% url 'product_detail' product.slug %}" class="product-link">
+                            <a href="{% url 'product_detail' product.slug %}" class="product-link text-decoration-none">
+                                <div class="image-container d-flex justify-content-center">
                                     {% if "placeholder" in product.image.url %}
                                     <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
                                         alt="placeholder image">
                                     {% else %}
                                     <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
                                     {% endif %}
-                                    <!-- <div class="image-flash">
-                                        <p class="add-cart">Add to Cart</p>
-                                    </div> -->
-                                </a>
-                            </div>
-                            <a href="{% url 'product_detail' product.slug %}" class="product-link">
-                                <h3 class="card-text h5">{{ product.name }}</h3>
+                                </div>
+                                <h3 class="card-text h5 mt-2">{{ product.name }}</h3>
                                 <p class="card-text">£{{ product.price }}</p>
                             </a>
                             {% if product.rating %}

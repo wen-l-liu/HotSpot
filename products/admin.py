@@ -30,7 +30,6 @@ class ProductAdmin(SummernoteModelAdmin):
     """ Product admin """
     list_display = ('name', 'brand', 'price', 'rating')
     search_fields = ('name', 'brand__name')
-    text_fields = ('description', 'ingredients')
     list_filter = ('created_on',)
     prepopulated_fields = {'slug': ('name',)}
     inlines = [FlavourInline]  # Now this works

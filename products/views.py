@@ -32,7 +32,6 @@ def product_detail(request, slug):
 
     :template:`products/product_detail.html`
     """
-    print("Product detail view accessed")
     queryset = Product.objects.all()
     product = get_object_or_404(queryset, slug=slug)
     reviews = product.reviews.all().order_by("-created_on")
@@ -49,7 +48,7 @@ def product_detail(request, slug):
                 'review submitted and awaiting approval'
             )
     review_form = ReviewForm()
-    print("Product detail mid")
+
     return render(
         request,
         "products/product_detail.html",
@@ -195,7 +194,8 @@ class ProductList(generic.ListView):
                     flavour_q |= Q(**{f"flavours__{flavour}": level})
                 queryset = queryset.filter(flavour_q)
 
-        return queryset.order_by('name')
+        # return queryset.order_by('name')
+        return queryset.order_by('-created_on')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

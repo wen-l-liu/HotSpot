@@ -15,7 +15,7 @@
     <!-- Featured Products Carousel -->
     <div class="col-12 mt-3 left">
         <h2 class="text-center">Latest Products</h2>
-        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
             <div class="carousel-inner">
 
                 {% for group in product_list|slice:":8"|batch:4 %}
@@ -25,15 +25,14 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    <div class="image-container d-flex justify-content-center">
-                                        {% if "placeholder" in product.image.url %}
-                                        <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}"
-                                            alt="placeholder image">
-                                        {% else %}
-                                        <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.title }}">
-                                        {% endif %}
-                                    </div>
-                                    <a href="{% url 'product_detail' product.slug %}" class="product-link">
+                                    <a href="{% url 'product_detail' product.slug %}" class="product-link text-decoration-none">
+                                        <div class="image-container d-flex justify-content-center">
+                                            {% if "placeholder" in product.image.url %}
+                                            <img class="card-img-top" src="{% static 'images/hot_sauce_bottle.jpg' %}" alt="placeholder image">
+                                            {% else %}
+                                            <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.title }}">
+                                            {% endif %}
+                                        </div>
                                         <h3 class="card-text h5">{{ product.name }}</h3>
                                         <p class="card-text">£ {{ product.price }}</p>
                                     </a>
