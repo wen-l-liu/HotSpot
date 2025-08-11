@@ -26,7 +26,7 @@ class FlavourInline(admin.StackedInline):
 
 
 @admin.register(Product)
-class ProductAdmin(SummernoteModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     """ Product admin """
     list_display = ('name', 'brand', 'price', 'rating')
     search_fields = ('name', 'brand__name')
@@ -36,7 +36,7 @@ class ProductAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Brand)
-class BrandAdmin(SummernoteModelAdmin):
+class BrandAdmin(admin.ModelAdmin):
     """ Brand admin """
     list_display = ('name',)
     search_fields = ('name',)
@@ -46,7 +46,7 @@ class BrandAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Review)
-class ReviewAdmin(SummernoteModelAdmin):
+class ReviewAdmin(admin.ModelAdmin):
     """ Review admin """
     list_display = ('product', 'author', 'rating', 'created_on', 'approved')
     list_filter = ('product', 'created_on', 'approved')
