@@ -12,10 +12,10 @@
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
                     {% if "placeholder" in product.image.url %}
-                    <img class="product-image img-fluid border" src="{% static 'images/hot_sauce_bottle.jpg' %}"
+                    <img class="product-image img-fluid border-0" src="{% static 'images/hot_sauce_bottle.jpg' %}"
                         alt="placeholder image">
                     {% else %}
-                    <img class="product-image img-fluid border" src=" {{ product.image.url }}"
+                    <img class="product-image img-fluid border-0" src=" {{ product.image.url }}"
                         alt="{{ product.title }}">
                     {% endif %}
                 </a>
@@ -58,11 +58,64 @@
                 {% endif %}
                 {% if request.user.is_superuser %}
                 <small class="ms-3">
-                    <a href="{% url 'product_edit' product.slug %}" class="update-link link-dark">Edit</a> |
-                    <a href="#" class="remove-item link-blue float-right" id="remove_{{ product.id }}">Delete</a>
+                    <a href="{% url 'product_edit' product.slug %}" class="update-link link-dark">Edit</a>
+                    <!--| <a href="#" class="remove-item link-blue float-right" id="remove_{{ product.id }}">Delete</a> -->
                 </small>
                 {% endif %}
-                <p class="mt-3">{{ product.description }}</p>
+                <p class="mt-3 h5"><strong>Description</strong>
+                <p>{{ product.description }}</p>
+                <hr>
+                <p class="mt-3"><strong>Ingredients:</strong> {{ product.ingredients }}</p>
+                <!-- Flavour Profile Expandable Box -->
+                <div class="accordion my-3" id="flavourProfileAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flavourProfileHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flavourProfileCollapse" aria-expanded="false" aria-controls="flavourProfileCollapse">
+                                Flavour Profile
+                            </button>
+                        </h2>
+                        <div id="flavourProfileCollapse" class="accordion-collapse collapse" aria-labelledby="flavourProfileHeading" data-bs-parent="#flavourProfileAccordion">
+                            <div class="accordion-body">
+                                {% if product.flavours %}
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Heat</th>
+                                            <td>{{ product.flavours.heat }}/10</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Fruity</th>
+                                            <td>{{ product.flavours.fruit }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Garlic</th>
+                                            <td>{{ product.flavours.garlic }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Sweet</th>
+                                            <td>{{ product.flavours.sweet }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Smoke</th>
+                                            <td>{{ product.flavours.smoke }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Salt</th>
+                                            <td>{{ product.flavours.salt }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Vinegar</th>
+                                            <td>{{ product.flavours.vinegar }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {% else %}
+                                <p>No flavour profile available for this product.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

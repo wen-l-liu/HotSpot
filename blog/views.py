@@ -9,9 +9,9 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=1)
+    queryset = Post.objects.filter(status=1).order_by('-updated_on')
     template_name = "blog/post_index.html"
-    paginate_by = 7
+    paginate_by = 5
 
 
 def post_detail(request, slug):
