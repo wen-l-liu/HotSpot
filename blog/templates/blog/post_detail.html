@@ -12,6 +12,12 @@
                 {{ post.author }} | {{ post.created_on|date:"F j, Y" }}
             </p>
         </div>
+        {% if request.user.is_superuser %}
+                <small class="ms-3 text-end text-right col-lg-8">
+                    <a href="{% url 'post_edit' post.slug %}" class="update-link link-dark">Edit</a>
+                    <!-- | <a href="#" class="remove-item btn-like float-right" id="remove_{{ product.id }}">Delete</a> -->
+                </small>
+                {% endif %}
     </div>
     <!-- Post Image Centered -->
     <div class="row justify-content-center mb-4">

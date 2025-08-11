@@ -113,34 +113,34 @@ def comment_delete(request, slug, comment_id):
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-# @login_required
-# def post_edit(request, slug):
-#     """
-#     View to edit a post (admin/superuser only)
-#     """
-#     post = get_object_or_404(Post, slug=slug)
+@login_required
+def post_edit(request, slug):
+    """
+    View to edit a post (admin/superuser only)
+    """
+    post = get_object_or_404(Post, slug=slug)
     
-#     # Check if user is superuser
-#     if not request.user.is_superuser:
-#         messages.error(request, 'You do not have permission to edit posts.')
-#         return redirect('post_detail', slug=slug)
+    # Check if user is superuser
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to edit posts.')
+        return redirect('post_detail', slug=slug)
     
-#     if request.method == 'POST':
-#         post_form = PostForm(data=request.POST, files=request.FILES, instance=post)
-#         if post_form.is_valid():
-#             post = post_form.save()
-#             messages.success(request, f'Post "{post.title}" updated successfully!')
-#             return redirect('post_detail', slug=post.slug)
-#         else:
-#             messages.error(request, 'Error updating post. Please check the form.')
-#     else:
-#         post_form = PostForm(instance=post)
+    if request.method == 'POST':
+        post_form = PostForm(data=request.POST, files=request.FILES, instance=post)
+        if post_form.is_valid():
+            post = post_form.save()
+            messages.success(request, f'Post "{post.title}" updated successfully!')
+            return redirect('post_detail', slug=post.slug)
+        else:
+            messages.error(request, 'Error updating post. Please check the form.')
+    else:
+        post_form = PostForm(instance=post)
     
-#     return render(
-#         request,
-#         'blog/post_edit.html',
-#         {
-#             'post': post,
-#             'post_form': post_form,
-#         }
-#     )
+    return render(
+        request,
+        'blog/post_edit.html',
+        {
+            'post': post,
+            'post_form': post_form,
+        }
+    )
