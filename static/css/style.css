@@ -64,6 +64,18 @@ body {
     border-radius: 0;
 }
 
+.page-link,
+.page-link:hover {
+    color: #E84610;
+}
+
+.page-link.active,
+.active > .page-link {
+    background-color: #E84610;
+    color: #fff !important;
+    border-color: #E84610;
+}
+
 .paper {
     background-color: #eee7d5;
 }

@@ -228,6 +228,23 @@
                         </a>
                     </li>
                     {% endif %}
+
+                    {# Page number links #}
+                    {% for num in paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">{{ num }}</span>
+                            </li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                    href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.brand %}&brand={{ request.GET.brand }}{% endif %}{% if request.GET.heat %}&heat={{ request.GET.heat }}{% endif %}{% if request.GET.fruit %}&fruit={{ request.GET.fruit }}{% endif %}{% if request.GET.garlic %}&garlic={{ request.GET.garlic }}{% endif %}{% if request.GET.sweet %}&sweet={{ request.GET.sweet }}{% endif %}{% if request.GET.smoke %}&smoke={{ request.GET.smoke }}{% endif %}{% if request.GET.salt %}&salt={{ request.GET.salt }}{% endif %}{% if request.GET.vinegar %}&vinegar={{ request.GET.vinegar }}{% endif %}">
+                                    {{ num }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
                     {% if page_obj.has_next %}
                     <li class="page-item">
                         <a class="page-link"
