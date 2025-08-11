@@ -10,6 +10,9 @@ class CommentForm(forms.ModelForm):
         labels = {
             'body': 'comment',
         }
+        widgets = {
+            'body': forms.Textarea(attrs={'rows': 4}),
+        }
 
 
 class PostForm(forms.ModelForm):

@@ -143,16 +143,16 @@
                 <div class="p-2 comments
                     {% if not review.approved and review.author == user %}
                     faded{% elif not review.approved %} d-none{% endif %}">
-                    <p class="font-weight-bold">
-                        {{ review.author }}
-                        <span class="font-weight-normal">
-                            {{ review.created_on|date:"F j, Y" }} ago
-                        </span> wrote:
+                    <p class="fw-bold">
+                        {{ review.author }} wrote
+                        <span class="fw-normal">
+                            on {{ review.created_on|date:"F j, Y" }}:
+                        </span> 
                     </p>
                     <div id="review{{ review.id }}">
-                        <strong>Rating:</strong>
+                        <span class="fw-semibold">Rating:</span>
                         <span id="review{{ review.id }}_rating">{{ review.rating }}</span> / 5<br>
-                        <strong>Comment:</strong> 
+                        <span class="fw-semibold">Comment:</span> 
                         <span id="review{{ review.id }}_comment">{{ review.comment | linebreaks }}</span>
                     </div>
                     {% if not review.approved and review.author == user %}
