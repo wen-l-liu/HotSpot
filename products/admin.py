@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django import forms
-from django_summernote.admin import SummernoteModelAdmin
 from .models import Brand, Product, Review, Flavour
 
 
@@ -48,7 +47,8 @@ class BrandAdmin(admin.ModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     """ Review admin """
-    list_display = ('comment', 'product', 'author', 'rating', 'created_on', 'approved')
+    list_display = (
+        'comment', 'product', 'author', 'rating', 'created_on', 'approved')
     list_filter = ('rating', 'created_on', 'approved')
     search_fields = ('product__name', 'author__username', 'comment')
     actions = ['approve_reviews']

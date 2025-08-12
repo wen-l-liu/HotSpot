@@ -5,7 +5,8 @@ from .models import Review, Product
 class ReviewForm(forms.ModelForm):
     """Form for creating and editing reviews on products."""
     RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
-    rating = forms.ChoiceField(choices=RATING_CHOICES, initial=3)  # Default rating set to 3
+    rating = forms.ChoiceField(choices=RATING_CHOICES, initial=3)
+    # Default rating set to 3
 
     class Meta:
         model = Review
@@ -17,7 +18,8 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name', 'brand', 'description', 'price', 'image', 'ingredients')
+        fields = (
+            'name', 'brand', 'description', 'price', 'image', 'ingredients')
         widgets = {
             'description': forms.Textarea(attrs={'rows': 6}),
             'ingredients': forms.Textarea(attrs={'rows': 3}),

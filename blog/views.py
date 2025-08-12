@@ -124,13 +124,16 @@ def post_edit(request, slug):
         messages.error(request, 'You do not have permission to edit posts.')
         return redirect('post_detail', slug=slug)
     if request.method == 'POST':
-        post_form = PostForm(data=request.POST, files=request.FILES, instance=post)
+        post_form = PostForm(
+            data=request.POST, files=request.FILES, instance=post)
         if post_form.is_valid():
             post = post_form.save()
-            messages.success(request, f'Post "{post.title}" updated successfully!')
+            messages.success(
+                request, f'Post "{post.title}" updated successfully!')
             return redirect('post_detail', slug=post.slug)
         else:
-            messages.error(request, 'Error updating post. Please check the form.')
+            messages.error(
+                request, 'Error updating post. Please check the form.')
     else:
         post_form = PostForm(instance=post)
     return render(
