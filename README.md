@@ -161,11 +161,7 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
 23. As a Site Admin, I can edit blog posts to update articles for users.
 24. As a Site Admin, I can view, approve, or remove user comments so that blog post feedback remains appropriate.
 
-**Login Credential for testing:**  
-Username: andrew  
-Password: testerAA
-andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy matthew nathan olivia quinn rachel samuel thomas victoria william xavier yvonne zoe
-Capitalise the first letter of their name as Password.
+
 ## Testing Summary
 
 - **Manual Testing:**
@@ -178,7 +174,16 @@ Capitalise the first letter of their name as Password.
   - Features Covered: User authentication, product CRUD, review system, and accessibility compliance.
   - Adjustments Made: Manual tweaks to ensure comprehensive test coverage and inclusivity.
 
+**Login Credential for testing:**  
+Username: andrew  
+Password: testerAA
+andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy matthew nathan olivia quinn rachel samuel thomas victoria william xavier yvonne zoe
+Capitalise the first letter of their name as Password.
+
 ### HTML Validation
+HTML was first checked using copilot in VScode first, then deployed to Heroku so that URL can be run through [W3C HTML validator](https://validator.w3.org/).
+
+
 
 ## Future Enhancements
 
