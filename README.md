@@ -181,9 +181,25 @@ andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy 
 Capitalise the first letter of their name as Password.
 
 ### HTML Validation
-HTML was first checked using copilot in VScode first, then deployed to Heroku so that URL can be run through [W3C HTML validator](https://validator.w3.org/).
+HTML was first checked using Copilot in VS Code, then deployed to Heroku so that the URL could be run through the [W3C HTML validator](https://validator.w3.org/). Only minor issues occurred due to apostrophes in product names causing parse errors, added |escape to product.name.
 
+  <details>
+  <summary><strong>Homepage</strong></summary>
 
+  ![Homepage](documentation/validation/html/html-homepage.png)
+  </details>
+
+  <details>
+  <summary><strong>Products Page</strong></summary>
+
+  ![Products](documentation\validation\html\html-products.png)
+  </details>
+
+  <details>
+  <summary><strong>About Page</strong></summary>
+
+  ![About Page](documentation\validation\html\html-about.png)
+  </details>
 
 ## Future Enhancements
 
