@@ -4,23 +4,22 @@ body {
 }
 
 .brand {
-    font-family: Menbere, sans-serif;
+    font-family: Pridi, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
-
     display: block;
 }
 
-.navbar{
+.navbar {
     background-color: #eee7d5;
     position: relative;
 }
+
 .navbar-text,
 .navbar-brand,
 .navbar-link {
     color: #c42e1f;
-    font-family: Pridi, sans-serif;
+    /* font-family: Lexend, sans-serif; */
 }
 
 .accordion-button:not(.collapsed) {
@@ -34,14 +33,45 @@ body {
     box-shadow: none !important;
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #c42e1f;
+    border-radius: 50%;
+    opacity: 1;
+    border: 2px solid #c42e1f;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5rem;
+    /* Make the clickable area larger */
+}
+
+/* Smooth transition for carousel sliding */
+#productCarousel .carousel-item {
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1), opacity 1s ease-in-out;
+}
+
 .form-control:focus,
 .form-control:active {
     box-shadow: 0 0 0 0.25rem #eee7d5;
     border-color: #eee7d5;
 }
 
-.form-control{
+.form-control {
     border-radius: 0;
+}
+
+.page-link,
+.page-link:hover {
+    color: #E84610;
+}
+
+.page-link.active,
+.active > .page-link {
+    background-color: #E84610;
+    color: #fff !important;
+    border-color: #E84610;
 }
 
 .paper {
