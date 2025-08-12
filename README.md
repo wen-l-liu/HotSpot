@@ -5,19 +5,38 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 
 ## UX Design
 
-- **Link to User Stories in GitHub Projects:**
-  - [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10)
-- **Wireframes:**
-  - [Wireframe Designs](https://linktowireframes.com)
-  - Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users. High-contrast colours and descriptive alt text were used to maximise usability.
-- **Design Rationale:**
-  - The layout emphasises simplicity and clarity, with Bootstrap 5 ensuring a responsive experience across devices. The color palette and typography were chosen for readability and accessibility, following WCAG guidelines.
-  - Accessibility features include keyboard navigation, ARIA labels, and screen reader support.
-  Fonts
-  Primary font is - Lexend for main website text.
-  Secondary font is - Zain for logo brand font.
-- **Reasoning For Any Final Changes:**
-  - User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
+### Link to User Stories in GitHub Projects: ###
+[GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10)
+
+### Wireframes: ###
+Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users.High-contrast colours and descriptive alt text were used to maximise usability.
+<details>
+  <summary><strong>Wireframe Designs</strong></summary>
+  <details>
+    <summary>Homepage Wireframe</summary>
+    ![Homepage Wireframe](documentation/wireframes/home-page.png)
+  </details>
+  <details>
+    <summary>Products Wireframe</summary>
+    ![Products Wireframe](documentation/wireframes/products-page.png)
+  </details>
+
+
+  
+</details>
+
+
+
+### Design Rationale: ###
+The layout emphasises simplicity and clarity, with Bootstrap 5 ensuring a responsive experience across devices. The color palette and typography were chosen for readability and accessibility, following WCAG guidelines.
+Accessibility features include keyboard navigation, ARIA labels, and screen reader support.
+
+#### Fonts ####
+Primary font is - Lexend for main website text.
+Secondary font is - Zain for logo brand font.
+
+### Reasoning For Any Final Changes: ##
+User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
 ## Key Features
 
