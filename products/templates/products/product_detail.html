@@ -148,8 +148,8 @@
                     <div id="review{{ review.id }}">
                         <span class="fw-semibold">Rating:</span>
                         <span id="review{{ review.id }}_rating">{{ review.rating }}</span> / 5<br>
-                        <div class="fw-semibold">Comment:</div> 
-                        <span id="review{{ review.id }}_comment">{{ review.comment | linebreaks }}</span>
+                        <span class="fw-semibold">Comment:</span> 
+                        <div id="review{{ review.id }}_comment">{{ review.comment | linebreaks }}</div>
                     </div>
                     {% if not review.approved and review.author == user %}
                     <p class="approval">
