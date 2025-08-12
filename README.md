@@ -6,7 +6,7 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 ## UX Design
 
 - **Link to User Stories in GitHub Projects:**
-  - [GitHub Projects Kanban Board](https://github.com/yourusername/hotspot/projects)
+  - [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10)
 - **Wireframes:**
   - [Wireframe Designs](https://linktowireframes.com)
   - Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users. High-contrast colours and descriptive alt text were used to maximise usability.
@@ -15,7 +15,7 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
   - Accessibility features include keyboard navigation, ARIA labels, and screen reader support.
   Fonts
   Primary font is - Lexend for main website text.
-  Secondary font is - Pridi for logo brand font.
+  Secondary font is - Zain for logo brand font.
 - **Reasoning For Any Final Changes:**
   - User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
@@ -99,31 +99,8 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
 **Login Credential for testing:**  
 Username: andrew  
 Password: testerAA
-a - andrew
-b – benjamin
-c – charlotte
-d – daniel
-e – emily
-f – fiona
-g – grace
-h – henry
-i – isaac
-j – james
-k – kevin
-l – lucy
-m – matthew
-n – nathan
-o – olivia
-q – quinn
-r – rachel
-s – samuel
-t – thomas
-v – victoria
-w – william
-x – xavier
-y – yvonne
-z – zoe
-
+andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy matthew nathan olivia quinn rachel samuel thomas victoria william xavier yvonne zoe
+Capitalise the first letter of their name as Password.
 ## Testing Summary
 
 - **Manual Testing:**
@@ -138,10 +115,10 @@ z – zoe
 
 ## Future Enhancements
 
-- Add real-time notifications for new reviews and order updates.
+- Add cart functionality so products can be added to cart.
+- Add order processing capability, to process a purchase order.
 - Integrate advanced analytics for tracking user engagement and sales trends.
 - Add chatbot capabilities for more interactive user assistance.
 - Implement a recommendation system for personalised product suggestions.
-- Enhance security features, including two-factor authentication and advanced data encryption.
 - Optimise performance further with advanced caching strategies and code splitting.
 - Regularly update the accessibility features to comply with the latest standards and guidelines.

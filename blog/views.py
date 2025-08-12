@@ -34,7 +34,7 @@ def post_detail(request, slug):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comments.filter(approved=True).count()    
+    comment_count = post.comments.filter(approved=True).count()
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -119,12 +119,10 @@ def post_edit(request, slug):
     View to edit a post (admin/superuser only)
     """
     post = get_object_or_404(Post, slug=slug)
-    
     # Check if user is superuser
     if not request.user.is_superuser:
         messages.error(request, 'You do not have permission to edit posts.')
         return redirect('post_detail', slug=slug)
-    
     if request.method == 'POST':
         post_form = PostForm(data=request.POST, files=request.FILES, instance=post)
         if post_form.is_valid():
@@ -135,7 +133,6 @@ def post_edit(request, slug):
             messages.error(request, 'Error updating post. Please check the form.')
     else:
         post_form = PostForm(instance=post)
-    
     return render(
         request,
         'blog/post_edit.html',
