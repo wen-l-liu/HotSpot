@@ -15,32 +15,32 @@ Wireframes were created to ensure intuitive navigation, clear product presentati
 
   <details>
     <summary>Homepage Wireframe</summary>
-    ![Homepage Wireframe](documentation/wireframes/home-page.png)
+    ![Homepage Wireframe](/documentation/wireframes/home-page.png)
   </details>
 
   <details>
     <summary>Products Wireframe</summary>
-    ![Products Wireframe](documentation/wireframes/products-page.png)
+    ![Products Wireframe](/documentation/wireframes/products-page.png)
   </details>
 
   <details>
     <summary>Products details Wireframe</summary>
-    ![Products Wireframe](documentation/wireframes/product-details.png)
+    ![Products Wireframe](/documentation/wireframes/product-details.png)
   </details>
 
   <details>
     <summary>Blogs page Wireframe</summary>
-    ![Products Wireframe](documentation/wireframes/blogs-page.png)
+    ![Products Wireframe](/documentation/wireframes/blogs-page.png)
   </details>
 
   <details>
     <summary>Blogs details Wireframe</summary>
-    ![Products Wireframe](documentation/wireframes/blog-details.png)
+    ![Products Wireframe](/documentation/wireframes/blog-details.png)
   </details>
 
   <details>
     <summary>About page Wireframe</summary>
-    ![Products Wireframe](documentation/wireframes/about-page.png)
+    ![Products Wireframe](/documentation/wireframes/about-page.png)
   </details>
 
 </details>
