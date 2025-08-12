@@ -201,6 +201,19 @@ HTML was first checked using Copilot in VS Code, then deployed to Heroku so that
   ![About Page](documentation\validation\html\html-about.png)
   </details>
 
+  <details>
+  <summary><strong>Blogs Page</strong></summary>
+
+  ![Blogs](documentation\validation\html\html-blogs.png)
+  </details>
+
+### CSS Validation
+CSS was validated with [Jigsaw](https://jigsaw.w3.org/css-validator) with no errors.
+  <details>
+  <summary><strong>Styles.CSS</strong></summary>
+
+  ![Styles](documentation\validation\css-valid.png)
+  </details>
 ## Future Enhancements
 
 - Add cart functionality so products can be added to cart.
