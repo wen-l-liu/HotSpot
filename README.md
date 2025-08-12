@@ -12,17 +12,37 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users.High-contrast colours and descriptive alt text were used to maximise usability.
 <details>
   <summary><strong>Wireframe Designs</strong></summary>
+
   <details>
     <summary>Homepage Wireframe</summary>
     ![Homepage Wireframe](documentation/wireframes/home-page.png)
   </details>
+
   <details>
     <summary>Products Wireframe</summary>
     ![Products Wireframe](documentation/wireframes/products-page.png)
   </details>
 
+  <details>
+    <summary>Products details Wireframe</summary>
+    ![Products Wireframe](documentation/wireframes/product-details.png)
+  </details>
 
-  
+  <details>
+    <summary>Blogs page Wireframe</summary>
+    ![Products Wireframe](documentation/wireframes/blogs-page.png)
+  </details>
+
+  <details>
+    <summary>Blogs details Wireframe</summary>
+    ![Products Wireframe](documentation/wireframes/blog-details.png)
+  </details>
+
+  <details>
+    <summary>About page Wireframe</summary>
+    ![Products Wireframe](documentation/wireframes/about-page.png)
+  </details>
+
 </details>
 
 
