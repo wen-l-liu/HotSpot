@@ -17,11 +17,11 @@
                         </a>
                     {% endif %}
                     <!-- Add/remove from favorites link -->
-                    <a class="favorite-link btn-like" href="#">
+                    <a class="favorite-link btn-like" href="#" aria-label="{% if favorite %}Remove from favorites{% else %}Add to favorites{% endif %}">
                         {% if favorite %}
-                            <i class="fas fa-heart" aria-label="Remove from favorites"></i>
+                            <i class="fas fa-heart" aria-hidden="true"></i>
                         {% else %}
-                            <i class="far fa-heart" aria-label="Add to favorites"></i>
+                            <i class="far fa-heart" aria-hidden="true"></i>
                         {% endif %}
                     </a>
                 {% else %}

@@ -181,7 +181,9 @@ andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy 
 Capitalise the first letter of their name as Password.
 
 ### HTML Validation
-HTML was first checked using Copilot in VS Code, then deployed to Heroku so that the URL could be run through the [W3C HTML validator](https://validator.w3.org/). Only minor issues occurred due to apostrophes in product names causing parse errors, added |escape to product.name.
+HTML was first checked using Copilot in VS Code, then deployed to Heroku so that the URL could be run through the [W3C HTML validator](https://validator.w3.org/).
+Only minor issues occurred due to apostrophes in product names causing parse errors, added |escape to product.name.
+Blog articles had errors as cripsy froms applied alot of extra HTML tags and CSS in the HTML pageload, I removed the form content stylings and passed the test.
 
   <details>
   <summary><strong>Homepage</strong></summary>
@@ -193,6 +195,12 @@ HTML was first checked using Copilot in VS Code, then deployed to Heroku so that
   <summary><strong>Products Page</strong></summary>
 
   ![Products](documentation\validation\html\html-products.png)
+  </details>
+
+  <details>
+  <summary><strong>Products Details</strong></summary>
+
+  ![Products](documentation\validation\html\html-product-detail.png)
   </details>
 
   <details>
@@ -214,6 +222,9 @@ CSS was validated with [Jigsaw](https://jigsaw.w3.org/css-validator) with no err
 
   ![Styles](documentation\validation\css-valid.png)
   </details>
+
+
+
 ## Future Enhancements
 
 - Add cart functionality so products can be added to cart.
