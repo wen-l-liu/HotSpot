@@ -231,6 +231,15 @@ CSS was validated with [Jigsaw](https://jigsaw.w3.org/css-validator) with no err
   </details>
 
 
+### Python Validation
+Python admin, models, forms and settings files was first checked in VScode using copilot, then validated with [CodeInstitute Python Linter](https://pep8ci.herokuapp.com/) with no errors, no issues.
+
+  <details>
+  <summary><strong>settings python</strong></summary>
+
+  ![settings](documentation\validation\python-settings.png)
+  </details>
+
 
 ## Future Enhancements
 

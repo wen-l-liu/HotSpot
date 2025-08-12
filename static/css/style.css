@@ -4,7 +4,7 @@ body {
 }
 
 .brand {
-    font-family: Hammersmith One, sans-serif;
+    font-family: Zain, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     display: block;
@@ -45,6 +45,7 @@ body {
 .carousel-control-next {
     width: 5rem;
     /* Make the clickable area larger */
+    color: #c42e1f;
 }
 
 /* Smooth transition for carousel sliding */
@@ -64,22 +65,18 @@ body {
 
 .page-link,
 .page-link:hover {
-    color: #E84610;
+    color: #c42e1f;
 }
 
 .page-link.active,
 .active > .page-link {
-    background-color: #E84610;
+    background-color: #c42e1f;
     color: #fff !important;
-    border-color: #E84610;
+    border-color: #c42e1f;
 }
 
 .paper {
     background-color: #eee7d5;
-}
-
-.red-o {
-    color: #E84610;
 }
 
 .spicy {
@@ -141,7 +138,7 @@ body {
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #c42e1f;
 }
 
 /* ### Product Link ### */
@@ -151,7 +148,7 @@ body {
 }
 
 .product-link:hover {
-    color: #E84610;
+    color: #c42e1f;
 }
 
 /* .form-check-label {
@@ -186,20 +183,20 @@ body {
 }
 
 .btn-like {
-    color: #E84610;
+    color: #c42e1f;
     border: none;
     background: transparent;
 }
 
 .btn-delete {
     color: #fff;
-    background: #E84610;
+    background: #c42e1f;
     border-radius: 0;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #c42e1f;
     background: transparent;
     border: none;
 }
