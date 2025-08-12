@@ -221,7 +221,7 @@ During validation, heading levels were reviewed and adjusted for semantic correc
 The original palette included an orange accent, but this was removed after WAVE flagged low contrast with white backgrounds.
 The final palette uses red as the primary accent, with green for positive actions.
 **Fieldsets and Legends**
-For filters in the product page, there were WAVE warnings about missing fieldsets and legends, all filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in <fieldset> elements with a visually hidden <legend> so as to not conflict with exisiting stylings. Remain accessible to screen readers but is not visible to sighted users. 
+For filters in the product page, there were WAVE warnings about missing fieldsets and legends, all filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in fieldset elements with a visually hidden legend so as to not conflict with exisiting stylings. Remain accessible to screen readers but is not visible to sighted users. 
 
 
   <details>
@@ -229,22 +229,32 @@ For filters in the product page, there were WAVE warnings about missing fieldset
 
   ![Homepage](documentation/validation/wave/wave-home.png)
   </details>
-  <summary><strong>Products</strong></summary>
 
-  ![products](documentation/validation/wave/wave-products.png)
-  </details>
-  <summary><strong>Products details</strong></summary>
+  <details>
+  <summary><strong>Product</strong></summary>
 
-  ![products details](documentation/validation/wave/wave-product-details.png)
+  ![Product](documentation/validation/wave/wave-products.png)
   </details>
 
+  <details>
+  <summary><strong>Product details</strong></summary>
 
+  ![Product details](documentation/validation/wave/wave-product-details.png)
+  </details>
 
-  
+  <details>
+  <summary><strong>Blogs</strong></summary>
+
+  ![Blogs](documentation/validation/wave/wave-blog.png)
+  </details>
+
+  <details>
   <summary><strong>Blog details</strong></summary>
 
-  ![blog details](documentation/validation/wave/wave-blog-details.png)
+  ![Blog details](documentation/validation/wave/wave-blog-details.png)
   </details>
+
+
 
 ## Deployment
 
@@ -289,6 +299,7 @@ Throughout the development of HotSpot, GitHub Copilot was used to streamline cod
 - Optimise performance further with advanced caching strategies and code splitting.
 - Regularly update the accessibility features to comply with the latest standards and guidelines.
 
+
 ## Credits
 
 ### Content & Inspiration
@@ -327,5 +338,5 @@ Throughout the development of HotSpot, GitHub Copilot was used to streamline cod
 - The Code Institute community and mentors for guidance and support.
 - Friends and testers who provided feedback and helped improve the site’s usability and accessibility.
 
----
+
 
