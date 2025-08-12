@@ -198,10 +198,11 @@ Blog articles had errors as cripsy froms applied alot of extra HTML tags and CSS
   </details>
 
   <details>
-  <summary><strong>Products Details</strong></summary>
+  <summary><strong>Product details Page</strong></summary>
 
-  ![Products](documentation\validation\html\html-product-detail.png)
+  ![Product page](documentation\validation\html\html-product-page.png)
   </details>
+
 
   <details>
   <summary><strong>About Page</strong></summary>
@@ -213,6 +214,12 @@ Blog articles had errors as cripsy froms applied alot of extra HTML tags and CSS
   <summary><strong>Blogs Page</strong></summary>
 
   ![Blogs](documentation\validation\html\html-blogs.png)
+  </details>
+
+  <details>
+  <summary><strong>Blog article</strong></summary>
+
+  ![Blog article](documentation\validation\html\html-blog-article.png)
   </details>
 
 ### CSS Validation
@@ -234,3 +241,44 @@ CSS was validated with [Jigsaw](https://jigsaw.w3.org/css-validator) with no err
 - Implement a recommendation system for personalised product suggestions.
 - Optimise performance further with advanced caching strategies and code splitting.
 - Regularly update the accessibility features to comply with the latest standards and guidelines.
+
+## Credits
+
+### Content & Inspiration
+- Product items, images and descriptions were sourced from [heatonist](https://heatonist.com/).
+- Blog articles were adapted from blogs from [Hops Burns & Black](https://www.hopburnsblack.co.uk/) written by Claire M Bullen.
+- Inspiration for site structure and features was drawn from leading hot sauce e-commerse, review and blog platforms.
+  - [Heatonist](https://heatonist.com/)
+  - [Some like it hot](https://somelikeithot.shop/)
+  - [Hot Headz](https://hot-headz.com/)
+  - [Hops Burns & Black](https://www.hopburnsblack.co.uk/)
+
+### Design & Assets
+- **Wireframes:** Created using [Balsamiq](https://balsamiq.com/) and [Figma](https://www.figma.com/).
+- **Icons:** [Font Awesome](https://fontawesome.com/) for social and UI icons.
+- **Images:** Hot Sauce Product images sourced from [heatonist](https://heatonist.com/).
+- **Colour Palette & Fonts:** Google Fonts (Lexend, Hammersmith One) and [Coolors](https://coolors.co/) for palette inspiration.
+
+### Libraries & Frameworks
+- [Django](https://www.djangoproject.com/) – Python web framework.
+- [Bootstrap 5](https://getbootstrap.com/) – Responsive CSS framework.
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/) – For improved Django form rendering.
+- [django-allauth](https://django-allauth.readthedocs.io/) – User authentication.
+- [django-summernote](https://github.com/summernote/django-summernote) – Rich text editing for admin.
+- [Cloudinary](https://cloudinary.com/) – Image hosting and management.
+
+### Tools & Services
+- [Heroku](https://heroku.com/) – Deployment platform.
+- [GitHub](https://github.com/) – Version control and project management.
+- [W3C Validator](https://validator.w3.org/) – HTML validation.
+- [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) – CSS validation.
+
+### AI Assistance
+- [GitHub Copilot](https://github.com/features/copilot) – Used for code suggestions, debugging, and test generation.
+
+### Special Thanks
+- The Code Institute community and mentors for guidance and support.
+- Friends and testers who provided feedback and helped improve the site’s usability and accessibility.
+
+---
+
