@@ -5,64 +5,83 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 
 ## UX Design
 
-### Link to User Stories in GitHub Projects: ###
+### Link to User Stories in GitHub Projects:
 [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10)
 
-### Wireframes: ###
-Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users.High-contrast colours and descriptive alt text were used to maximise usability.
+### Wireframes:
+Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users.
+Here are wireframes for all the pages of the website.
 <details>
   <summary><strong>Wireframe Designs</strong></summary>
 
   <details>
-  <summary>Homepage Wireframe</summary>
+  <summary><strong>Homepage Wireframe</strong></summary>
 
   ![Homepage Wireframe](documentation/wireframes/home-page.png)
   </details>
 
   <details>
-  <summary>Products Wireframe</summary>
+  <summary><strong>Products Wireframe</strong></summary>
 
   ![Products Wireframe](documentation/wireframes/products-page.png)
   </details>
 
   <details>
-  <summary>Products details Wireframe</summary>
+  <summary><strong>Products details Wireframe</strong></summary>
 
-  ![Products Wireframe](documentation/wireframes/product-details.png)
+  ![Products details Wireframe](documentation/wireframes/product-details.png)
   </details>
 
   <details>
-  <summary>Blogs page Wireframe</summary>
+  <summary><strong>Blogs page Wireframe</strong></summary>
 
-  ![Products Wireframe](documentation/wireframes/blogs-page.png)
+  ![Blogs Wireframe](documentation/wireframes/blogs-page.png)
   </details>
 
   <details>
-  <summary>Blogs details Wireframe</summary>
+  <summary><strong>Blogs details Wireframe</strong></summary>
 
-  ![Products Wireframe](documentation/wireframes/blog-details.png)
+  ![Blogs details Wireframe](documentation/wireframes/blog-details.png)
   </details>
 
   <details>
-  <summary>About page Wireframe</summary>
+  <summary><strong>About page Wireframe</strong></summary>
 
-  ![Products Wireframe](documentation/wireframes/about-page.png)
+  ![About Wireframe](documentation/wireframes/about-page.png)
   </details>
-
 
 </details>
 
 
 
-### Design Rationale: ###
+### Design Rationale:
 The layout emphasises simplicity and clarity, with Bootstrap 5 ensuring a responsive experience across devices. The color palette and typography were chosen for readability and accessibility, following WCAG guidelines.
 Accessibility features include keyboard navigation, ARIA labels, and screen reader support.
 
-#### Fonts ####
+#### Fonts selection
+I used Google Fonts to pick my fonts.
 Primary font is - Lexend for main website text.
-Secondary font is - Zain for logo brand font.
+Secondary font is - Hammersmith One for logo brand font.
 
-### Reasoning For Any Final Changes: ##
+  <details>
+  <summary><strong>Fonts image</strong></summary>
+
+  ![Fonts](documentation/images/fonts.png)
+  </details>
+
+#### Colours ####
+
+  <details>
+  <summary><strong>Colour palette</strong></summary>
+
+  ![Colour palette](documentation/images/colour-palette-hotspot.jpg)
+  </details>
+
+The primary colour theme for HotSpot is red, reflecting the heat and excitement associated with hot sauces. Red is energetic, eye-catching, and immediately communicates the spicy nature of the products. To provide visual contrast and highlight positive actions (such as success messages or confirmation buttons), green is used sparingly—this contrast draws attention to important interactive elements without overwhelming the user.
+
+A mostly white background with black text is used throughout the site for simplicity and maximum readability. This clean, minimal approach ensures that content remains the focus, and that the vibrant red and green accents stand out effectively for calls to action and key feedback.
+
+### Reasoning For Any Final Changes:
 User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
 ## Key Features
@@ -158,6 +177,8 @@ Capitalise the first letter of their name as Password.
   - Tools Used: Django TestCase, GitHub Copilot.
   - Features Covered: User authentication, product CRUD, review system, and accessibility compliance.
   - Adjustments Made: Manual tweaks to ensure comprehensive test coverage and inclusivity.
+
+### HTML Validation
 
 ## Future Enhancements
 

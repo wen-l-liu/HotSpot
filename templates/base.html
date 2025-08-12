@@ -17,9 +17,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Google Fonts CSS -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -39,15 +40,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}">
-
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
 
     <!-- Navigation -->
-
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white"></nav> -->
-
     <nav class="navbar navbar-expand-lg py-0" style="background-color:#eee7d5">
         <div class="container-xl">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -75,7 +72,7 @@
                     <li class="nav-item mx-2 mx-lg-0">
                         <a id="cart-popover" href="#" class="navbar-text btn mx-auto" data-placement="bottom"
                             title="Cart">
-                            <i class="fa fa-shopping-cart fa-lg" style="color: black"></i>
+                            <i class="fa fa-shopping-cart fa-lg" style="color: black" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
@@ -100,13 +97,13 @@
                     </li>
                 </ul>
             </div>
-            <span class="navbar-text text-muted ms-auto py-0 d-flex justify-content-end" style="width: 100%;">
+            <div class="navbar-text text-muted ms-auto py-0 d-flex justify-content-end" style="width: 100%;">
                 {% if user.is_authenticated %}
                 <p class="text-end m-3">You are logged in as {{ user }}</p>
                 {% else %}
                 <p class="text-end m-3">You are not logged in</p>
                 {% endif %}
-            </span>
+            </div>
         </div>
     </nav>
     <!-- End of Navigation -->
@@ -126,8 +123,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible
-                fade show" id="msg" role="alert">
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -147,25 +143,24 @@
     <footer class="footer mt-auto py-3" style="background-color:#eee7d5">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <div class="col-md-4 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
+                    <span class="w-100">&copy; 2025 Wen Liu. All rights reserved.</span>
+                </div>
+                <div class="col-md-4 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
+                    <span class="w-100">
+                        Follow us:
+                        <i class="fab fa-facebook-square ms-2" aria-hidden="true"></i>
+                        <i class="fab fa-twitter-square ms-2" aria-hidden="true"></i>
+                        <i class="fab fa-instagram-square ms-2" aria-hidden="true"></i>
+                        <i class="fab fa-youtube-square ms-2" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-md-4 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
                     <span class="w-100">
                         Designed by Wen Liu
                         <a href="https://github.com/wen-l-liu/HotSpot" class="ms-1 product-link">GitHub</a>
                     </span>
                 </div>
-                <div class="col-md-4 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
-                    <span class="w-100">
-                        Follow us:
-                        <i class="fab fa-facebook-square ms-2"></i>
-                        <i class="fab fa-twitter-square ms-2"></i>
-                        <i class="fab fa-instagram-square ms-2"></i>
-                        <i class="fab fa-youtube-square ms-2"></i>
-                    </span>
-                </div>
-                <div class="col-md-4 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
-                    <span class="w-100">&copy; 2025 All rights reserved.</span>
-                </div>
-                
             </div>
         </div>
     </footer>
