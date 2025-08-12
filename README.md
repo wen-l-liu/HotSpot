@@ -74,7 +74,7 @@ Secondary font is - Hammersmith One for logo brand font.
   <details>
   <summary><strong>Colour palette</strong></summary>
 
-  ![Colour palette](documentation/images/colour-palette-hotspot.jpg)
+  ![Colour palette](documentation/images/colour-palette-hotspot.png)
   </details>
 
 The primary colour theme for HotSpot is red, reflecting the heat and excitement associated with hot sauces. Red is energetic, eye-catching, and immediately communicates the spicy nature of the products. To provide visual contrast and highlight positive actions (such as success messages or confirmation buttons), green is used sparingly—this contrast draws attention to important interactive elements without overwhelming the user.
@@ -220,13 +220,31 @@ During validation, heading levels were reviewed and adjusted for semantic correc
 **Colour Palette Adjustments:**
 The original palette included an orange accent, but this was removed after WAVE flagged low contrast with white backgrounds.
 The final palette uses red as the primary accent, with green for positive actions.
+**Fieldsets and Legends**
+For filters in the product page, there were WAVE warnings about missing fieldsets and legends, all filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in <fieldset> elements with a visually hidden <legend> so as to not conflict with exisiting stylings. Remain accessible to screen readers but is not visible to sighted users. 
+
 
   <details>
   <summary><strong>Homepage</strong></summary>
 
   ![Homepage](documentation/validation/wave/wave-home.png)
   </details>
+  <summary><strong>Products</strong></summary>
 
+  ![products](documentation/validation/wave/wave-products.png)
+  </details>
+  <summary><strong>Products details</strong></summary>
+
+  ![products details](documentation/validation/wave/wave-product-details.png)
+  </details>
+
+
+
+  
+  <summary><strong>Blog details</strong></summary>
+
+  ![blog details](documentation/validation/wave/wave-blog-details.png)
+  </details>
 
 ## Deployment
 
