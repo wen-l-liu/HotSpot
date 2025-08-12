@@ -131,6 +131,48 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
 
 
 ### Agile
+This project was developed using an agile methodology, focusing on iterative and incremental progress. I began by building the core navigation and implementing essential user authentication features such as login and sign-up, ensuring users could access and interact with the site from the start.
+Next, I added the product catalogue, allowing users to browse and view detailed information about each hot sauce. Once the product functionality was stable, I introduced the review system, enabling users to share feedback and rate products. After establishing these core features, I expanded the site with an About page to provide background information, and finally, I implemented the blog section to foster community engagement and share hot sauce-related content. Each feature was tested and refined in cycles, with feedback and validation guiding continuous improvement throughout the development process.
+
+I used GitHub Project board to track my progress and to add taskss.
+
+  <details>
+  <summary><strong>Sprint 1</strong></summary>
+- Starting with basic webpage designs and navigations, with account register and login functionality. 
+
+  ![Sprint1](documentation\agile\sprint-1.png)
+  </details>
+
+  <details>
+  <summary><strong>Sprint 2</strong></summary>
+- Add product catalogue and product description pages
+
+  ![Sprint2](documentation\agile\sprint-2.png)
+  </details>
+
+  <details>
+  <summary><strong>Sprint 3</strong></summary>
+- Add feedback for notifications, sign in, sign out and review deletion notifications
+- Implement product reviews and product editing without using Admin panel
+
+  ![Sprint3](documentation\agile\sprint-3.png)
+  </details>
+
+  <details>
+  <summary><strong>Sprint 4</strong></summary>
+- Add blog section for articles and recipes about spicy dishes
+- Implement blog comments for community interaction
+
+  ![Sprint4](documentation\agile\sprint-blog.png)
+  </details>
+
+  <details>
+  <summary><strong>Sprint 5</strong></summary>
+- Add product search functionality, search from name, description and ingredients
+- Add filter by flavour profile and heat levels using the Flavours model for each product
+
+  ![Sprint4](documentation\agile\sprint-5.png)
+  </details>
 
 
 ## Testing Summary
