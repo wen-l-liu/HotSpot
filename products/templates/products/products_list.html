@@ -12,7 +12,7 @@
         <div class="col-lg-3 col-md-4 my-4">
             <div class="card rounded-0">
                 <div class="card-header rounded-0">
-                    <h5 class="mb-0">Filter Products</h5>
+                    <h2 class="mb-0 h5">Filter Products</h2>
                 </div>
                 <div class="card-body rounded-0">
 
@@ -28,7 +28,8 @@
                         </div>
 
                         <!-- Filter by Brand (Dropdown/Accordion) -->
-                        <div class="mb-2">
+                        <fieldset class="mb-2">
+                            <legend class="visually-hidden">Filter by Brand</legend>
                             <div class="accordion rounded-0" id="brandAccordion">
                                 <div class="accordion-item rounded-0">
                                     <h2 class="accordion-header" id="brandHeading">
@@ -62,10 +63,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </fieldset>
 
                         <!-- Filter by Heat Level (Dropdown/Accordion) -->
-                        <div class="mb-2">
+                        <fieldset class="mb-2">
+                            <legend class="visually-hidden">Filter by Heat Level</legend>
                             <div class="accordion rounded-0" id="heatAccordion">
                                 <div class="accordion-item rounded-0">
                                     <h2 class="accordion-header" id="heatHeading">
@@ -98,17 +100,17 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </fieldset>
 
                         <!-- Filter by Flavour Profiles -->
-                        <div class="mb-2 mt-4">
-                            <h6 class="fw-bold">Filter by Flavour Profiles</h6>
+                        <fieldset class="mb-2 mt-4">
+                            <legend class="fw-bold h6">Filter by Flavour Profiles</legend>
                             <div id="flavourAccordion">
                                 {% for flavour in flavour_options %}
                                 {% with selected_flavour=selected_flavours|dict_get:flavour.name %}
                                 <div class="accordion mb-2 rounded-0" id="accordion-{{ flavour.name }}">
                                     <div class="accordion-item rounded-0">
-                                        <h2 class="accordion-header" id="{{ flavour.name }}Heading">
+                                        <h3 class="accordion-header h2" id="{{ flavour.name }}Heading">
                                             <button
                                                 class="accordion-button rounded-0 {% if not selected_flavour %}collapsed{% endif %} py-2"
                                                 type="button" data-bs-toggle="collapse"
@@ -117,7 +119,7 @@
                                                 aria-controls="{{ flavour.name }}Collapse">
                                                 {{ flavour.display }}
                                             </button>
-                                        </h2>
+                                        </h3>
                                         <div id="{{ flavour.name }}Collapse"
                                             class="accordion-collapse collapse {% if selected_flavour %}show{% endif %}"
                                             aria-labelledby="{{ flavour.name }}Heading">
@@ -145,7 +147,7 @@
                                 {% endwith %}
                                 {% endfor %}
                             </div>
-                        </div>
+                        </fieldset>
 
                         <!-- Clear Filters -->
                         {% if request.GET.search or request.GET.brand or request.GET.heat or request.GET.fruit or request.GET.garlic or request.GET.sweet or request.GET.smoke or request.GET.salt or request.GET.vinegar %}
@@ -170,11 +172,11 @@
 
             <!-- Results Info -->
             <div class="mb-3">
-                <h4>Hot Sauces
+                <div><h1 class="h3">Hot Sauce Products</h1>
                     {% if request.GET.search or request.GET.brand or request.GET.heat or request.GET.fruit or request.GET.garlic or request.GET.sweet or request.GET.smoke or request.GET.salt or request.GET.vinegar %}
                     <small class="text-muted">({{ product_list|length }} result{{ product_list|length|pluralize }})</small>
                     {% endif %}
-                </h4>
+                </div>
                 {% if request.GET.search %}
                 <p class="text-muted">Showing results for "<strong>{{ request.GET.search }}</strong>"</p>
                 {% endif %}
@@ -194,7 +196,7 @@
                                     <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
                                     {% endif %}
                                 </div>
-                                <h3 class="card-text h5 mt-2">{{ product.name }}</h3>
+                                <h2 class="card-text h5 mt-2">{{ product.name }}</h2>
                                 <p class="card-text">£{{ product.price }}</p>
                             </a>
                             {% if product.rating %}

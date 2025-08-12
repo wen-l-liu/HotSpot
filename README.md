@@ -94,38 +94,6 @@ User feedback led to improvements in navigation flow, review visibility, and mob
 - **Notifications:** Users receive feedback on actions (e.g., successful login, review submission).
 - **Inclusivity Notes:** Accessibility features include ARIA labels, alt text for images, and keyboard navigation.
 
-## Deployment
-
-- **Platform:** Heroku (or your chosen platform)
-- **High-Level Deployment Steps:**
-  1. Clone the repository.
-  2. Set up the environment with PostgreSQL (or your chosen database).
-  3. Configure environment variables for sensitive data (e.g., secret keys, API keys).
-  4. Deploy using Heroku Git, GitHub integration, or your preferred method.
-- **Verification and Validation:**
-  - The deployed application was tested for consistent functionality, design, and accessibility using tools like Lighthouse and manual testing.
-- **Security Measures:**
-  - Sensitive data is stored in environment variables.
-  - DEBUG mode is disabled in production for enhanced security.
-
-## AI Implementation
-
-### Use Cases and Reflections
-
-Throughout the development of HotSpot, GitHub Copilot was used to streamline coding, debugging, and testing.
-
-- **Code Creation:**
-  - Copilot accelerated the creation of Django models, views, and forms, suggesting best practices and efficient patterns. It was especially helpful for generating boilerplate code and exploring alternative approaches.
-- **Data Creation:**
-  - Copilot was just to generate json to populate comments and review models.
-- **Debugging:**
-  - Copilot provided insightful suggestions for resolving errors and simplifying complex logic.
-- **Performance and UX Optimisation:**
-  - The AI suggested impactful Bootstrap tweaks, improving the visual polish and responsiveness of the site.
-  - Copilot assisted in optimising and simplifying my Django view functions, suggesting efficient query patterns and helping to minimise unnecessary database calls for faster performance.
-- **Automated Unit Testing:**
-  - Copilot assisted in generating initial test cases, helping to cover edge cases and improve the robustness of the application.
-
 ### Overall Impact
 
 Using Copilot transformed the workflow, reducing the time taken for ideas to move from the brain to the machine. While not every suggestion was perfect, the AI served as a valuable collaborator, enhancing both technical and problem-solving skills.
@@ -160,6 +128,9 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
 22. As a Site Admin, I can add new blog posts to the list so that users can see new articles.
 23. As a Site Admin, I can edit blog posts to update articles for users.
 24. As a Site Admin, I can view, approve, or remove user comments so that blog post feedback remains appropriate.
+
+
+### Agile
 
 
 ## Testing Summary
@@ -239,6 +210,55 @@ Python admin, models, forms and settings files was first checked in VScode using
 
   ![settings](documentation\validation\python-settings.png)
   </details>
+
+
+### Accessibilty evaluation
+The [WAVE Tool](https://wave.webaim.org/) was used throughout development to identify and resolve accessibility issues. WAVE helped highlight missing or incorrect ARIA labels, insufficient color contrast, and improper heading structure. All pages were tested and iteratively improved based on WAVE’s feedback to ensure the site is accessible to users with disabilities.
+
+**Semantic Heading Levels:**
+During validation, heading levels were reviewed and adjusted for semantic correctness, also addressed WAVE warnings about missing or skipped heading levels
+**Colour Palette Adjustments:**
+The original palette included an orange accent, but this was removed after WAVE flagged low contrast with white backgrounds.
+The final palette uses red as the primary accent, with green for positive actions.
+
+  <details>
+  <summary><strong>Homepage</strong></summary>
+
+  ![Homepage](documentation/validation/wave/wave-home.png)
+  </details>
+
+
+## Deployment
+
+- **Platform:** Heroku (or your chosen platform)
+- **High-Level Deployment Steps:**
+  1. Clone the repository.
+  2. Set up the environment with PostgreSQL (or your chosen database).
+  3. Configure environment variables for sensitive data (e.g., secret keys, API keys).
+  4. Deploy using Heroku Git, GitHub integration, or your preferred method.
+- **Verification and Validation:**
+  - The deployed application was tested for consistent functionality, design, and accessibility using tools like Lighthouse and manual testing.
+- **Security Measures:**
+  - Sensitive data is stored in environment variables.
+  - DEBUG mode is disabled in production for enhanced security.
+
+## AI Implementation
+
+### Use Cases and Reflections
+
+Throughout the development of HotSpot, GitHub Copilot was used to streamline coding, debugging, and testing.
+
+- **Code Creation:**
+  - Copilot accelerated the creation of Django models, views, and forms, suggesting best practices and efficient patterns. It was especially helpful for generating boilerplate code and exploring alternative approaches.
+- **Data Creation:**
+  - Copilot was just to generate json to populate comments and review models.
+- **Debugging:**
+  - Copilot provided insightful suggestions for resolving errors and simplifying complex logic.
+- **Performance and UX Optimisation:**
+  - The AI suggested impactful Bootstrap tweaks, improving the visual polish and responsiveness of the site.
+  - Copilot assisted in optimising and simplifying my Django view functions, suggesting efficient query patterns and helping to minimise unnecessary database calls for faster performance.
+- **Automated Unit Testing:**
+  - Copilot assisted in generating initial test cases, helping to cover edge cases and improve the robustness of the application.
 
 
 ## Future Enhancements
