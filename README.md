@@ -3,16 +3,82 @@
 ## Overview
 HotSpot is a Django-based web application designed for hot sauce enthusiasts to discover, review, and shop for a curated selection of hot sauces. The platform combines a modern, responsive design (using Bootstrap 5) with robust user features, including authentication, product reviews, and admin management. The site holds a Products page with a collection of items with reviews, and a Blogs page with user created blogs for hot sauce related content like recipes. Product Reviews and Blog comments has full CRUD functionality, enabling users to create, read, update, and delete reviews efficiently.
 
-## UX Design
 
-### Link to User Stories in GitHub Projects:
+
+## Table of Contents
+
+- [UX Design](#ux-design)
+  - [Link to User Stories in GitHub Projects](#link-to-user-stories-in-github-projects)
+  - [User Stories](#user-stories)
+    - [User](#user)
+    - [Site Admin](#site-admin)
+  - [Wireframes](#wireframes)
+  - [Design Rationale](#design-rationale)
+    - [Fonts selection](#fonts-selection)
+    - [Colours](#colours)
+    - [Reasoning For Any Final Changes](#reasoning-for-any-final-changes)
+- [Agile](#agile)
+- [Key Features](#key-features)
+  - [Overall Impact](#overall-impact)
+- [Testing Summary](#testing-summary)
+  - [HTML Validation](#html-validation)
+  - [CSS Validation](#css-validation)
+  - [Python Validation](#python-validation)
+  - [Accessibilty evaluation](#accessibilty-evaluation)
+- [Deployment](#deployment)
+- [AI Implementation](#ai-implementation)
+  - [Use Cases and Reflections](#use-cases-and-reflections)
+- [Future Enhancements](#future-enhancements)
+- [Credits](#credits)
+  - [Content & Inspiration](#content--inspiration)
+  - [Design & Assets](#design--assets)
+  - [Libraries & Frameworks](#libraries--frameworks)
+  - [Tools & Services](#tools--services)
+  - [AI Assistance](#ai-assistance)
+  - [Special Thanks](#special-thanks)
+
+### UX Design
+
+#### Link to User Stories in GitHub Projects:
 [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10)
+
+
+### User Stories
+
+#### User
+1. As a User, I can easily register, log in, and log out so I can browse and interact with the site.
+2. As a User, I can easily navigate the website so that I can find and discover new items.
+3. As a User, I can view a list of products so that I can find the item I want.
+4. As a User, I can filter and sort products so that I can find the item I want.
+5. As a User, I can search products so that I can find the item I want.
+6. As a User, I can view more information on a product so that it can help me make a purchase decision.
+7. As a User, I can add one or more products to my basket, view my basket, change item quantities, and remove items so that I can manage my order.
+8. As a User, I can view products by category or brand so that I can find what I'm looking for.
+9. As a User, I can update and save my profile information so that I can easily buy again.
+10. As a User, I can contact the site admin so that I can get help or report issues.
+11. As a User, I can see notifications when completing actions so that I know my action was successful.
+12. As a User, I can see and write reviews so that I can give feedback and help others choose.
+13. As a User, I can use a chatbot to get help on issues.
+14. As a User, I can access blog to find articles related to spicy sauce.
+15. As a User, I can leave comments on blog articles and start a discussion.
+
+#### Site Admin
+
+16. As a Site Admin, I can add new products to the list so that users can see new products.
+17. As a Site Admin, I can edit or remove existing products so that the product catalogue stays accurate and up to date.
+18. As a Site Admin, I can manage product categories and brands so that products are organised for users.
+19. As a Site Admin, I can view, approve, or remove user reviews so that product feedback remains appropriate.
+20. As a Site Admin, I can view and manage customer orders so that I can process sales and handle issues.
+21. As a Site Admin, I can access site analytics and reports so that I can monitor sales and user activity.
+22. As a Site Admin, I can add new blog posts to the list so that users can see new articles.
+23. As a Site Admin, I can edit blog posts to update articles for users.
+24. As a Site Admin, I can view, approve, or remove user comments so that blog post feedback remains appropriate.
+
 
 ### Wireframes:
 Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users.
 Here are wireframes for all the pages of the website.
-<details>
-  <summary><strong>Wireframe Designs</strong></summary>
+<strong>Wireframe Designs</strong>
 
   <details>
   <summary><strong>Homepage Wireframe</strong></summary>
@@ -50,7 +116,6 @@ Here are wireframes for all the pages of the website.
   ![About Wireframe](documentation/wireframes/about-page.png)
   </details>
 
-</details>
 
 
 
@@ -64,77 +129,33 @@ Primary font is - Lexend for main website text.
 Secondary font is - Hammersmith One for logo brand font.
 
   <details>
-  <summary><strong>Fonts image</strong></summary>
+  <summary>Fonts image</summary>
 
   ![Fonts](documentation/images/fonts.png)
   </details>
 
 #### Colours ####
 
-  <details>
-  <summary><strong>Colour palette</strong></summary>
-
-  ![Colour palette](documentation/images/colour-palette-hotspot.png)
-  </details>
-
 The primary colour theme for HotSpot is red, reflecting the heat and excitement associated with hot sauces. Red is energetic, eye-catching, and immediately communicates the spicy nature of the products. To provide visual contrast and highlight positive actions (such as success messages or confirmation buttons), green is used sparingly—this contrast draws attention to important interactive elements without overwhelming the user.
 
 A mostly white background with black text is used throughout the site for simplicity and maximum readability. This clean, minimal approach ensures that content remains the focus, and that the vibrant red and green accents stand out effectively for calls to action and key feedback.
 
+  <details>
+  <summary>Colour palette</summary>
+
+  ![Colour palette](documentation/images/colour-palette-hotspot.png)
+  </details>
+
 ### Reasoning For Any Final Changes:
 User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
-## Key Features
-
-- **Product Catalogue:** Browse, filter, and search a wide range of hot sauces by category or brand.
-- **Product Detail Pages:** View detailed information, images, and reviews for each sauce.
-- **User Authentication:** Register, log in securely.
-- **Product Reviews:** Leave and read reviews to help the community make informed choices.
-- **Admin Management:** Admins can add, edit, or remove products, manage categories, and moderate reviews.
-- **Notifications:** Users receive feedback on actions (e.g., successful login, review submission).
-- **Inclusivity Notes:** Accessibility features include ARIA labels, alt text for images, and keyboard navigation.
-
-### Overall Impact
-
-Using Copilot transformed the workflow, reducing the time taken for ideas to move from the brain to the machine. While not every suggestion was perfect, the AI served as a valuable collaborator, enhancing both technical and problem-solving skills.
-
-## User Stories
-
-### User
-1. As a User, I can easily register, log in, and log out so I can browse and interact with the site.
-2. As a User, I can easily navigate the website so that I can find and discover new items.
-3. As a User, I can view a list of products so that I can find the item I want.
-4. As a User, I can filter and sort products so that I can find the item I want.
-5. As a User, I can search products so that I can find the item I want.
-6. As a User, I can view more information on a product so that it can help me make a purchase decision.
-7. As a User, I can add one or more products to my basket, view my basket, change item quantities, and remove items so that I can manage my order.
-8. As a User, I can view products by category or brand so that I can find what I'm looking for.
-9. As a User, I can update and save my profile information so that I can easily buy again.
-10. As a User, I can contact the site admin so that I can get help or report issues.
-11. As a User, I can see notifications when completing actions so that I know my action was successful.
-12. As a User, I can see and write reviews so that I can give feedback and help others choose.
-13. As a User, I can use a chatbot to get help on issues.
-14. As a User, I can access blog to find articles related to spicy sauce.
-15. As a User, I can leave comments on blog articles and start a discussion.
-
-### Site Admin
-
-16. As a Site Admin, I can add new products to the list so that users can see new products.
-17. As a Site Admin, I can edit or remove existing products so that the product catalogue stays accurate and up to date.
-18. As a Site Admin, I can manage product categories and brands so that products are organised for users.
-19. As a Site Admin, I can view, approve, or remove user reviews so that product feedback remains appropriate.
-20. As a Site Admin, I can view and manage customer orders so that I can process sales and handle issues.
-21. As a Site Admin, I can access site analytics and reports so that I can monitor sales and user activity.
-22. As a Site Admin, I can add new blog posts to the list so that users can see new articles.
-23. As a Site Admin, I can edit blog posts to update articles for users.
-24. As a Site Admin, I can view, approve, or remove user comments so that blog post feedback remains appropriate.
 
 
 ### Agile
 This project was developed using an agile methodology, focusing on iterative and incremental progress. I began by building the core navigation and implementing essential user authentication features such as login and sign-up, ensuring users could access and interact with the site from the start.
 Next, I added the product catalogue, allowing users to browse and view detailed information about each hot sauce. Once the product functionality was stable, I introduced the review system, enabling users to share feedback and rate products. After establishing these core features, I expanded the site with an About page to provide background information, and finally, I implemented the blog section to foster community engagement and share hot sauce-related content. Each feature was tested and refined in cycles, with feedback and validation guiding continuous improvement throughout the development process.
 
-I used GitHub Project board to track my progress and to add taskss.
+I used GitHub Project board to track my progress and to add tasks.
 
   <details>
   <summary><strong>Sprint 1</strong></summary>
@@ -174,6 +195,20 @@ I used GitHub Project board to track my progress and to add taskss.
   ![Sprint4](documentation\agile\sprint-5.png)
   </details>
 
+
+## Key Features
+
+- **Product Catalogue:** Browse, filter, and search a wide range of hot sauces by category or brand.
+- **Product Detail Pages:** View detailed information, images, and reviews for each sauce.
+- **User Authentication:** Register, log in securely.
+- **Product Reviews:** Leave and read reviews to help the community make informed choices.
+- **Admin Management:** Admins can add, edit, or remove products, manage categories, and moderate reviews.
+- **Notifications:** Users receive feedback on actions (e.g., successful login, review submission).
+- **Inclusivity Notes:** Accessibility features include ARIA labels, alt text for images, and keyboard navigation.
+
+### Overall Impact
+
+Using Copilot transformed the workflow, reducing the time taken for ideas to move from the brain to the machine. While not every suggestion was perfect, the AI served as a valuable collaborator, enhancing both technical and problem-solving skills.
 
 ## Testing Summary
 
