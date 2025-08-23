@@ -161,14 +161,14 @@ I used GitHub Project board to track my progress and to add tasks.
   <summary><strong>Sprint 1</strong></summary>
 - Starting with basic webpage designs and navigations, with account register and login functionality. 
 
-  ![Sprint1](documentation\agile\sprint-1.png)
+  ![Sprint1](documentation/agile/sprint-1.png)
   </details>
 
   <details>
   <summary><strong>Sprint 2</strong></summary>
 - Add product catalogue and product description pages
 
-  ![Sprint2](documentation\agile\sprint-2.png)
+  ![Sprint2](documentation/agile/sprint-2.png)
   </details>
 
   <details>
@@ -176,7 +176,7 @@ I used GitHub Project board to track my progress and to add tasks.
 - Add feedback for notifications, sign in, sign out and review deletion notifications
 - Implement product reviews and product editing without using Admin panel
 
-  ![Sprint3](documentation\agile\sprint-3.png)
+  ![Sprint3](documentation/agile/sprint-3.png)
   </details>
 
   <details>
@@ -184,7 +184,7 @@ I used GitHub Project board to track my progress and to add tasks.
 - Add blog section for articles and recipes about spicy dishes
 - Implement blog comments for community interaction
 
-  ![Sprint4](documentation\agile\sprint-blog.png)
+  ![Sprint4](documentation/agile/sprint-blog.png)
   </details>
 
   <details>
@@ -192,7 +192,7 @@ I used GitHub Project board to track my progress and to add tasks.
 - Add product search functionality, search from name, description and ingredients
 - Add filter by flavour profile and heat levels using the Flavours model for each product
 
-  ![Sprint4](documentation\agile\sprint-5.png)
+  ![Sprint4](documentation/agile/sprint-5.png)
   </details>
 
 
@@ -244,32 +244,32 @@ Blog articles had errors as cripsy froms applied alot of extra HTML tags and CSS
   <details>
   <summary><strong>Products Page</strong></summary>
 
-  ![Products](documentation\validation\html\html-products.png)
+  ![Products](documentation/validation/html/html-products.png)
   </details>
 
   <details>
   <summary><strong>Product details Page</strong></summary>
 
-  ![Product page](documentation\validation\html\html-product-page.png)
+  ![Product page](documentation/validation/html/html-product-page.png)
   </details>
 
 
   <details>
   <summary><strong>About Page</strong></summary>
 
-  ![About Page](documentation\validation\html\html-about.png)
+  ![About Page](documentation/validation/html/html-about.png)
   </details>
 
   <details>
   <summary><strong>Blogs Page</strong></summary>
 
-  ![Blogs](documentation\validation\html\html-blogs.png)
+  ![Blogs](documentation/validation/html/html-blogs.png)
   </details>
 
   <details>
   <summary><strong>Blog article</strong></summary>
 
-  ![Blog article](documentation\validation\html\html-blog-article.png)
+  ![Blog article](documentation/validation/html/html-blog-article.png)
   </details>
 
 ### CSS Validation
@@ -277,7 +277,7 @@ CSS was validated with [Jigsaw](https://jigsaw.w3.org/css-validator) with no err
   <details>
   <summary><strong>Styles.CSS</strong></summary>
 
-  ![Styles](documentation\validation\css-valid.png)
+  ![Styles](documentation/validation/css-valid.png)
   </details>
 
 
@@ -287,7 +287,7 @@ Python admin, models, forms and settings files was first checked in VScode using
   <details>
   <summary><strong>settings python</strong></summary>
 
-  ![settings](documentation\validation\python-settings.png)
+  ![settings](documentation/validation/python-settings.png)
   </details>
 
 
