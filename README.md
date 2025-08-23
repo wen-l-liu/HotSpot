@@ -80,7 +80,7 @@ Wireframes were created to ensure intuitive navigation, clear product presentati
 Here are wireframes for all the pages of the website.
 <strong>Wireframe Designs</strong>
 
-  <details>
+  <details open>
   <summary><strong>Homepage Wireframe</strong></summary>
 
   ![Homepage Wireframe](documentation/wireframes/home-page.png)
@@ -157,7 +157,7 @@ Next, I added the product catalogue, allowing users to browse and view detailed 
 
 I used GitHub Project board to track my progress and to add tasks.
 
-  <details>
+  <details open>
   <summary><strong>Sprint 1</strong></summary>
 - Starting with basic webpage designs and navigations, with account register and login functionality. 
 
@@ -225,7 +225,9 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
 **Login Credential for testing:**  
 Username: andrew  
 Password: testerAA
+
 andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy matthew nathan olivia quinn rachel samuel thomas victoria william xavier yvonne zoe
+
 Capitalise the first letter of their name as Password.
 
 ### HTML Validation
@@ -301,7 +303,7 @@ The final palette uses red as the primary accent, with green for positive action
 For filters in the product page, there were WAVE warnings about missing fieldsets and legends, all filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in fieldset elements with a visually hidden legend so as to not conflict with exisiting stylings. Remain accessible to screen readers but is not visible to sighted users. 
 
 
-  <details>
+  <details open>
   <summary><strong>Homepage</strong></summary>
 
   ![Homepage](documentation/validation/wave/wave-home.png)
