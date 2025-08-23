@@ -233,7 +233,7 @@ HTML was first checked using Copilot in VS Code, then deployed to Heroku so that
 Only minor issues occurred due to apostrophes in product names causing parse errors, added |escape to product.name.
 Blog articles had errors as cripsy froms applied alot of extra HTML tags and CSS in the HTML pageload, I removed the form content stylings and passed the test.
 
-  <details>
+  <details open>
   <summary><strong>Homepage</strong></summary>
 
   ![Homepage](documentation/validation/html/html-homepage.png)
