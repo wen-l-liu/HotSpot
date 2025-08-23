@@ -128,7 +128,7 @@ I used Google Fonts to pick my fonts.
 Primary font is - Lexend for main website text.
 Secondary font is - Hammersmith One for logo brand font.
 
-  <details>
+  <details open>
   <summary>Fonts image</summary>
 
   ![Fonts](documentation/images/fonts.png)
@@ -140,7 +140,7 @@ The primary colour theme for HotSpot is red, reflecting the heat and excitement 
 
 A mostly white background with black text is used throughout the site for simplicity and maximum readability. This clean, minimal approach ensures that content remains the focus, and that the vibrant red and green accents stand out effectively for calls to action and key feedback.
 
-  <details>
+  <details open>
   <summary>Colour palette</summary>
 
   ![Colour palette](documentation/images/colour-palette-hotspot.png)
@@ -155,45 +155,45 @@ User feedback led to improvements in navigation flow, review visibility, and mob
 This project was developed using an agile methodology, focusing on iterative and incremental progress. I began by building the core navigation and implementing essential user authentication features such as login and sign-up, ensuring users could access and interact with the site from the start.
 Next, I added the product catalogue, allowing users to browse and view detailed information about each hot sauce. Once the product functionality was stable, I introduced the review system, enabling users to share feedback and rate products. After establishing these core features, I expanded the site with an About page to provide background information, and finally, I implemented the blog section to foster community engagement and share hot sauce-related content. Each feature was tested and refined in cycles, with feedback and validation guiding continuous improvement throughout the development process.
 
-I used GitHub Project board to track my progress and to add tasks.
+I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10) to track my progress and to add tasks.
 
   <details open>
   <summary><strong>Sprint 1</strong></summary>
-- Starting with basic webpage designs and navigations, with account register and login functionality. 
 
   ![Sprint1](documentation/agile/sprint-1.png)
   </details>
+- Starting with basic webpage designs and navigations, with account register and login functionality. 
 
   <details>
   <summary><strong>Sprint 2</strong></summary>
-- Add product catalogue and product description pages
 
   ![Sprint2](documentation/agile/sprint-2.png)
   </details>
+- Add product catalogue and product description pages
 
   <details>
   <summary><strong>Sprint 3</strong></summary>
-- Add feedback for notifications, sign in, sign out and review deletion notifications
-- Implement product reviews and product editing without using Admin panel
 
   ![Sprint3](documentation/agile/sprint-3.png)
   </details>
+- Add feedback for notifications, sign in, sign out and review deletion notifications
+- Implement product reviews and product editing without using Admin panel
 
   <details>
   <summary><strong>Sprint 4</strong></summary>
-- Add blog section for articles and recipes about spicy dishes
-- Implement blog comments for community interaction
 
   ![Sprint4](documentation/agile/sprint-blog.png)
   </details>
+- Add blog section for articles and recipes about spicy dishes
+- Implement blog comments for community interaction
 
   <details>
   <summary><strong>Sprint 5</strong></summary>
-- Add product search functionality, search from name, description and ingredients
-- Add filter by flavour profile and heat levels using the Flavours model for each product
 
   ![Sprint4](documentation/agile/sprint-5.png)
   </details>
+- Add product search functionality, search from name, description and ingredients
+- Add filter by flavour profile and heat levels using the Flavours model for each product
 
 
 ## Key Features
@@ -226,6 +226,7 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
 Username: andrew  
 Password: testerAA
 
+List of usernames:
 andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy matthew nathan olivia quinn rachel samuel thomas victoria william xavier yvonne zoe
 
 Capitalise the first letter of their name as Password.
@@ -333,6 +334,50 @@ For filters in the product page, there were WAVE warnings about missing fieldset
   ![Blog details](documentation/validation/wave/wave-blog-details.png)
   </details>
 
+### Light House
+Lighthouse reports showed generally strong results for the site, with performance, accessibility, and SEO scores consistently in the 90s on desktop. Best Practices averaged in the 80s, with minor recommendations for improvement. On mobile devices, performance scores were slightly lower, typically in the high 70s, due to increased resource demands. Overall, the site delivers a fast, accessible, and well-optimised experience across platforms.
+
+  <details>
+  <summary><strong>Homepage</strong></summary>
+
+  ![Homepage](documentation/validation/light/light-home.png)
+  </details>
+
+  <details open>
+  <summary><strong>Product</strong></summary>
+
+  ![Product](documentation/validation/light/light-products.png)
+  </details>
+
+  <details>
+  <summary><strong>Product details</strong></summary>
+
+  ![Product details](documentation/validation/light/light-product-details.png)
+
+  <strong>Product details mobile</strong>
+
+  ![Blog details](documentation/validation/light/light-product-details-m.png)
+  </details>
+
+  <details>
+  <summary><strong>Blogs page</strong></summary>
+
+  ![Blogs](documentation/validation/light/light-blog.png)
+
+<strong>Blog page mobile</strong>
+
+  ![Blog details](documentation/validation/light/light-blog-m.png)
+  </details>
+
+  <details>
+  <summary><strong>Blog details</strong></summary>
+
+![Blog details](documentation/validation/light/light-blog-details.png)
+
+<strong>Blog details mobile</strong>
+
+  ![Blog details](documentation/validation/light/light-blog-details-m.png)
+  </details>
 
 
 ## Deployment
