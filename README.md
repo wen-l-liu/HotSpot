@@ -7,35 +7,27 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 
 ## Table of Contents
 
+- [Overview](#overview)
 - [UX Design](#ux-design)
-  - [Link to User Stories in GitHub Projects](#link-to-user-stories-in-github-projects)
   - [User Stories](#user-stories)
-    - [User](#user)
-    - [Site Admin](#site-admin)
   - [Wireframes](#wireframes)
   - [Design Rationale](#design-rationale)
     - [Fonts selection](#fonts-selection)
     - [Colours](#colours)
-    - [Reasoning For Any Final Changes](#reasoning-for-any-final-changes)
 - [Agile](#agile)
 - [Key Features](#key-features)
-  - [Overall Impact](#overall-impact)
-- [Testing Summary](#testing-summary)
+- [Website Overview](#website-overview)
+- [Testing & Validation](#testing--validation)
   - [HTML Validation](#html-validation)
   - [CSS Validation](#css-validation)
   - [Python Validation](#python-validation)
   - [Accessibilty evaluation](#accessibilty-evaluation)
+  - [Light House](#light-house)
 - [Deployment](#deployment)
 - [AI Implementation](#ai-implementation)
-  - [Use Cases and Reflections](#use-cases-and-reflections)
 - [Future Enhancements](#future-enhancements)
 - [Credits](#credits)
-  - [Content & Inspiration](#content--inspiration)
-  - [Design & Assets](#design--assets)
-  - [Libraries & Frameworks](#libraries--frameworks)
-  - [Tools & Services](#tools--services)
-  - [AI Assistance](#ai-assistance)
-  - [Special Thanks](#special-thanks)
+
 
 ### UX Design
 
@@ -206,11 +198,17 @@ I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/project
 - **Notifications:** Users receive feedback on actions (e.g., successful login, review submission).
 - **Inclusivity Notes:** Accessibility features include ARIA labels, alt text for images, and keyboard navigation.
 
-### Overall Impact
+### Website Overview
 
-Using Copilot transformed the workflow, reducing the time taken for ideas to move from the brain to the machine. While not every suggestion was perfect, the AI served as a valuable collaborator, enhancing both technical and problem-solving skills.
+Page | Desktop | Mobile |
+--- | --- | --- |
+| Home | ![Desktop Home Page image](documentation/overview/snapshot-home.jpg) | ![Mobile Home Page image ](documentation/overview/snapshot-home-mobile.jpg) |
+| Products | ![Desktop Products Page image](documentation/overview/snapshot-products.jpg) | ![Mobile Products Page image ](documentation/overview/snapshot-products-mobile.jpg) |
+| Product Details | ![Desktop Product Details Page image](documentation/overview/snapshot-products-details.jpg) | ![Mobile Product Details Page image ](documentation/overview/snapshot-products-details-mobile.jpg) |
+| Blogs Page | ![Desktop Blogs Page image](documentation/overview/snapshot-blogs.jpg) | ![Mobile Blogs Page image ](documentation/overview/snapshot-blogs-mobile.jpg) |
+| Blog Details | ![Desktop Blog Details Page image](documentation/overview/snapshot-blogs-details.jpg) | ![Mobile Blog Details Page image ](documentation/overview/snapshot-blogs-details-mobile.jpg) |
 
-## Testing Summary
+## Testing & Validation
 
 - **Manual Testing:**
   - **Devices and Browsers Tested:** Windows 11 (Chrome, Edge, Brave), Android.
@@ -411,6 +409,10 @@ Throughout the development of HotSpot, GitHub Copilot was used to streamline cod
   - Copilot assisted in optimising and simplifying my Django view functions, suggesting efficient query patterns and helping to minimise unnecessary database calls for faster performance.
 - **Automated Unit Testing:**
   - Copilot assisted in generating initial test cases, helping to cover edge cases and improve the robustness of the application.
+
+### Overall Impact
+
+Using Copilot transformed the workflow, reducing the time taken for ideas to move from the brain to the machine. While not every suggestion was perfect, the AI served as a valuable collaborator, enhancing both technical and problem-solving skills.
 
 
 ## Future Enhancements
