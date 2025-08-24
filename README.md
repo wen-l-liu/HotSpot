@@ -1,9 +1,7 @@
 # HotSpot
 
 ## Overview
-HotSpot is a Django-based web application designed for hot sauce enthusiasts to discover, review, and shop for a curated selection of hot sauces. The platform combines a modern, responsive design (using Bootstrap 5) with robust user features, including authentication, product reviews, and admin management. The site holds a Products page with a collection of items with reviews, and a Blogs page with user created blogs for hot sauce related content like recipes. Product Reviews and Blog comments has full CRUD functionality, enabling users to create, read, update, and delete reviews efficiently.
-
-
+HotSpot is a web application built with Django that allows fans of hot sauce to discover, review, and shop from a curated selection of hot sauces. The platform combines a modern, responsive design using Bootstrap with robust user features, including authentication, product reviews, and admin management. The site features a Products page with a collection of items with reviews, and a Blogs page with user-generated content such as recipes and other hot sauce-related content. With the full CRUD functionality of Product Reviews and Blog comments, users can easily create, read, update, and delete reviews efficiently.
 
 ## Table of Contents
 
@@ -21,19 +19,17 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
   - [HTML Validation](#html-validation)
   - [CSS Validation](#css-validation)
   - [Python Validation](#python-validation)
-  - [Accessibilty evaluation](#accessibilty-evaluation)
-  - [Light House](#light-house)
+  - [Accessibility evaluation](#accessibility-evaluation)
+  - [Lighthouse](#lighthouse)
 - [Deployment](#deployment)
 - [AI Implementation](#ai-implementation)
 - [Future Enhancements](#future-enhancements)
 - [Credits](#credits)
 
-
 ### UX Design
 
 #### Link to User Stories in GitHub Projects:
 [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10)
-
 
 ### User Stories
 
@@ -50,8 +46,8 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 10. As a User, I can contact the site admin so that I can get help or report issues.
 11. As a User, I can see notifications when completing actions so that I know my action was successful.
 12. As a User, I can see and write reviews so that I can give feedback and help others choose.
-13. As a User, I can use a chatbot to get help on issues.
-14. As a User, I can access blog to find articles related to spicy sauce.
+13. As a User, I can use a chatbot to get help with issues.
+14. As a User, I can access the blog to find articles related to spicy sauce.
 15. As a User, I can leave comments on blog articles and start a discussion.
 
 #### Site Admin
@@ -65,7 +61,6 @@ HotSpot is a Django-based web application designed for hot sauce enthusiasts to 
 22. As a Site Admin, I can add new blog posts to the list so that users can see new articles.
 23. As a Site Admin, I can edit blog posts to update articles for users.
 24. As a Site Admin, I can view, approve, or remove user comments so that blog post feedback remains appropriate.
-
 
 ### Wireframes:
 Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users.
@@ -108,17 +103,14 @@ Here are wireframes for all the pages of the website.
   ![About Wireframe](documentation/wireframes/about-page.png)
   </details>
 
-
-
-
 ### Design Rationale:
-The layout emphasises simplicity and clarity, with Bootstrap 5 ensuring a responsive experience across devices. The color palette and typography were chosen for readability and accessibility, following WCAG guidelines.
+The layout emphasises simplicity and clarity, with Bootstrap 5 ensuring a responsive experience across devices. The colour palette and typography were chosen for readability and accessibility, following WCAG guidelines.
 Accessibility features include keyboard navigation, ARIA labels, and screen reader support.
 
 #### Fonts selection
 I used Google Fonts to pick my fonts.
-Primary font is - Lexend for main website text.
-Secondary font is - Hammersmith One for logo brand font.
+Primary font is Lexend for main website text.
+Secondary font is Hammersmith One for the logo brand font.
 
   <details open>
   <summary>Fonts image</summary>
@@ -126,11 +118,11 @@ Secondary font is - Hammersmith One for logo brand font.
   ![Fonts](documentation/images/fonts.png)
   </details>
 
-#### Colours ####
+#### Colours
 
-The primary colour theme for HotSpot is red, reflecting the heat and excitement associated with hot sauces. Red is energetic, eye-catching, and immediately communicates the spicy nature of the products. To provide visual contrast and highlight positive actions (such as success messages or confirmation buttons), green is used sparingly—this contrast draws attention to important interactive elements without overwhelming the user.
+HotSpot's primary colour scheme is red, which symbolises the spiciness and intensity of hot sauces. Red conveys the products' spicy nature right away and is vibrant and striking. Green is used sparingly to create visual contrast and highlight positive actions (such as confirmation buttons or success messages). This contrast highlights key interactive elements without being overpowering to the user.
 
-A mostly white background with black text is used throughout the site for simplicity and maximum readability. This clean, minimal approach ensures that content remains the focus, and that the vibrant red and green accents stand out effectively for calls to action and key feedback.
+For simplicity and optimal readability, the website is primarily white with black text. The content remains the main focus thanks to this simple, minimalistic design, and the vivid red and green accents effectively draw attention to calls to action and important feedback.
 
   <details open>
   <summary>Colour palette</summary>
@@ -141,11 +133,9 @@ A mostly white background with black text is used throughout the site for simpli
 ### Reasoning For Any Final Changes:
 User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
-
-
 ### Agile
-This project was developed using an agile methodology, focusing on iterative and incremental progress. I began by building the core navigation and implementing essential user authentication features such as login and sign-up, ensuring users could access and interact with the site from the start.
-Next, I added the product catalogue, allowing users to browse and view detailed information about each hot sauce. Once the product functionality was stable, I introduced the review system, enabling users to share feedback and rate products. After establishing these core features, I expanded the site with an About page to provide background information, and finally, I implemented the blog section to foster community engagement and share hot sauce-related content. Each feature was tested and refined in cycles, with feedback and validation guiding continuous improvement throughout the development process.
+Agile development was used to create this project, emphasising incremental and iterative development. To make sure users could access and use the website right away, I started by creating the main navigation and adding necessary user authentication features such as sign-up and login.
+I then included the product catalogue, which lets users peruse and see comprehensive details about every hot sauce. I launched the review system, which allowed users to rate products and share feedback, after the product's functionality was stable. Following the establishment of these essential features, I added an About page to give background information and, lastly, a blog section to encourage community participation and distribute content about hot sauce. Throughout the development process, feedback and validation guided continuous improvement as each feature was tested and improved in cycles.
 
 I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10) to track my progress and to add tasks.
 
@@ -154,39 +144,38 @@ I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/project
 
   ![Sprint1](documentation/agile/sprint-1.png)
   </details>
-- Starting with basic webpage designs and navigations, with account register and login functionality. 
+- Started with basic webpage designs and navigation, with account registration and login functionality. 
 
   <details>
   <summary><strong>Sprint 2</strong></summary>
 
   ![Sprint2](documentation/agile/sprint-2.png)
   </details>
-- Add product catalogue and product description pages
+- Added product catalogue and product description pages
 
   <details>
   <summary><strong>Sprint 3</strong></summary>
 
   ![Sprint3](documentation/agile/sprint-3.png)
   </details>
-- Add feedback for notifications, sign in, sign out and review deletion notifications
-- Implement product reviews and product editing without using Admin panel
+- Added feedback for notifications, sign in, sign out and review deletion notifications
+- Implemented product reviews and product editing without using the Admin panel
 
   <details>
   <summary><strong>Sprint 4</strong></summary>
 
   ![Sprint4](documentation/agile/sprint-blog.png)
   </details>
-- Add blog section for articles and recipes about spicy dishes
-- Implement blog comments for community interaction
+- Added blog section for articles and recipes about spicy dishes
+- Implemented blog comments for community interaction
 
   <details>
   <summary><strong>Sprint 5</strong></summary>
 
   ![Sprint4](documentation/agile/sprint-5.png)
   </details>
-- Add product search functionality, search from name, description and ingredients
-- Add filter by flavour profile and heat levels using the Flavours model for each product
-
+- Added product search functionality, search from name, description and ingredients
+- Added filter by flavour profile and heat levels using the Flavours model for each product
 
 ## Key Features
 
@@ -220,19 +209,19 @@ Page | Desktop | Mobile |
   - Features Covered: User authentication, product CRUD, review system, and accessibility compliance.
   - Adjustments Made: Manual tweaks to ensure comprehensive test coverage and inclusivity.
 
-**Login Credential for testing:**  
+**Login Credentials for testing:**  
 Username: andrew  
 Password: testerAA
 
 List of usernames:
-andrew benjamin charlotte daniel emily fiona grace henry isaac james kevin lucy matthew nathan olivia quinn rachel samuel thomas victoria william xavier yvonne zoe
+andrew, benjamin, charlotte, daniel, emily, fiona, grace, henry, isaac, james, kevin, lucy, matthew, nathan, olivia, quinn, rachel, samuel, thomas, victoria, william, xavier, yvonne, zoe
 
 Capitalise the first letter of their name as Password.
 
 ### HTML Validation
 HTML was first checked using Copilot in VS Code, then deployed to Heroku so that the URL could be run through the [W3C HTML validator](https://validator.w3.org/).
-Only minor issues occurred due to apostrophes in product names causing parse errors, added |escape to product.name.
-Blog articles had errors as cripsy froms applied alot of extra HTML tags and CSS in the HTML pageload, I removed the form content stylings and passed the test.
+Only minor issues occurred due to apostrophes in product names causing parse errors; added |escape to product.name.
+Blog articles had errors as crispy forms applied a lot of extra HTML tags and CSS in the HTML pageload; I removed the form content stylings and passed the test.
 
   <details open>
   <summary><strong>Homepage</strong></summary>
@@ -251,7 +240,6 @@ Blog articles had errors as cripsy froms applied alot of extra HTML tags and CSS
 
   ![Product page](documentation/validation/html/html-product-page.png)
   </details>
-
 
   <details>
   <summary><strong>About Page</strong></summary>
@@ -279,9 +267,8 @@ CSS was validated with [Jigsaw](https://jigsaw.w3.org/css-validator) with no err
   ![Styles](documentation/validation/css-valid.png)
   </details>
 
-
 ### Python Validation
-Python admin, models, forms and settings files was first checked in VScode using copilot, then validated with [CodeInstitute Python Linter](https://pep8ci.herokuapp.com/) with no errors, no issues.
+Python admin, models, forms and settings files were first checked in VS Code using Copilot, then validated with [CodeInstitute Python Linter](https://pep8ci.herokuapp.com/) with no errors, no issues.
 
   <details>
   <summary><strong>settings python</strong></summary>
@@ -289,18 +276,16 @@ Python admin, models, forms and settings files was first checked in VScode using
   ![settings](documentation/validation/python-settings.png)
   </details>
 
-
-### Accessibilty evaluation
-The [WAVE Tool](https://wave.webaim.org/) was used throughout development to identify and resolve accessibility issues. WAVE helped highlight missing or incorrect ARIA labels, insufficient color contrast, and improper heading structure. All pages were tested and iteratively improved based on WAVE’s feedback to ensure the site is accessible to users with disabilities.
+### Accessibility evaluation
+The [WAVE Tool](https://wave.webaim.org/) was used throughout development to identify and resolve accessibility issues. WAVE helped highlight missing or incorrect ARIA labels, insufficient colour contrast, and improper heading structure. All pages were tested and iteratively improved based on WAVE’s feedback to ensure the site is accessible to users with disabilities.
 
 **Semantic Heading Levels:**
-During validation, heading levels were reviewed and adjusted for semantic correctness, also addressed WAVE warnings about missing or skipped heading levels
+During validation, heading levels were reviewed and adjusted for semantic correctness, also addressing WAVE warnings about missing or skipped heading levels.
 **Colour Palette Adjustments:**
 The original palette included an orange accent, but this was removed after WAVE flagged low contrast with white backgrounds.
 The final palette uses red as the primary accent, with green for positive actions.
 **Fieldsets and Legends**
-For filters in the product page, there were WAVE warnings about missing fieldsets and legends, all filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in fieldset elements with a visually hidden legend so as to not conflict with exisiting stylings. Remain accessible to screen readers but is not visible to sighted users. 
-
+For filters in the product page, there were WAVE warnings about missing fieldsets and legends. All filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in fieldset elements with a visually hidden legend so as not to conflict with existing stylings. These remain accessible to screen readers but are not visible to sighted users. 
 
   <details open>
   <summary><strong>Homepage</strong></summary>
@@ -332,7 +317,7 @@ For filters in the product page, there were WAVE warnings about missing fieldset
   ![Blog details](documentation/validation/wave/wave-blog-details.png)
   </details>
 
-### Light House
+### Lighthouse
 Lighthouse reports showed generally strong results for the site, with performance, accessibility, and SEO scores consistently in the 90s on desktop. Best Practices averaged in the 80s, with minor recommendations for improvement. On mobile devices, performance scores were slightly lower, typically in the high 70s, due to increased resource demands. Overall, the site delivers a fast, accessible, and well-optimised experience across platforms.
 
   <details>
@@ -377,7 +362,6 @@ Lighthouse reports showed generally strong results for the site, with performanc
   ![Blog details](documentation/validation/light/light-blog-details-m.png)
   </details>
 
-
 ## Deployment
 
 - **Platform:** Heroku (or your chosen platform)
@@ -401,7 +385,7 @@ Throughout the development of HotSpot, GitHub Copilot was used to streamline cod
 - **Code Creation:**
   - Copilot accelerated the creation of Django models, views, and forms, suggesting best practices and efficient patterns. It was especially helpful for generating boilerplate code and exploring alternative approaches.
 - **Data Creation:**
-  - Copilot was just to generate json to populate comments and review models.
+  - Copilot was used to generate JSON to populate comments and review models.
 - **Debugging:**
   - Copilot provided insightful suggestions for resolving errors and simplifying complex logic.
 - **Performance and UX Optimisation:**
@@ -414,10 +398,9 @@ Throughout the development of HotSpot, GitHub Copilot was used to streamline cod
 
 Using Copilot transformed the workflow, reducing the time taken for ideas to move from the brain to the machine. While not every suggestion was perfect, the AI served as a valuable collaborator, enhancing both technical and problem-solving skills.
 
-
 ## Future Enhancements
 
-- Add cart functionality so products can be added to cart.
+- Add cart functionality so products can be added to the cart.
 - Add order processing capability, to process a purchase order.
 - Integrate advanced analytics for tracking user engagement and sales trends.
 - Add chatbot capabilities for more interactive user assistance.
@@ -425,13 +408,12 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
 - Optimise performance further with advanced caching strategies and code splitting.
 - Regularly update the accessibility features to comply with the latest standards and guidelines.
 
-
 ## Credits
 
 ### Content & Inspiration
 - Product items, images and descriptions were sourced from [heatonist](https://heatonist.com/).
 - Blog articles were adapted from blogs from [Hops Burns & Black](https://www.hopburnsblack.co.uk/) written by Claire M Bullen.
-- Inspiration for site structure and features was drawn from leading hot sauce e-commerse, review and blog platforms.
+- Inspiration for site structure and features was drawn from leading hot sauce e-commerce, review and blog platforms.
   - [Heatonist](https://heatonist.com/)
   - [Some like it hot](https://somelikeithot.shop/)
   - [Hot Headz](https://hot-headz.com/)
