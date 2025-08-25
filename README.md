@@ -398,7 +398,10 @@ Lighthouse reports showed generally strong results for the site, with performanc
 - **High-Level Deployment Steps:**
   1. Clone the repository.
   2. Set up the environment with PostgreSQL (or your chosen database).
-  3. Configure environment variables for sensitive data (e.g., secret keys, API keys).
+  3. Configure environment variables for sensitive data e.g.:
+      - Secret Key
+      - Database URL
+      - Cloudinary URL
   4. Deploy using Heroku Git, GitHub integration, or your preferred method.
 - **Verification and Validation:**
   - The deployed application was tested for consistent functionality, design, and accessibility using tools like Lighthouse and manual testing.
