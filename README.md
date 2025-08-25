@@ -202,10 +202,10 @@ I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/project
 ## Key Features
 
 - **Product Catalogue:** Browse, filter, and search a wide range of hot sauces by category or brand.
-- **Product Detail Pages:** View detailed information, images, and reviews for each sauce.
+- **Product Detail Pages:** View product description, image, ingredients, and reviews for each sauce.
 - **User Authentication:** Register, log in securely.
 - **Product Reviews:** Leave and read reviews to help the community make informed choices.
-- **Admin Management:** Admins can add, edit, or remove products, manage categories, and moderate reviews.
+- **Admin Management:** Admins can edit products and blog posts directly on the website, without needing to use the Django admin panel.
 - **Notifications:** Users receive feedback on actions (e.g., successful login, review submission).
 - **Inclusivity Notes:** Accessibility features include ARIA labels, alt text for images, and keyboard navigation.
 
@@ -218,6 +218,8 @@ Page | Desktop | Mobile |
 | Product Details | ![Desktop Product Details Page image](documentation/overview/snapshot-products-details.png) | ![Mobile Product Details Page image ](documentation/overview/snapshot-products-details-mobile.png) |
 | Blogs Page | ![Desktop Blogs Page image](documentation/overview/snapshot-blogs.png) | ![Mobile Blogs Page image ](documentation/overview/snapshot-blogs-mobile.png) |
 | Blog Details | ![Desktop Blog Details Page image](documentation/overview/snapshot-blogs-details.png) | ![Mobile Blog Details Page image ](documentation/overview/snapshot-blogs-details-mobile.png) |
+| Product Admin Edit | ![Product Edit image](documentation/overview/product-edit.png) | ![Product Edit mobile image](documentation/overview/product-edit-mobile.png) |
+| Blog Post Admin Edit | ![Blog Edit image](documentation/overview/blog-edit.png) |![Blog Edit mobile image](documentation/overview/blog-edit-mobile.png) |
 
 ## Testing & Validation
 
