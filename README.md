@@ -212,11 +212,11 @@ I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/project
 
 Page | Desktop | Mobile |
 --- | --- | --- |
-| Home | ![Desktop Home Page image](documentation/overview/snapshot-home.png) | ![Mobile Home Page image ](documentation/overview/snapshot-home-mobile.jpg) |
-| Products | ![Desktop Products Page image](documentation/overview/snapshot-products.png) | ![Mobile Products Page image ](documentation/overview/snapshot-products-mobile.jpg) |
-| Product Details | ![Desktop Product Details Page image](documentation/overview/snapshot-products-details.png) | ![Mobile Product Details Page image ](documentation/overview/snapshot-products-details-mobile.jpg) |
-| Blogs Page | ![Desktop Blogs Page image](documentation/overview/snapshot-blogs.png) | ![Mobile Blogs Page image ](documentation/overview/snapshot-blogs-mobile.jpg) |
-| Blog Details | ![Desktop Blog Details Page image](documentation/overview/snapshot-blogs-details.png) | ![Mobile Blog Details Page image ](documentation/overview/snapshot-blogs-details-mobile.jpg) |
+| Home | ![Desktop Home Page image](documentation/overview/snapshot-home.png) | ![Mobile Home Page image ](documentation/overview/snapshot-home-mobile.png) |
+| Products | ![Desktop Products Page image](documentation/overview/snapshot-products.png) | ![Mobile Products Page image ](documentation/overview/snapshot-products-mobile.png) |
+| Product Details | ![Desktop Product Details Page image](documentation/overview/snapshot-products-details.png) | ![Mobile Product Details Page image ](documentation/overview/snapshot-products-details-mobile.png) |
+| Blogs Page | ![Desktop Blogs Page image](documentation/overview/snapshot-blogs.png) | ![Mobile Blogs Page image ](documentation/overview/snapshot-blogs-mobile.png) |
+| Blog Details | ![Desktop Blog Details Page image](documentation/overview/snapshot-blogs-details.png) | ![Mobile Blog Details Page image ](documentation/overview/snapshot-blogs-details-mobile.png) |
 
 ## Testing & Validation
 
