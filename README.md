@@ -154,7 +154,7 @@ For simplicity and optimal readability, the website is primarily white with blac
 ### Reasoning For Any Final Changes:
 User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
-### Agile
+## Agile
 Agile development was used to create this project, emphasising incremental and iterative development. To make sure users could access and use the website right away, I started by creating the main navigation and adding necessary user authentication features such as sign-up and login.
 I then included the product catalogue, which lets users browse and see comprehensive details about every hot sauce. I launched the review system, which allowed users to rate products and share feedback, after the product's functionality was stable. Following the establishment of these essential features, I added an About page to give background information and, lastly, a blog section to encourage community participation and distribute content about hot sauce. Throughout the development process, feedback and validation guided continuous improvement as each feature was tested and improved in cycles.
 
