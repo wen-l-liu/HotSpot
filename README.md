@@ -129,7 +129,7 @@ The layout emphasises simplicity and clarity, with Bootstrap 5 ensuring a respon
 Accessibility features include keyboard navigation, ARIA labels, and screen reader support.
 
 #### Fonts selection
-I used Google Fonts to pick my fonts.
+I used Google Fonts to choose my fonts.
 Primary font is Lexend for main website text.
 Secondary font is Hammersmith One for the logo brand font.
 
@@ -141,7 +141,7 @@ Secondary font is Hammersmith One for the logo brand font.
 
 #### Colours
 
-HotSpot's primary colour scheme is red, which symbolises the spiciness and intensity of hot sauces. Red conveys the products' spicy nature right away and is vibrant and striking. Green is used sparingly to create visual contrast and highlight positive actions (such as confirmation buttons or success messages). This contrast highlights key interactive elements without being overpowering to the user.
+HotSpot's primary colour scheme is red, which symbolises the spiciness and intensity of hot sauces. Red conveys the products' spicy nature immediately and is vibrant and striking. Green is used sparingly to create visual contrast and highlight positive actions (such as confirmation buttons or success messages). This contrast highlights key interactive elements without being overpowering to the user.
 
 For simplicity and optimal readability, the website is primarily white with black text. The content remains the main focus thanks to this simple, minimalistic design, and the vivid red and green accents effectively draw attention to calls to action and important feedback.
 
@@ -156,7 +156,7 @@ User feedback led to improvements in navigation flow, review visibility, and mob
 
 ### Agile
 Agile development was used to create this project, emphasising incremental and iterative development. To make sure users could access and use the website right away, I started by creating the main navigation and adding necessary user authentication features such as sign-up and login.
-I then included the product catalogue, which lets users peruse and see comprehensive details about every hot sauce. I launched the review system, which allowed users to rate products and share feedback, after the product's functionality was stable. Following the establishment of these essential features, I added an About page to give background information and, lastly, a blog section to encourage community participation and distribute content about hot sauce. Throughout the development process, feedback and validation guided continuous improvement as each feature was tested and improved in cycles.
+I then included the product catalogue, which lets users browse and see comprehensive details about every hot sauce. I launched the review system, which allowed users to rate products and share feedback, after the product's functionality was stable. Following the establishment of these essential features, I added an About page to give background information and, lastly, a blog section to encourage community participation and distribute content about hot sauce. Throughout the development process, feedback and validation guided continuous improvement as each feature was tested and improved in cycles.
 
 I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10) to track my progress and to add tasks.
 
@@ -240,7 +240,7 @@ andrew, benjamin, charlotte, daniel, emily, fiona, grace, henry, isaac, james, k
 Capitalise the first letter of their name as Password.
 
 ### Django Testing
-I created a set of test cases in tests.py using Django's integrated Python testing framework to evaluate my application. The site's fundamental features, such as model behavior, view responses, form validation, authentication, and filtering logic, are covered in these tests. I was able to replicate user interactions, confirm anticipated results, and identify possible problems early in the development process by utilizing Django's TestCase class. Automated testing gave assurance that new features and modifications did not cause problems and helped maintain the quality of the code. This method made sure that all of the application's essential parts functioned as planned in a variety of situations.
+I created a set of test cases in tests.py using Django's integrated Python testing framework to evaluate my application. The site's fundamental features, such as model behaviour, view responses, form validation, authentication, and filtering logic, are covered in these tests. I was able to replicate user interactions, confirm anticipated results, and identify possible problems early in the development process by utilising Django's TestCase class. Automated testing gave assurance that new features and modifications did not cause problems and helped maintain the quality of the code. This method made sure that all of the application's essential parts functioned as planned in a variety of situations.
 
   <details open>
   <summary>tests.py</summary>
