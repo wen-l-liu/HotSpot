@@ -450,7 +450,7 @@ Using Copilot transformed the workflow, reducing the time taken for ideas to mov
   - [Hops Burns & Black](https://www.hopburnsblack.co.uk/)
 
 ### Design & Assets
-- **Wireframes:** Created using [Balsamiq](https://balsamiq.com/) and [Figma](https://www.figma.com/).
+- **Wireframes:** Created using [Balsamiq](https://balsamiq.com/).
 - **Icons:** [Font Awesome](https://fontawesome.com/) for social and UI icons.
 - **Images:** Hot Sauce Product images sourced from [heatonist](https://heatonist.com/).
 - **Colour Palette & Fonts:** Google Fonts (Lexend, Hammersmith One) and [Coolors](https://coolors.co/) for palette inspiration.
