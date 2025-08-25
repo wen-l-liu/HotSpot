@@ -1,7 +1,7 @@
 # HotSpot
 
 ## Overview
-HotSpot is a web application built with Django that allows fans of hot sauce to discover, review, and shop from a curated selection of hot sauces. The platform combines a modern, responsive design using Bootstrap with robust user features, including authentication, product reviews, and admin management. The site features a Products page with a collection of items with reviews, and a Blogs page with user-generated content such as recipes and other hot sauce-related content. With the full CRUD functionality of Product Reviews and Blog comments, users can easily create, read, update, and delete reviews efficiently.
+HotSpot is a web application built with Django that allows fans of hot sauce to discover, review, and shop from a curated selection of hot sauces. The platform combines a modern, responsive design using Bootstrap with robust user features, including authentication, product reviews, and admin management. The site features a Products page with a collection of items with reviews, and a Blogs page with user-generated content such as recipes and other hot sauce-related content. With full CRUD functionality for product reviews and blog comments, users can easily create, read, update, and delete feedback.
 
 ## Table of Contents
 
@@ -30,7 +30,7 @@ HotSpot is a web application built with Django that allows fans of hot sauce to 
 
 ## Entity Relationship Diagram (ERD)
 
-Below is the ERD for HotSpot, illustrating the relationships between users, products, reviews, blogs, and other key entities.
+Below is the ERD for HotSpot, illustrating the relationships between users, products, reviews, brands, flavours, blog posts, comments, and collaboration requests.
 
 - **User:** Represents registered users who can write reviews, blog posts, and comments.
 - **Brand:** Each product is associated with a brand, which includes a name, description, and image.
@@ -86,7 +86,8 @@ This structure supports a rich user experience, allowing users to interact throu
 ### Wireframes:
 Wireframes were created to ensure intuitive navigation, clear product presentation, and accessibility for all users.
 Here are wireframes for all the pages of the website.
-<strong>Wireframe Designs</strong>
+
+#### Wireframe Designs
 
   <details open>
   <summary><strong>Homepage Wireframe</strong></summary>
@@ -155,7 +156,7 @@ For simplicity and optimal readability, the website is primarily white with blac
 User feedback led to improvements in navigation flow, review visibility, and mobile responsiveness. Adjustments were made to enhance inclusivity and overall user satisfaction.
 
 ## Agile
-Agile development was used to create this project, emphasising incremental and iterative development. To make sure users could access and use the website right away, I started by creating the main navigation and adding necessary user authentication features such as sign-up and login.
+Agile development was used to create this project, focusing on incremental and iterative progress. I began by building the main navigation and implementing essential user authentication features such as sign-up and login, ensuring users could access and interact with the site from the outset.”
 I then included the product catalogue, which lets users browse and see comprehensive details about every hot sauce. I launched the review system, which allowed users to rate products and share feedback, after the product's functionality was stable. Following the establishment of these essential features, I added an About page to give background information and, lastly, a blog section to encourage community participation and distribute content about hot sauce. Throughout the development process, feedback and validation guided continuous improvement as each feature was tested and improved in cycles.
 
 I used [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10) to track my progress and to add tasks.
@@ -240,7 +241,7 @@ andrew, benjamin, charlotte, daniel, emily, fiona, grace, henry, isaac, james, k
 Capitalise the first letter of their name as Password.
 
 ### Django Testing
-I created a set of test cases in tests.py using Django's integrated Python testing framework to evaluate my application. The site's fundamental features, such as model behaviour, view responses, form validation, authentication, and filtering logic, are covered in these tests. I was able to replicate user interactions, confirm anticipated results, and identify possible problems early in the development process by utilising Django's TestCase class. Automated testing gave assurance that new features and modifications did not cause problems and helped maintain the quality of the code. This method made sure that all of the application's essential parts functioned as planned in a variety of situations.
+I created a set of test cases in tests.py using Django's built-in Python testing framework to evaluate my application. These tests cover core features such as model behaviour, view responses, form validation, authentication, and filtering logic. By utilising Django’s TestCase class, I was able to simulate user interactions, verify expected outcomes, and identify potential issues early in development. Automated testing provided confidence that new features and changes did not cause problems, helping to maintain code quality and reliability.”
 
   <details open>
   <summary>tests.py</summary>
@@ -315,7 +316,7 @@ During validation, heading levels were reviewed and adjusted for semantic correc
 The original palette included an orange accent, but this was removed after WAVE flagged low contrast with white backgrounds.
 The final palette uses red as the primary accent, with green for positive actions.
 **Fieldsets and Legends**
-For filters in the product page, there were WAVE warnings about missing fieldsets and legends. All filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in fieldset elements with a visually hidden legend so as not to conflict with existing stylings. These remain accessible to screen readers but are not visible to sighted users. 
+For filters in the product page, there were WAVE warnings about missing fieldsets and legends. All filter groups in forms (such as brand, heat, and flavour profile filters) are wrapped in `<fieldset>` elements with a visually hidden `<legend>`. This ensures accessibility for screen readers while maintaining a clean visual design for sighted users.
 
   <details open>
   <summary><strong>Homepage</strong></summary>
@@ -348,7 +349,7 @@ For filters in the product page, there were WAVE warnings about missing fieldset
   </details>
 
 ### Lighthouse
-Lighthouse reports showed generally strong results for the site, with performance, accessibility, and SEO scores consistently in the 90s on desktop. Best Practices averaged in the 80s, with minor recommendations for improvement. On mobile devices, performance scores were slightly lower, typically in the high 70s, due to increased resource demands. Overall, the site delivers a fast, accessible, and well-optimised experience across platforms.
+Lighthouse reports showed strong results for the site, with performance, accessibility, and SEO scores consistently in the 90s on desktop. Best Practices averaged in the 80s, with minor recommendations for improvement. On mobile devices, performance scores were slightly lower, typically in the high 70s, due to increased resource demands. Overall, the site delivers a fast, accessible, and well-optimised experience across platforms.
 
   <details>
   <summary><strong>Homepage</strong></summary>
