@@ -1,8 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Product, Brand, Review, Flavour
+from .models import Product, Brand, Review
 from .forms import ReviewForm, ProductForm
+
 
 class ProductModelTest(TestCase):
     def setUp(self):
@@ -23,6 +24,7 @@ class ProductModelTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Test Sauce")
 
+
 class ProductListViewTest(TestCase):
     def setUp(self):
         self.brand = Brand.objects.create(name="BrandA", slug="branda")
@@ -42,9 +44,12 @@ class ProductListViewTest(TestCase):
         self.assertContains(response, "Product 1")
         self.assertContains(response, "Product 2")
 
+
 class ReviewModelTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", password="testpass")
+        self.user = User.objects.create_user(
+            username="testuser", password="testpass"
+            )
         self.brand = Brand.objects.create(name="BrandB", slug="brandb")
         self.product = Product.objects.create(
             name="Review Sauce",
@@ -66,22 +71,33 @@ class ReviewModelTest(TestCase):
     def test_review_approval(self):
         self.assertTrue(self.review.approved)
 
+
 class ProductFilterTest(TestCase):
     def setUp(self):
         self.brand1 = Brand.objects.create(name="Brand1", slug="brand1")
         self.brand2 = Brand.objects.create(name="Brand2", slug="brand2")
-        Product.objects.create(name="Mild Sauce", brand=self.brand1, price=3.99, slug="mild-sauce")
-        Product.objects.create(name="Hot Sauce", brand=self.brand2, price=4.99, slug="hot-sauce")
+        Product.objects.create(
+            name="Mild Sauce", brand=self.brand1, price=3.99, slug="mild-sauce"
+            )
+        Product.objects.create(
+            name="ExtraHot123",
+            brand=self.brand2,
+            price=4.99,
+            slug="extrahot123"
+        )
 
     def test_filter_by_brand(self):
         url = reverse('products')
         response = self.client.get(url, {'brand': [str(self.brand1.id)]})
         self.assertContains(response, "Mild Sauce")
-        self.assertNotContains(response, "Hot Sauce")
+        self.assertNotContains(response, "ExtraHot123")
+
 
 class AuthTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="andrew", password="testerAA")
+        self.user = User.objects.create_user(
+            username="andrew", password="testerAA"
+            )
 
     def test_login(self):
         login = self.client.login(username="andrew", password="testerAA")
@@ -91,6 +107,7 @@ class AuthTest(TestCase):
         self.client.login(username="andrew", password="testerAA")
         response = self.client.get(reverse('account_logout'))
         self.assertEqual(response.status_code, 200)
+
 
 class ReviewFormTest(TestCase):
     def setUp(self):
@@ -125,6 +142,7 @@ class ReviewFormTest(TestCase):
         }
         form = ReviewForm(data=form_data)
         self.assertFalse(form.is_valid())
+
 
 class ProductFormTest(TestCase):
     def setUp(self):

@@ -21,7 +21,9 @@ class PostAdmin(SummernoteModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(SummernoteModelAdmin):
     """ Admin interface for managing blog comments. """
-    list_display = ('comment_label', 'author', 'post', 'created_on', 'approved')
+    list_display = (
+        'comment_label', 'author', 'post', 'created_on', 'approved'
+        )
     list_filter = ('approved', 'created_on', 'post')
     search_fields = ('author', 'body', 'body', 'post__title')
     actions = ['approve_comments']

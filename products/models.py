@@ -27,15 +27,20 @@ class Product(models.Model):
     brand = models.ForeignKey(
         'Brand', null=True, blank=True, on_delete=models.SET_NULL)
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
+    price = models.DecimalField(
+        max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     image = CloudinaryField('image', default='placeholder')
-    rating = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True)
+    rating = models.DecimalField(
+        max_digits=2, decimal_places=1, null=True, blank=True)
     ingredients = models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
     def update_rating(self):
         """Calculate and update the average rating from reviews"""
-        avg_rating = self.reviews.filter(approved=True).aggregate(Avg('rating'))['rating__avg']
+        avg_rating = (
+            self.reviews.filter(approved=True)
+            .aggregate(Avg('rating'))['rating__avg']
+        )
         self.rating = round(avg_rating, 1) if avg_rating else None
         self.save()
 
@@ -60,12 +65,24 @@ class Flavour(models.Model):
         ('medium', 'Medium'),
         ('high', 'High'),
     )
-    fruit = models.CharField(choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True)
-    garlic = models.CharField(choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True)
-    sweet = models.CharField(choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True)
-    smoke = models.CharField(choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True)
-    salt = models.CharField(choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True)
-    vinegar = models.CharField(choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True)
+    fruit = models.CharField(
+        choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True
+        )
+    garlic = models.CharField(
+        choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True
+        )
+    sweet = models.CharField(
+        choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True
+        )
+    smoke = models.CharField(
+        choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True
+        )
+    salt = models.CharField(
+        choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True
+        )
+    vinegar = models.CharField(
+        choices=STRENGTH_CHOICES, max_length=10, null=True, blank=True
+        )
 
     def __str__(self):
         return self.product.name
@@ -84,7 +101,8 @@ class Review(models.Model):
         related_name="reviewer"
     )
     rating = models.PositiveSmallIntegerField(
-        validators=[MaxValueValidator(5)])
+        validators=[MaxValueValidator(5)]
+        )
     comment = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)

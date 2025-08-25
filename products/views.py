@@ -111,7 +111,7 @@ def review_delete(request, slug, review_id):
             'You can only delete your own reviews!'
         )
 
-    return HttpResponseRedirect(reverse('product_detail', args=[slug]))  # Fixed: product_detail not post_detail
+    return HttpResponseRedirect(reverse('product_detail', args=[slug]))
 
 
 @login_required
@@ -120,23 +120,31 @@ def product_edit(request, slug):
     View to edit a product (admin/superuser only)
     """
     product = get_object_or_404(Product, slug=slug)
-    
+
     # Check if user is superuser
     if not request.user.is_superuser:
         messages.error(request, 'You do not have permission to edit products.')
         return redirect('product_detail', slug=slug)
-    
+
     if request.method == 'POST':
-        product_form = ProductForm(data=request.POST, files=request.FILES, instance=product)
+        product_form = ProductForm(
+            data=request.POST,
+            files=request.FILES,
+            instance=product
+        )
         if product_form.is_valid():
             product = product_form.save()
-            messages.success(request, f'Product "{product.name}" updated successfully!')
+            messages.success(
+                request, f'Product "{product.name}" updated successfully!'
+                )
             return redirect('product_detail', slug=product.slug)
         else:
-            messages.error(request, 'Error updating product. Please check the form.')
+            messages.error(
+                request, 'Error updating product. Please check the form.'
+                )
     else:
         product_form = ProductForm(instance=product)
-    
+
     return render(
         request,
         'products/product_edit.html',
@@ -185,7 +193,9 @@ class ProductList(generic.ListView):
             queryset = queryset.filter(heat_q)
 
         # Flavour profile filtering (multi-select for each flavour)
-        flavour_types = ['fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar']
+        flavour_types = [
+            'fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar'
+        ]
         for flavour in flavour_types:
             flavour_filters = request.GET.getlist(flavour)
             if flavour_filters and any(flavour_filters):
@@ -232,7 +242,9 @@ class ProductList(generic.ListView):
             filtered_queryset = filtered_queryset.filter(heat_q)
 
         # Apply flavour filters
-        flavour_types = ['fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar']
+        flavour_types = [
+            'fruit', 'garlic', 'sweet', 'smoke', 'salt', 'vinegar'
+            ]
         for flavour in flavour_types:
             flavour_filters = request.GET.getlist(flavour)
             if flavour_filters and any(flavour_filters):
@@ -246,7 +258,10 @@ class ProductList(generic.ListView):
             filtered_queryset.values('brand')
             .annotate(count=Count('id'))
         )
-        brand_count_map = {item['brand']: item['count'] for item in brand_counts_qs}
+        brand_count_map = {
+            item['brand']: item['count']
+            for item in brand_counts_qs
+        }
         context['brand_counts'] = brand_count_map
 
         # --- Optimised Flavour Counts ---
@@ -267,13 +282,19 @@ class ProductList(generic.ListView):
                 filtered_queryset.values(f'flavours__{flavour}')
                 .annotate(count=Count('id'))
             )
-            level_map = {item[f'flavours__{flavour}']: item['count'] for item in level_counts}
+            level_map = {
+                item[f'flavours__{flavour}']: item['count']
+                for item in level_counts
+            }
             flavour_counts[flavour] = level_map
 
         for flavour in flavour_options:
             flavour['counts'] = {}
             for level in intensity_levels:
-                flavour['counts'][level] = flavour_counts.get(flavour['name'], {}).get(level, 0)
+                flavour['counts'][level] = (
+                    flavour_counts.get(flavour['name'], {})
+                    .get(level, 0)
+                )
         context['flavour_options'] = flavour_options
         context['intensity_levels'] = intensity_levels
 
@@ -290,12 +311,23 @@ class ProductList(generic.ListView):
             'hot': 'Hot (7-10)',
         }
 
-        from django.db.models import Value
         annotated_queryset = filtered_queryset.annotate(
             heat_level=Case(
-                When(flavours__heat__gte=0, flavours__heat__lte=3, then=Value('low')),
-                When(flavours__heat__gte=4, flavours__heat__lte=6, then=Value('medium')),
-                When(flavours__heat__gte=7, flavours__heat__lte=10, then=Value('hot')),
+                When(
+                    flavours__heat__gte=0,
+                    flavours__heat__lte=3,
+                    then=Value('low')
+                ),
+                When(
+                    flavours__heat__gte=4,
+                    flavours__heat__lte=6,
+                    then=Value('medium')
+                ),
+                When(
+                    flavours__heat__gte=7,
+                    flavours__heat__lte=10,
+                    then=Value('hot')
+                ),
                 default=None,
                 output_field=CharField(),
             )
@@ -306,7 +338,10 @@ class ProductList(generic.ListView):
             .annotate(count=Count('id'))
         )
 
-        heat_count_map = {item['heat_level']: item['count'] for item in heat_counts}
+        heat_count_map = {
+            item['heat_level']: item['count']
+            for item in heat_counts
+        }
 
         context['heat_levels'] = [
             {
