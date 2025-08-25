@@ -6,6 +6,7 @@ HotSpot is a web application built with Django that allows fans of hot sauce to 
 ## Table of Contents
 
 - [Overview](#overview)
+- [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
 - [UX Design](#ux-design)
   - [User Stories](#user-stories)
   - [Wireframes](#wireframes)
@@ -16,6 +17,7 @@ HotSpot is a web application built with Django that allows fans of hot sauce to 
 - [Key Features](#key-features)
 - [Website Overview](#website-overview)
 - [Testing & Validation](#testing--validation)
+  - [Django Testing](#django-testing)
   - [HTML Validation](#html-validation)
   - [CSS Validation](#css-validation)
   - [Python Validation](#python-validation)
@@ -26,7 +28,26 @@ HotSpot is a web application built with Django that allows fans of hot sauce to 
 - [Future Enhancements](#future-enhancements)
 - [Credits](#credits)
 
-### UX Design
+## Entity Relationship Diagram (ERD)
+
+Below is the ERD for HotSpot, illustrating the relationships between users, products, reviews, blogs, and other key entities.
+
+- **User:** Represents registered users who can write reviews, blog posts, and comments.
+- **Brand:** Each product is associated with a brand, which includes a name, description, and image.
+- **Product:** The central entity, representing each hot sauce. Products belong to a brand and have attributes such as name, description, price, image, ingredients, and an average rating (calculated from reviews).
+- **Flavour:** Each product has a one-to-one relationship with a flavour profile, detailing attributes like heat level, fruitiness, garlic, sweetness, smokiness, saltiness, and vinegar strength.
+- **Review:** Users can leave reviews for products. Each review is linked to a product and an author (user), and includes a rating, comment, approval status, and timestamp. Reviews are used to calculate the product’s average rating.
+- **Blog Post:** Users can create blog posts. Each post is linked to an author (user), has a unique title and slug, featured image, content, excerpt, status (draft or published), and timestamps for creation and updates. Posts are ordered by creation date, with the most recent first.
+- **Comment:** Users can comment on blog posts. Each comment is linked to a blog post and an author (user), contains the comment body, approval status, and creation timestamp. Comments are ordered chronologically.
+- **About:** Stores a single “about me” entry, including a title, profile image, last updated timestamp, and content. This provides background information about the site or its creator.
+- **CollaborateRequest:** Stores collaboration request messages submitted via the site. Each request includes the sender’s name, email, message, and a read/unread status for admin management.
+
+
+This structure supports a rich user experience, allowing users to interact through reviews, blog posts, and comments, while products are clearly linked to brands and flavour profiles. The ERD visually represents these relationships, supporting both user engagement and admin management features.
+
+
+![ERD](documentation/images/entity-relationship-hotspot.png)
+## UX Design
 
 #### Link to User Stories in GitHub Projects:
 [GitHub Projects Kanban Board](https://github.com/users/wen-l-liu/projects/10)
@@ -217,6 +238,15 @@ List of usernames:
 andrew, benjamin, charlotte, daniel, emily, fiona, grace, henry, isaac, james, kevin, lucy, matthew, nathan, olivia, quinn, rachel, samuel, thomas, victoria, william, xavier, yvonne, zoe
 
 Capitalise the first letter of their name as Password.
+
+### Django Testing
+I created a set of test cases in tests.py using Django's integrated Python testing framework to evaluate my application. The site's fundamental features, such as model behavior, view responses, form validation, authentication, and filtering logic, are covered in these tests. I was able to replicate user interactions, confirm anticipated results, and identify possible problems early in the development process by utilizing Django's TestCase class. Automated testing gave assurance that new features and modifications did not cause problems and helped maintain the quality of the code. This method made sure that all of the application's essential parts functioned as planned in a variety of situations.
+
+  <details open>
+  <summary>tests.py</summary>
+
+  ![tests.py image](documentation/images/python-testpy.png)
+  </details>
 
 ### HTML Validation
 HTML was first checked using Copilot in VS Code, then deployed to Heroku so that the URL could be run through the [W3C HTML validator](https://validator.w3.org/).
