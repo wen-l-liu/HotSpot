@@ -1,5 +1,7 @@
 # HotSpot
+[Link to Live website](https://capstone-hotspot-b775662c83a7.herokuapp.com/)
 
+![Homepage](documentation/overview/snapshot-home.png)
 ## Overview
 HotSpot is a web application built with Django that allows fans of hot sauce to discover, review, and shop from a curated selection of hot sauces. The platform combines a modern, responsive design using Bootstrap with robust user features, including authentication, product reviews, and admin management. The site features a Products page with a collection of items with reviews, and a Blogs page with user-generated content such as recipes and other hot sauce-related content. With full CRUD functionality for product reviews and blog comments, users can easily create, read, update, and delete feedback.
 
